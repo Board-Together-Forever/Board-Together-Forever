@@ -1,5 +1,6 @@
 package com.codeup.codespringblog.services;
 
+import com.codeup.codespringblog.models.GameSession;
 import com.codeup.codespringblog.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,4 +36,21 @@ public class EmailService {
             System.err.println(ex.getMessage());
         }
     }
+
+    public void prepareAndSend(GameSession gameSession) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom(from);
+        msg.setTo(gameSession.getUser().getEmail());
+        msg.setSubject("Post Created");
+        msg.setText("Post Title: " + gameSession.getGameSessionTitle() + "\nPost Description: " + gameSession.getGameSessionDescription());
+
+        try{
+            this.emailSender.send(msg);
+        }
+        catch (MailException ex) {
+            // simply log it and go on...
+            System.err.println(ex.getMessage());
+        }
+    }
+
 }
