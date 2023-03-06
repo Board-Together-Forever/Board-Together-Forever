@@ -40,7 +40,7 @@ public class EmailService {
     public void prepareAndSend(GameSession gameSession) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
-        msg.setTo(gameSession.getUser().getEmail());
+        msg.setTo(gameSession.getGamer().getEmail());
         msg.setSubject("Post Created");
         msg.setText("Post Title: " + gameSession.getGameSessionTitle() + "\nPost Description: " + gameSession.getGameSessionDescription());
 

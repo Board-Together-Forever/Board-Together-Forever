@@ -1,10 +1,9 @@
 package com.codeup.codespringblog.controllers;
 
 import com.codeup.codespringblog.models.GameSession;
-import com.codeup.codespringblog.models.User;
+import com.codeup.codespringblog.models.Gamer;
 import com.codeup.codespringblog.repositories.GameSessionRepository;
-import com.codeup.codespringblog.repositories.PostRepository;
-import com.codeup.codespringblog.repositories.UserRepository;
+import com.codeup.codespringblog.repositories.GamerRepository;
 import com.codeup.codespringblog.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,13 +16,13 @@ import java.util.List;
 public class GameSessionController {
     private final GameSessionRepository gameSessionDao;
 
-    private final UserRepository userDao;
+    private final GamerRepository gamerDao;
 
     private final EmailService emailService;
 
-    public GameSessionController(PostRepository gameSessionDao, UserRepository userDao, EmailService emailService) {
+    public GameSessionController(GameSessionRepository gameSessionDao, GamerRepository gamerDao, EmailService emailService) {
         this.gameSessionDao = gameSessionDao;
-        this.userDao = userDao;
+        this.gamerDao = gamerDao;
         this.emailService = emailService;
     }
 
@@ -50,19 +49,19 @@ public class GameSessionController {
     }
 
     @PostMapping("gamesessions/create")
-    public String createPost(@ModelAttribute GameSession gameSession) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        gameSession.setUser(user);
+    public String createGameSession(@ModelAttribute GameSession gameSession) {
+        Gamer gamer = (Gamer) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        gameSession.setGamer(gamer);
         gameSessionDao.save(gameSession);
         emailService.prepareAndSend(gameSession);
         return "redirect:/gamesessions";
     }
 
     @GetMapping("gamesessions/{id}/edit")
-    public String editPost(Model model, @PathVariable long id) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String editGameSession(Model model, @PathVariable long id) {
+        Gamer gamer = (Gamer) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         GameSession gameSession = gameSessionDao.findGameSessionsById(id);
-        if (user.getId() != gameSession.getUser().getId()){
+        if (gamer.getId() != gameSession.getGamer().getId()){
             List<GameSession> gameSessionList = gameSessionDao.findAll();
             model.addAttribute("gameSessionsList", gameSessionList);
             return "redirect:/gamesessions";
