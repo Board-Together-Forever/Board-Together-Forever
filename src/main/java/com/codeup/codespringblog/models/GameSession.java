@@ -26,13 +26,13 @@ public class GameSession {
     private String gameSessionDescription;
 
     @ManyToOne
-    @JoinColumn(name = "users_id")
-    private User user;
+    @JoinColumn(name = "gamers_id")
+    private Gamer gamer;
 
     public GameSession() {
     }
 
-    public GameSession(int id, String gameSessionName, String gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, User user) {
+    public GameSession(int id, String gameSessionName, String gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, Gamer gamer) {
         this.id = id;
         this.gameSessionName = gameSessionName;
         this.gameSessionHost = gameSessionHost;
@@ -40,17 +40,17 @@ public class GameSession {
         this.gameDuration = gameDuration;
         this.gameSessionTitle = gameSessionTitle;
         this.gameSessionDescription = gameSessionDescription;
-        this.user = user;
+        this.gamer = gamer;
     }
 
-    public GameSession(String gameSessionName, String gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, User user) {
+    public GameSession(String gameSessionName, String gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, Gamer gamer) {
         this.gameSessionName = gameSessionName;
         this.gameSessionHost = gameSessionHost;
         this.playerLimit = playerLimit;
         this.gameDuration = gameDuration;
         this.gameSessionTitle = gameSessionTitle;
         this.gameSessionDescription = gameSessionDescription;
-        this.user = user;
+        this.gamer = gamer;
     }
 
     public GameSession(int id, String gameSessionName, String gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription) {
@@ -129,11 +129,11 @@ public class GameSession {
     }
 
 
-    public User getUser() {
-        return user;
+    public Gamer getGamer() {
+        return gamer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setGamer(Gamer gamer) {
+        this.gamer = gamer;
     }
 }
