@@ -46,12 +46,12 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/posts", "/register", "/gamers/register", "/gamers/login", "/roll-dice", "/roll-dice/**", "/css/**", "/js/**", "/style.css", "/gameIMG/**") // anyone can see the home and the ads pages
+                .requestMatchers("/", "/posts", "/register", "/gamesessions", "/css/**", "/js/**", "/gameIMG/**") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers( "/posts/**", "/profile")
+                .requestMatchers( "/profile")
                 .authenticated();
         return http.build();
     }
