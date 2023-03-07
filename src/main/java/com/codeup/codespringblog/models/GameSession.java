@@ -31,13 +31,17 @@ public class GameSession {
     @JoinColumn(name = "users_id")
     private User gameSessionHost;
 
+
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "gameSessions_users",
             joinColumns = {@JoinColumn(name = "gameSession_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
-    private List<GameSessionUser> users;
+    private List<User> users;
+
 
 
     public GameSession() {
