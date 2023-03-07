@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="partials :: head">
+    <meta charset="UTF-8">
+    <title>post index</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+    <h1 id="indexHeader">Displaying All Posts</h1>
+    <div th:each="post : ${gameSessionsList}">
+<!--        <p th:text="${post.title}" />-->
+        <a th:href="@{/gamesessions/{id} (id = ${gameSession.id})}"><span th:text="${gameSession.title}"></span></a>
+        <p th:text="${gameSession.body}" />
+        <p th:text="${gameSession.id}" />
+    </div>
+<a href="/posts/create" id="createAPost">Create a post</a><br><br><br>
+    <footer th:replace="partials :: footer"></footer>
+   <div th:insert="partials :: boot-scripts"></div>
+</body>
+
+</html>
