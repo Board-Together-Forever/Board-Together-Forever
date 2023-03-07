@@ -6,59 +6,63 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-
-
-<div id="indexpage" style="margin: 10px">
-    <h1>Welcome to</h1>
-    <img th:src="@{/gameIMG/Collage_2023-03-03_16_39_26.jpg}" height="400" width="400" class="img-fluid" alt="logo">
-
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                 <div class="col-md-4">
-<!--                    <img src="..." class="img-fluid rounded-start" alt="...">-->
-                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Title</h5>
-                        <p class="card-text"><small class="text-muted">Game System</small></p>
-                        <p class="card-text">Info about the game.</p>
+<div class="container">
+        <div id="indexpage" class="container d-flex align-items-center flex-column">
+            <h1 class="d-flex">Welcome to</h1>
+            <img th:src="@{/gameIMG/Collage_2023-03-03_16_39_26.jpg}" width="400" class="d-flex border border-dark img-fluid" alt="logo">
+        </div>
+    <br>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 mb-3" style="max-width: 400px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+<!--                            <img src="" class="img-fluid rounded-start" alt="...">-->
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Session Title</h5>
+                                <p class="card-text"><small class="text-muted">Game System</small></p>
+                                <p class="card-text">Game session description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 mb-3" style="max-width: 400px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+<!--                            <img src="" class="img-fluid rounded-start" alt="...">-->
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Session Title</h5>
+                                <p class="card-text"><small class="text-muted">Game System</small></p>
+                                <p class="card-text">Game session description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 mb-3" style="max-width: 400px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+<!--                            <img src="" class="img-fluid rounded-start" alt="...">-->
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Session Title</h5>
+                                <p class="card-text"><small class="text-muted">Game System</small></p>
+                                <p class="card-text">Game session description</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-<!--                    <img src="..." class="img-fluid rounded-start" alt="...">-->
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Title</h5>
-                        <p class="card-text"><small class="text-muted">Game System</small></p>
-                        <p class="card-text">Info about the game.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-<!--                    <img src="..." class="img-fluid rounded-start" alt="...">-->
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Title</h5>
-                        <p class="card-text"><small class="text-muted">Game System</small></p>
-                        <p class="card-text">Info about the game.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
