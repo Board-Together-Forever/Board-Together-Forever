@@ -6,10 +6,13 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<h1>Title: <span th:text="${posts.title}"></span><hr>
-    Body: <span th:text="${posts.body}"></span><hr>
-    Useremail: <span th:text="${posts.user.email}"></span></h1>
-<a th:href="@{/posts/{id}/edit (id = ${posts.id})}"><button id="editButton">Edit Post</button></a>
+<h1>Game: <span th:text="${gameSessions.gameSessionName}"></span><hr>
+    Player Limit: <span th:text="${gameSessions.playerLimit}"></span><hr>
+    Game Duration: <span th:text="${gameSessions.gameDuration}"></span><hr>
+    Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span><hr>
+    Description: <span th:text="${gameSessions.gameSessionDescription}"></span><hr>
+    Useremail: <span th:text="${gameSessions.getGameSessionHost().email}"></span></h1>
+<a th:href="@{/gamesessions/{id}/edit (id = ${gameSessions.id})}"><button id="editButton">Edit Game Session</button></a>
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
