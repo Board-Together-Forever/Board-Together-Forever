@@ -20,8 +20,8 @@ public class User {
     @Column
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Post> posts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameSessionHost")
+    private List<GameSession> gameSessions;
 
     public User() {
     }
@@ -43,12 +43,12 @@ public class User {
         this.id = id;
         this.username = username;
     }
-    public User(long id, String username, String email, String password, List<Post> posts) {
+    public User(long id, String username, String email, String password, List<GameSession> gameSessions) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.posts = posts;
+        this.gameSessions = gameSessions;
     }
 
     public long getId() {
