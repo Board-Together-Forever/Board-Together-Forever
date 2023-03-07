@@ -48,25 +48,25 @@ public class GameSessionController {
         return "gamesessions/create";
     }
 
-    @PostMapping("gamesessions/create")
-    public String createGameSession(@ModelAttribute GameSession gameSession) {
+    @PostMapping("/gamesessions/create")
+    public String createGameSession(@ModelAttribute GameSession gamesession) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        gameSession.setGameSessionHost(user);
-        gameSessionDao.save(gameSession);
-        emailService.prepareAndSend(gameSession);
+        gamesession.setGameSessionHost(user);
+        gameSessionDao.save(gamesession);
+        emailService.prepareAndSend(gamesession);
         return "redirect:/gamesessions";
     }
 
-    @GetMapping("gamesessions/{id}/edit")
+    @GetMapping("/gamesessions/{id}/edit")
     public String editGameSession(Model model, @PathVariable long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        GameSession gameSession = gameSessionDao.findGameSessionsById(id);
-        if (user.getId() != gameSession.getGameSessionHost().getId()){
-            List<GameSession> gameSessionList = gameSessionDao.findAll();
-            model.addAttribute("gameSessionsList", gameSessionList);
+        GameSession gamesession = gameSessionDao.findGameSessionsById(id);
+        if (user.getId() != gamesession.getGameSessionHost().getId()){
+            List<GameSession> gameSessionsList = gameSessionDao.findAll();
+            model.addAttribute("gameSessionsList", gameSessionsList);
             return "redirect:/gamesessions";
         }
-        model.addAttribute("gameSessions", gameSessionDao.findGameSessionsById(id));
+        model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
         return "gamesessions/edit";
     }
 
