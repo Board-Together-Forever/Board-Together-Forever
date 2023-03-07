@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="partials :: head">
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<h1>Title: <span th:text="${posts.title}"></span><hr>
+    Body: <span th:text="${posts.body}"></span><hr>
+    Useremail: <span th:text="${posts.user.email}"></span></h1>
+<a th:href="@{/posts/{id}/edit (id = ${posts.id})}"><button id="editButton">Edit Post</button></a>
+
+<footer th:replace="partials :: footer"></footer>
+<div th:insert="partials :: boot-scripts"></div>
+</body>
+</html>
