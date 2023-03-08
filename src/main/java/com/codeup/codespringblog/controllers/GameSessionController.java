@@ -35,6 +35,13 @@ public class GameSessionController {
         return "gamesessions/index";
     }
 
+    @GetMapping("/gamesessions/find")
+    public String findGame() {
+        return "gamesessions/apiSearch";
+    }
+
+
+
     @GetMapping("/gamesessions/{id}")
     public String idpage(@PathVariable Long id, Model model) {
         GameSession gameSessions = gameSessionDao.findGameSessionsById(id);
@@ -46,6 +53,13 @@ public class GameSessionController {
     public String create(Model model) {
         model.addAttribute("gamesession", new GameSession());
         return "gamesessions/create";
+    }
+
+    @GetMapping("/gamesessions/create/{upc}")
+    public String createFound(@PathVariable String upc, Model model) {
+        model.addAttribute("upc", upc);
+        model.addAttribute("gamesession", new GameSession());
+        return "gamesessions/create2";
     }
 
     @PostMapping("/gamesessions/create")
