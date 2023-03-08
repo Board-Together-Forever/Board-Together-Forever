@@ -34,8 +34,8 @@
 					<p th:text="|Username: ${#authentication.principal.username}"></p>
 					<p th:text="|Email: ${#authentication.principal.email}"></p>
 					<!--add placeholder for empty stuff-->
-<!--					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>-->
-<!--					<p th:text="|IRL Name: ${#authentication.principal.irl_name}"></p>-->
+					<!--					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>-->
+					<!--					<p th:text="|IRL Name: ${#authentication.principal.irl_name}"></p>-->
 				</div>
 				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
 					<h2>About Me</h2>
@@ -43,7 +43,26 @@
 				</div>
 				<div aria-labelledby="session-tab" class="tab-pane" id="my-sessions" role="tabpanel">
 					<h2>My Sessions</h2>
-					<p>This is the My Sessions tab.</p>
+					<div th:each="gameSessions : ${gameSessionsList}">
+						<div th:if="${user.getId() == gameSessions.getGameSessionHost().getId()}">
+							<h1>Game: <span th:text="${gameSessions.gameSessionName}"></span>
+								<br>
+								Player Limit: <span th:text="${gameSessions.playerLimit}"></span>
+								<br>
+								Game Duration: <span th:text="${gameSessions.gameDuration}"></span>
+								<br>
+								Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span>
+								<br>
+								Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
+								<br>
+								User Email: <span th:text="${gameSessions.getGameSessionHost().email}"></span>
+							</h1>
+						</div>
+					</div>
+					<!--still needs working-->
+<!--					<div th:if="${user.getId() != gameSessions.getGameSessionHost().getId()}">-->
+<!--						<p>You have no sessions!</p>-->
+<!--					</div>-->
 				</div>
 				<div aria-labelledby="buds-tab" class="tab-pane" id="buds" role="tabpanel">
 					<h2>Buds</h2>
