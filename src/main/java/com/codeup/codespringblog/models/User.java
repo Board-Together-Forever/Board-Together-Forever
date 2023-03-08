@@ -11,16 +11,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
-    private String username;
+    @Column(unique = true, nullable = false)
+    private String username
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(nullable = false)
     private String primary_game;
 
     @Column
@@ -89,5 +89,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPrimary_game() {
+        return primary_game;
+    }
+
+    public void setPrimary_game(String primary_game) {
+        this.primary_game = primary_game;
+    }
+
+    public String getIrl_name() {
+        return irl_name;
+    }
+
+    public void setIrl_name(String irl_name) {
+        this.irl_name = irl_name;
+    }
+
+    public List<GameSession> getGameSessions() {
+        return gameSessions;
+    }
+
+    public void setGameSessions(List<GameSession> gameSessions) {
+        this.gameSessions = gameSessions;
     }
 }

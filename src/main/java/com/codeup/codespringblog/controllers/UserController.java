@@ -48,6 +48,7 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = userDao.findUserById(user.getId());
         List<GameSession> gameSessionsList = gameSessionDao.findAll();
         model.addAttribute("gameSessionsList", gameSessionsList);
         model.addAttribute("user", user);
