@@ -1,13 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head ">
 </head>
 <body class="main-container main-bg">
 <nav th:replace="partials :: navbar"></nav>
 <main class="container">
-  <h1 th:text="|Howdy, ${#authentication.principal.username}!|"></h1>
-  <h2 th:text="|Email: ${#authentication.principal.email}|"></h2>
-  <h2 th:text="|User ID: ${#authentication.principal.id}|"></h2>
+	<h1 th:text="|Howdy, ${#authentication.principal.username}!|"></h1>
+
+	<div class="tabs">
+		<div class="container mt-5">
+
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link" data-bs-toggle="tab" href="#security" id="sec-tab">Security</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-bs-toggle="tab" href="#about-me" id="about-tab">About Me</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-bs-toggle="tab" href="#my-sessions" id="session-tab">My Sessions</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-bs-toggle="tab" href="#buds" id="buds-tab">Buds</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/settings/}">Settings</a>
+				</li>
+			</ul>
+
+			<div class="tab-content">
+				<div aria-labelledby="sec-tab" class="tab-pane" id="security" role="tabpanel">
+					<h2>Security</h2>
+					<p th:text="|Username: ${#authentication.principal.username}"></p>
+					<p th:text="|Email: ${#authentication.principal.email}"></p>
+					<!--add placeholder for empty stuff-->
+					<!--					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>-->
+					<!--					<p th:text="|IRL Name: ${#authentication.principal.irl_name}"></p>-->
+				</div>
+				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
+					<h2>About Me</h2>
+					<p>This is the About Me tab.</p>
+				</div>
+				<div aria-labelledby="session-tab" class="tab-pane" id="my-sessions" role="tabpanel">
+					<h2>My Sessions</h2>
+					<div th:each="gameSessions : ${gameSessionsList}">
+						<div th:if="${user.getId() == gameSessions.getGameSessionHost().getId()}">
+							<h1>Game: <span th:text="${gameSessions.gameSessionName}"></span>
+								<br>
+								Player Limit: <span th:text="${gameSessions.playerLimit}"></span>
+								<br>
+								Game Duration: <span th:text="${gameSessions.gameDuration}"></span>
+								<br>
+								Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span>
+								<br>
+								Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
+								<br>
+								User Email: <span th:text="${gameSessions.getGameSessionHost().email}"></span>
+							</h1>
+						</div>
+					</div>
+					<!--still needs working-->
+<!--					<div th:if="${user.getId() != gameSessions.getGameSessionHost().getId()}">-->
+<!--						<p>You have no sessions!</p>-->
+<!--					</div>-->
+				</div>
+				<div aria-labelledby="buds-tab" class="tab-pane" id="buds" role="tabpanel">
+					<h2>Buds</h2>
+					<p>This is the Buds tab.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </main>
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: boot-scripts"></div>

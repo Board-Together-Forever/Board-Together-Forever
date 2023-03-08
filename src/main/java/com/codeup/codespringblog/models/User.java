@@ -20,6 +20,12 @@ public class User {
     @Column
     private String password;
 
+    @Column
+    private String primary_game;
+
+    @Column
+    private String irl_name;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameSessionHost")
     private List<GameSession> gameSessions;
 
@@ -30,6 +36,8 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        primary_game = copy.primary_game;
+        irl_name = copy.irl_name;
     }
 
     public User(long id, String username, String email, String password) {

@@ -3,18 +3,18 @@
 
 <head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>post index</title>
+    <title>All Game Sessions</title>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-    <h1 id="indexHeader">Displaying All Posts</h1>
-    <div th:each="post : ${gameSessionsList}">
+    <h1 id="indexHeader">Displaying All Game Sessions</h1>
+    <div th:each="gamesession : ${gameSessionsList}">
 <!--        <p th:text="${post.title}" />-->
-        <a th:href="@{/gamesessions/{id} (id = ${gameSession.id})}"><span th:text="${gameSession.title}"></span></a>
-        <p th:text="${gameSession.body}" />
-        <p th:text="${gameSession.id}" />
+        <a th:href="@{/gamesessions/{id} (id = ${gamesession.id})}"><span th:text="${gamesession.gameSessionTitle}"></span></a>
+        <p th:text="${gamesession.gameSessionDescription}" />
+        <p th:text="${gamesession.id}" />
     </div>
-<a href="/posts/create" id="createAPost">Create a post</a><br><br><br>
+<a href="/gamesessions/create" id="createAPost">Create a post</a><br><br><br>
     <footer th:replace="partials :: footer"></footer>
    <div th:insert="partials :: boot-scripts"></div>
 </body>
