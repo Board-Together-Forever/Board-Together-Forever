@@ -6,6 +6,7 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+
 <h1>Game: <span th:text="${gameSessions.gameSessionName}"></span><hr>
     Player Limit: <span th:text="${gameSessions.playerLimit}"></span><hr>
     Game Duration: <span th:text="${gameSessions.gameDuration}"></span><hr>
@@ -16,5 +17,7 @@
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
+<script th:src="@{/js/api_keys.js}"></script>
+<script th:src="@{/js/bga.js}"></script>
 </body>
 </html>
