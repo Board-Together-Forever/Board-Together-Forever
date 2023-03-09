@@ -25,6 +25,9 @@ public class GameSession {
     @Column(nullable = false)
     private String gameSessionDescription;
 
+    @Column
+    private String UPC;
+
     //    @Column(nullable = false)
 //    private String gameSessionHost;
     @ManyToOne
@@ -47,6 +50,17 @@ public class GameSession {
     public GameSession() {
     }
 
+    public GameSession(int id, String gameSessionName, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, String UPC, User gameSessionHost) {
+        this.id = id;
+        this.gameSessionName = gameSessionName;
+        this.playerLimit = playerLimit;
+        this.gameDuration = gameDuration;
+        this.gameSessionTitle = gameSessionTitle;
+        this.gameSessionDescription = gameSessionDescription;
+        this.UPC = UPC;
+        this.gameSessionHost = gameSessionHost;
+    }
+
     public GameSession(int id, String gameSessionName, User gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription) {
         this.id = id;
         this.gameSessionName = gameSessionName;
@@ -55,6 +69,24 @@ public class GameSession {
         this.gameDuration = gameDuration;
         this.gameSessionTitle = gameSessionTitle;
         this.gameSessionDescription = gameSessionDescription;
+    }
+
+    public GameSession(String gameSessionName, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, String UPC, User gameSessionHost) {
+        this.gameSessionName = gameSessionName;
+        this.playerLimit = playerLimit;
+        this.gameDuration = gameDuration;
+        this.gameSessionTitle = gameSessionTitle;
+        this.gameSessionDescription = gameSessionDescription;
+        this.UPC = UPC;
+        this.gameSessionHost = gameSessionHost;
+    }
+
+    public String getUPC() {
+        return UPC;
+    }
+
+    public void setUPC(String UPC) {
+        this.UPC = UPC;
     }
 
     public GameSession(String gameSessionName, User gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription) {
