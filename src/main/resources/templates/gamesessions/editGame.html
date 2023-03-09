@@ -14,7 +14,7 @@
         <button type="submit" class="btn btn-primary" id="searchbtn">Find it!</button>
     </div>
 </form>
-<h1 type="hidden" id="gameSessionId" th:value="${gamesession.id}"></h1>
+<h1 type="hidden" id="gameSessionId" th:field="${gamesession.getId()}" th:text="${gamesession.getId()}"></h1>
 <h1 id="found2"></h1>
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
