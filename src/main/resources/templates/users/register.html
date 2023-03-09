@@ -9,41 +9,29 @@
 <br>
 <div class="container">
 	<h1>Register</h1>
-	<form class="row g-3 needs-validation" novalidate th:action="@{/register}" th:method="POST" th:object="${user}">
+	<form class="row g-3" th:action="@{/register}" th:method="POST" th:object="${user}">
 		<div class="col-md-12">
 			<label class="form-label" for="username">Username</label>
 			<div class="input-group has-validation">
-				<input class="form-control" id="username" required th:field="*{username}" type="text">
-				<div class="invalid-feedback">
-					Please provide a username.
-				</div>
+				<input class="form-control" id="username" required="required" th:field="*{username}" type="text">
 			</div>
 		</div>
 
 		<div class="col-md-12">
 			<label class="form-label" for="email">Email</label>
 			<div class="input-group has-validation">
-				<input class="form-control" id="email" required th:field="*{email}" type="text">
-				<div class="invalid-feedback">
-					Please provide an email.
-				</div>
+				<input class="form-control" id="email" required="required" th:field="*{email}" type="text">
 			</div>
 		</div>
 
 		<div class="col-md-12">
 			<label class="form-label" for="password">Password</label>
-			<input class="form-control" id="password" required th:field="*{password}" type="password">
-			<div class="invalid-feedback">
-				Please provide a password.
-			</div>
+			<input class="form-control" id="password" required="required" th:field="*{password}" type="password">
 		</div>
 
 		<div class="col-md-12">
 			<label class="form-label" for="primary-game">Primary Played Game</label>
-			<input class="form-control" id="primary-game" required th:field="*{primary_game}" type="text">
-			<div class="invalid-feedback">
-				Please provide your primary game.
-			</div>
+			<input class="form-control" id="primary-game" required="required" th:field="*{primary_game}" type="text">
 		</div>
 
 		<div class="col-12">
