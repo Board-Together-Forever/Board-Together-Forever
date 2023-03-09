@@ -4,8 +4,85 @@
   <meta charset="UTF-8">
   <title>About Us</title>
 </head>
-<body>
+<body class="background">
 <nav th:replace="partials :: navbar"></nav>
+<div class="container">
+  <h1>About the Creators</h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100 bg-opacity-75 border-primary text-white bg-dark fw-bold">
+        <img th:src="@{/gameIMG/codup1022-0040.jpg}" class="card-img-top" alt="Luke Van Delden">
+      <div class="card-body">
+        <h5 class="title card-title">Luke Van Delden</h5>
+        <p class="card-text">Solutions driven developer, with experience in leadership and team development. Proven record of meeting and exceeding goals with a strong focus on positive outcomes. Eager to streamline and enhance web applications in a collaborative team environment that facilitates personal and company growth.</p>
+      </div>
+    <hr>
+      <div class="card-body">
+        <a href="https://github.com/Luke-Van-Delden" class="link-info card-link">GitHub/Luke-Van-Delden</a>
+      </div>
+    <hr>
+      <div class="card-body">
+        <a href="https://www.linkedin.com/in/luke-van-delden/" class="link-success card-link">LinkedIn/luke-van-delden</a>
+      </div>
+    <hr>
+      <div class="card-body">
+        <a href="vandelden.luke@gmail.com" class="link-warning card-link">vandelden.luke@gmail.com</a>
+      </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-warning">
+        <img th:src="@{/gameIMG/codup1022-0048.jpg}" class="card-img-top" alt="Danielle Masters">
+        <div class="card-body">
+          <h5 class="title card-title">Danielle Masters</h5>
+          <p class="card-text">Web Developer with years of Customer Service experience in professional client and team communications, as well fast program navigation and research for project efficiency. Utilising Full-Stack skills with the mind of a passionate visionary in order to contribute creative solutions to the growth of the team.</p>
+        </div>
+        <hr>
+        <div class="card-body">
+          <a href="https://github.com/DanielleVMasters" class="link-info card-link">GitHub/DanielleVMasters</a>
+        </div>
+        <hr>
+        <div class="card-body">
+          <a href="https://www.linkedin.com/in/danielle-masters/" class="link-success card-link">LinkedIn/danielle-masters</a>
+        </div>
+        <hr>
+        <div class="card-body">
+          <a href="danielle.victoria.masters@gmail.com" class="link-warning card-link">danielle.victoria.masters@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+        <img th:src="@{/gameIMG/signal-2023-02-23-19-20-09-103-1.png}" class="card-img-top" alt="Brandon Hall">
+        <div class="card-body">
+          <h5 class="title card-title">Brandon Hall</h5>
+          <p class="card-text">U.S Military Veteran with tried-and-true experience in management and leadership experience, retrained in web development, seeking to transition from the U.S Army into a long term career as a Full Stack Web Developer. Highly motivated, effective communicator and problem solver looking to hone-in skills while adding value and bringing relentless enthusiasm. Works well individually and with team members and groups from diverse backgrounds.</p>
+        </div>
+        <hr>
+        <div class="card-body">
+          <a href="https://github.com/brandontylerhall" class="link-info card-link">GitHub/brandontylerhall</a>
+        </div>
+        <hr>
+        <div class="card-body">
+          <a href="https://www.linkedin.com/in/brandon~hall/" class="link-success card-link">LinkedIn/brandon~hall</a>
+        </div>
+        <hr>
+        <div class="card-body">
+          <a href="bran.tyler.hall@gmail.com" class="link-warning card-link">bran.tyler.hall@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <br>
+  <br>
+</div>
+
+
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
