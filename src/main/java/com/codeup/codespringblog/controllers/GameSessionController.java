@@ -40,6 +40,27 @@ public class GameSessionController {
         return "gamesessions/apiSearch";
     }
 
+    @GetMapping("/gamesessions/find/{id}")
+    public String editGameSessionGame(Model model, @PathVariable long id) {
+        GameSession gamesession = gameSessionDao.findGameSessionsById(id);
+        model.addAttribute("gamesession", gamesession);
+        return "gamesessions/editGame";
+    }
+
+    @GetMapping("/gamesessions/{id}/{upc}")
+    public String updatedGame(Model model, @PathVariable long id, @PathVariable String upc) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        GameSession gamesession = gameSessionDao.findGameSessionsById(id);
+        if (user.getId() != gamesession.getGameSessionHost().getId()){
+            List<GameSession> gameSessionsList = gameSessionDao.findAll();
+            model.addAttribute("gameSessionsList", gameSessionsList);
+            return "redirect:/gamesessions";
+        }
+        gamesession.setUPC(upc);
+        model.addAttribute("upc",upc);
+        model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
+        return "gamesessions/changedGame";
+    }
 
 
     @GetMapping("/gamesessions/{id}")
@@ -62,6 +83,7 @@ public class GameSessionController {
         return "gamesessions/create2";
     }
 
+
     @PostMapping("/gamesessions/create")
     public String createGameSession(@ModelAttribute GameSession gamesession) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -83,5 +105,6 @@ public class GameSessionController {
         model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
         return "gamesessions/edit";
     }
+
 
 }
