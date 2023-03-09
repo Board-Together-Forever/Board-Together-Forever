@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers( "/profile", "/gamesessions/**", "/posts/**", "/settings")
+                .requestMatchers( "/profile", "/gamesessions/**", "/posts/**", "/settings/**")
                 .authenticated();
         return http.build();
     }

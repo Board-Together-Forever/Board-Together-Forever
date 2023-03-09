@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<form th:action="@{/users/register}" th:method="post" th:object="${user}">
+<form th:action="@{/register}" th:method="post" th:object="${user}">
 	<label for="username">Username:</label>
 	<input id="username" name="username" th:field="*{username}" type="text">
 
@@ -16,12 +16,14 @@
 
 	<label for="password">Password:</label>
 	<input id="password" name="password" th:field="*{password}" type="text">
+<!--	<input type="text" id="new-password" name="new-password">-->
+<!--	&lt;!&ndash;unhash?&ndash;&gt;-->
 
 	<label for="primary_game">Session Title:</label>
 	<input id="primary_game" name="primary_game" th:field="*{primary_game}" type="text">
 
-	<label for="irl_name">Description:</label><br>
-	<input id="irl_name" name="irl_name" th:field="*{irl_name}"></input>
+	<label for="irl_name">IRL Name:</label><br>
+	<input id="irl_name" name="irl_name" th:field="*{irl_name}">
 
 	<input th:field="*{id}" type="hidden">
 
