@@ -38,7 +38,6 @@ public class UserController {
     }
 
 
-
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
@@ -55,5 +54,10 @@ public class UserController {
         model.addAttribute("gameSessionsList", gameSessionsList);
         model.addAttribute("user", user);
         return "users/profile";
+    }
+    @GetMapping("/settings")
+    public String editProfile() {
+
+        return "users/settings";
     }
 }
