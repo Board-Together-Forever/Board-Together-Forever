@@ -25,7 +25,8 @@
 					<a class="nav-link" data-bs-toggle="tab" href="#buds" id="buds-tab">Buds</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" th:href="@{/settings/}">Settings</a>
+					<a class="nav-link" th:href="@{/settings/{id} (id = ${user.id})}">Settings</a>
+<!--					th:href="@{/settings/{id} (id = ${user.getId})}"-->
 				</li>
 			</ul>
 
