@@ -57,6 +57,7 @@ public class GameSessionController {
             return "redirect:/gamesessions";
         }
         gamesession.setUPC(upc);
+        model.addAttribute("id", id);
         model.addAttribute("upc",upc);
         model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
         return "gamesessions/changedGame";

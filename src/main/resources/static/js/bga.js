@@ -5,7 +5,7 @@
 $('#searchbtn').click(function (e) {
     e.preventDefault();
     let searchFor = $('#addresssearch').val();
-    var sessionId = $('#gameSessionId').val();
+    let sessionId = $('#gameSessionId').html();
     $.get("https://api.boardgameatlas.com/api/search?client_id=" + bgaKey, {
         name: searchFor
     }).done(function (data) {
@@ -16,11 +16,11 @@ $('#searchbtn').click(function (e) {
         $('#found').append("3: " + '<a href="/gamesessions/create/' + data.games[2].upc + '">' + data.games[2].name + '</span></a><br>' )
         $('#found').append("4: " + '<a href="/gamesessions/create/' + data.games[3].upc + '">' + data.games[3].name + '</span></a><br>' )
         $('#found').append("5: " + '<a href="/gamesessions/create/' + data.games[4].upc + '">' + data.games[4].name + '</span></a><br>' )
-        $('#found2').html("1: " + '<a href="/gamesessions/'+ 1 + '/' + data.games[0].upc + '">' + data.games[0].name + '</span></a><br>' )
-        $('#found2').append("2: " + '<a href="/gamesessions/' + data.games[1].upc + '">' + data.games[1].name + '</span></a><br>' )
-        $('#found2').append("3: " + '<a href="/gamesessions/' + data.games[2].upc + '">' + data.games[2].name + '</span></a><br>' )
-        $('#found2').append("4: " + '<a href="/gamesessions/' + data.games[3].upc + '">' + data.games[3].name + '</span></a><br>' )
-        $('#found2').append("5: " + '<a href="/gamesessions/' + data.games[4].upc + '">' + data.games[4].name + '</span></a><br>' )
+        $('#found2').html("1: " + '<a href="/gamesessions/'+ sessionId + '/' + data.games[0].upc + '">' + data.games[0].name + '</span></a><br>' )
+        $('#found2').append("2: " + '<a href="/gamesessions/'+ sessionId + '/'+ data.games[1].upc + '">' + data.games[1].name + '</span></a><br>' )
+        $('#found2').append("3: " + '<a href="/gamesessions/'+ sessionId + '/'+ data.games[2].upc + '">' + data.games[2].name + '</span></a><br>' )
+        $('#found2').append("4: " + '<a href="/gamesessions/'+ sessionId + '/'+ data.games[3].upc + '">' + data.games[3].name + '</span></a><br>' )
+        $('#found2').append("5: " + '<a href="/gamesessions/'+ sessionId + '/'+ data.games[4].upc + '">' + data.games[4].name + '</span></a><br>' )
     });
 })
 
