@@ -55,4 +55,9 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/profile";
     }
+    @GetMapping("/settings")
+    public String editProfile() {
+
+        return "users/settings";
+    }
 }

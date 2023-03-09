@@ -12,7 +12,7 @@
 
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
-					<a class="nav-link" data-bs-toggle="tab" href="#security" id="sec-tab">Security</a>
+					<a class="nav-link" data-bs-toggle="tab" href="#account" id="acc-tab">Account</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" data-bs-toggle="tab" href="#about-me" id="about-tab">About Me</a>
@@ -30,17 +30,17 @@
 			</ul>
 
 			<div class="tab-content">
-				<div aria-labelledby="sec-tab" class="tab-pane" id="security" role="tabpanel">
-					<h2>Security</h2>
+				<div aria-labelledby="acc-tab" class="tab-pane" id="account" role="tabpanel">
+					<h2>Account</h2>
 					<p th:text="|Username: ${#authentication.principal.username}"></p>
 					<p th:text="|Email: ${#authentication.principal.email}"></p>
 					<!--add placeholder for empty stuff-->
-<!--					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>-->
-<!--					<p th:text="|IRL Name: ${#authentication.principal.irl_name}"></p>-->
+					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>
+					<p th:text="|IRL Name: ${user.getIrl_name()}"></p>
 				</div>
 				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
 					<h2>About Me</h2>
-					<p>This is the About Me tab.</p>
+<!--					<p th:text="|Bio: ${user.getBio}|"></p>-->
 				</div>
 				<div aria-labelledby="session-tab" class="tab-pane" id="my-sessions" role="tabpanel">
 					<h2>My Sessions</h2>
