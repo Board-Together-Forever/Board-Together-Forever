@@ -9,17 +9,19 @@
 <nav th:replace="partials :: navbar"></nav>
 <input id="upc" type="hidden" th:value="*{upc}">
 <form th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
-  <label for="gameSessionName">Game:</label>
-  <input type="text" name="gameSessionName" th:field="*{gameSessionName}" id="gameSessionName">
-  <label for="playerLimit">Player Limit:</label>
-  <input type="text" name="playerLimit" th:field="*{playerLimit}" id="playerLimit">
-  <label for="gameDuration">Session Duration:</label>
-  <input type="text" name="gameDuration" th:field="*{gameDuration}" id="gameDuration">
+  <div>Game: <span id="nameOfGame"></span></div>
+  <input type="hidden" name="gameSessionName" th:field="*{gameSessionName}" id="gameSessionName">
+  <div>Max Players: <span id="playerLimitOfGame"></span></div>
+  <input type="hidden" name="playerLimit" th:field="*{playerLimit}" id="playerLimit">
+  <div>Duration: <span id="durationOfGame"></span></div>
+  <input type="hidden" name="gameDuration" th:field="*{gameDuration}" id="gameDuration">
   <label for="gameSessionTitle">Session Title:</label>
   <input type="text" name="gameSessionTitle" th:field="*{gameSessionTitle}" id="gameSessionTitle">
   <label for="gameSessionDescription">Description:</label><br>
   <textarea name="gameSessionDescription" id="gameSessionDescription" th:field="*{gameSessionDescription}" cols="30" rows="10"></textarea>
   <input type="hidden" th:field="*{UPC}" id="upcField">
+<!--  <input type="hidden" th:field="*{users}" id="emptyUser">-->
+
   <button type="submit">Submit Game Session</button>
 
 

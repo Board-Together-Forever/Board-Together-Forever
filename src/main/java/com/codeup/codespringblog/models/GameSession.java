@@ -36,7 +36,6 @@ public class GameSession {
 
 
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "gameSessions_users",
@@ -45,7 +44,17 @@ public class GameSession {
     )
     private List<User> users;
 
+    public List<User> getUsers() {
+        return users;
+    }
 
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void addUser(User user){
+        users.add(user);
+    }
 
     public GameSession() {
     }
@@ -116,6 +125,29 @@ public class GameSession {
 //        this.gameSessionTitle = gameSessionTitle;
 //        this.gameSessionDescription = gameSessionDescription;
 //    }
+
+    public GameSession(int id, String gameSessionName, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, String UPC, User gameSessionHost, List<User> users) {
+        this.id = id;
+        this.gameSessionName = gameSessionName;
+        this.playerLimit = playerLimit;
+        this.gameDuration = gameDuration;
+        this.gameSessionTitle = gameSessionTitle;
+        this.gameSessionDescription = gameSessionDescription;
+        this.UPC = UPC;
+        this.gameSessionHost = gameSessionHost;
+        this.users = users;
+    }
+
+    public GameSession(String gameSessionName, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, String UPC, User gameSessionHost, List<User> users) {
+        this.gameSessionName = gameSessionName;
+        this.playerLimit = playerLimit;
+        this.gameDuration = gameDuration;
+        this.gameSessionTitle = gameSessionTitle;
+        this.gameSessionDescription = gameSessionDescription;
+        this.UPC = UPC;
+        this.gameSessionHost = gameSessionHost;
+        this.users = users;
+    }
 
     public int getId() {
         return id;
