@@ -29,6 +29,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameSessionHost")
     private List<GameSession> gameSessions;
 
+    @ManyToMany(mappedBy = "users")
+    private List<GameSession> joinedSessions;
+
     public User() {
     }
     public User(User copy) {

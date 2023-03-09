@@ -31,7 +31,10 @@ $(document).ready(function() {
     }).done(function (data) {
         if (Upc !== undefined){
             console.log(Upc)
-        $('#gameSessionName').val(data.games[0].name);
+            $('#nameOfGame').html(data.games[0].name);
+            $('#durationOfGame').html(data.games[0].playtime);
+            $('#playerLimitOfGame').html(data.games[0].max_players);
+            $('#gameSessionName').val(data.games[0].name);
         $('#gameDuration').val(data.games[0].playtime + " minutes");
         $('#playerLimit').val(data.games[0].max_players);
         $('#upcField').val(Upc);
@@ -50,9 +53,7 @@ $(document).ready(function() {
             });
         }
     });
-
 })
-
 
 
 

@@ -13,8 +13,16 @@
     Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span><hr>
     Description: <span th:text="${gameSessions.gameSessionDescription}"></span><hr>
     Useremail: <span th:text="${gameSessions.getGameSessionHost().email}"></span></h1>
-<a th:href="@{/gamesessions/{id}/edit (id = ${gameSessions.id})}"><button id="editButton">Edit Game Session</button></a>
+<a th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}" th:href="@{/gamesessions/{id}/edit (id = ${gameSessions.id})}"><button id="editButton">Edit Game Session</button></a>
+<div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()}">
 
+    <a th:href="@{'/gamesessions/join/' + ${user.getId()} + '/' + ${gameSessions.getId()}}"><button type="submit" id="joinButton">Join Game Session</button></a>
+<!--    <form th:action="@{/gamesessions/join}" th:method="post">-->
+<!--        <input type="hidden" th:value="*{user.getId()}" name="userId">-->
+<!--        <input type="hidden" th:value="*{gameSessions.getId()}" name="sessionId">-->
+<!--    <button type="submit" id="joinButton">Join Game Session</button>-->
+<!--    </form>-->
+</div>
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
 <script th:src="@{/js/api_keys.js}"></script>
