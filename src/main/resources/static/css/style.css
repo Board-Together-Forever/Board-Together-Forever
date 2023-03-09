@@ -1,51 +1,27 @@
+.background {
+    background-image: url(../gameIMG/20230308_151944.remini-enhanced.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-family: 'Rampart One', cursive;
+    font-weight: bold;
+    color: midnightblue;
+    font-size: xxx-large;
+    text-align: center;
+}
+
+.title {
+    font-family: 'Luckiest Guy', cursive;
+}
+
 body {
-    background-color: rosybrown;
-    margin: 0;
-    font-family: cursive;
+    font-family: 'Patrick Hand', cursive;
+    font-size: large;
 }
 
-nav {
-    background-color: firebrick;
-    width: 100%;
-    font-size: 1em;
-    font-weight: bolder;
-    text-decoration: none;
-}
 
-#indexpage{
-    text-align: center;
-}
 
-#mainpage {
-    font-size: 2em;
-    font-weight: bolder;
-    text-decoration: none;
-    margin-right: 1em;
-}
-#indexHeader{
-    text-align: center;
-}
 
-#editButton {
-    background-color: deepskyblue;
-}
 
-nav button {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 3em;
-    background-color: deepskyblue;
-    display: flex;
-    justify-content: space-between;
-}
