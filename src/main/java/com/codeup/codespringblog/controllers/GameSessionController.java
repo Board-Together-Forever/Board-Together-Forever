@@ -6,6 +6,7 @@ import com.codeup.codespringblog.repositories.GameSessionRepository;
 import com.codeup.codespringblog.repositories.UserRepository;
 import com.codeup.codespringblog.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -86,6 +87,7 @@ public class GameSessionController {
             model.addAttribute("gameSessionsList", gameSessionsList);
             return "redirect:/gamesessions";
         }
+        model.addAttribute("id", id);
         model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
         return "gamesessions/edit";
     }
@@ -101,6 +103,13 @@ public class GameSessionController {
         return "redirect:/gamesessions";
     }
 
+    @GetMapping("/gamesessions/delete/{id}")
+    public String deleteGame(@PathVariable long id){
+        System.out.println("id = " + id);
+        gameSessionDao.deleteById(id);
+//        gameSessionDao.deleteById(7L);
+        return "redirect:/gamesessions";
+    }
 
 //        FIRST STEP OF CREATING GAMESESSION, USED TO FIND GAME IN API - USED IN TESTING
 //    @GetMapping("/gamesessions/find")

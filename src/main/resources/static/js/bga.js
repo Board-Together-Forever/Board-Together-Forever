@@ -55,6 +55,16 @@ $(document).ready(function() {
     });
 })
 
+$('#deleteButton').click(function (e) {
+    let id = $('#deleteButton').val()
+    let confirmation = confirm("Are you sure you want to delete this Game Session?");
+        if(confirmation === true){
+
+            window.location.href = "/gamesessions/delete/" + id;
+        }
+
+})
+
 
 
 
