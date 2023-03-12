@@ -15,7 +15,7 @@ public class EmailService {
     @Autowired
     public JavaMailSender emailSender;
 
-    @Value("${spring.mail.from}")
+    @Value("no-reply@boardtogether.org")
     private String from;
 
     @Value("${CUSTOM_KEY}")
@@ -50,6 +50,20 @@ public class EmailService {
         catch (MailException ex) {
             // simply log it and go on...
             System.err.println(ex.getMessage());
+        }
+    }
+
+    public void forgotPassword(String userEmail, String resetPasswordLink) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom(from);
+        msg.setTo(userEmail);
+        msg.setSubject("Reset your password");
+        msg.setText("Dear user,\n\nYou have requested to reset your password. Please click on the following link to reset your password:\n\n" + resetPasswordLink + "\n\nIf you did not request to reset your password, please ignore this email.\n\nThank you,\nBoard Together");
+
+        try {
+            emailSender.send(msg);
+        } catch (MailException e) {
+            System.err.println(e.getMessage());
         }
     }
 

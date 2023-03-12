@@ -8,10 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -47,20 +45,11 @@ public class UserController {
         return "redirect:/login";
     }
 
-    /*
-    @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user) {
-        User sec = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getPassword().equals("") || !user.getPassword().equals(sec.getPassword())) {
-            String hash = passwordEncoder.encode(user.getPassword());
-            user.setPassword(hash);
-            userDao.save(user);
-            return "redirect:/login";
-        } else {
-            userDao.save(user);
-            return "redirect:/login";
-        }
-    }*/
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute User user) {
+        userDao.save(user);
+        return "redirect:/profile";
+    }
 
     @GetMapping("/profile")
     public String showProfile(Model model) {
@@ -76,7 +65,6 @@ public class UserController {
     public String editProfile(@PathVariable Long id, Model model) {
         User sec = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findUserById(id);
-        /*if statement verifying user is user*/
         model.addAttribute("user", user);
         return "users/settings";
     }
