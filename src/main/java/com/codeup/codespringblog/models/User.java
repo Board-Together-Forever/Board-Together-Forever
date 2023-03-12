@@ -26,6 +26,25 @@ public class User {
     @Column
     private String irl_name;
 
+    @Column
+    private String aboutMe;
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
+
+    public List<GameSession> getJoinedSessions() {
+        return joinedSessions;
+    }
+
+    public void setJoinedSessions(List<GameSession> joinedSessions) {
+        this.joinedSessions = joinedSessions;
+    }
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameSessionHost")
     private List<GameSession> gameSessions;
 
@@ -41,6 +60,24 @@ public class User {
         password = copy.password;
         primary_game = copy.primary_game;
         irl_name = copy.irl_name;
+        aboutMe = copy.aboutMe;
+
+    }
+//    public User(User copy) {
+//        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+//        email = copy.email;
+//        username = copy.username;
+//        password = copy.password;
+//        primary_game = copy.primary_game;
+//        irl_name = copy.irl_name;
+//    }
+
+    public User(long id, String username, String email, String password, String aboutMe) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.aboutMe = aboutMe;
     }
 
     public User(long id, String username, String email, String password) {
@@ -61,6 +98,8 @@ public class User {
         this.password = password;
         this.gameSessions = gameSessions;
     }
+
+
 
     public long getId() {
         return id;

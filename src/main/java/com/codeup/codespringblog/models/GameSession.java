@@ -59,6 +59,10 @@ public class GameSession {
         users.removeAll(user);
     }
 
+    public void removePlayer(User user) {
+        users.remove(user);
+    }
+
     public GameSession() {
     }
 

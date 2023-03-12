@@ -7,13 +7,14 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-    <h1 id="indexHeader">Displaying All Game Sessions</h1>
+    <h1 id="indexHeader">Game Sessions</h1>
     <div th:each="gamesession : ${gameSessionsList}">
-<!--        <p th:text="${post.title}" />-->
         <a th:href="@{/gamesessions/{id} (id = ${gamesession.id})}"><span th:text="${gamesession.gameSessionTitle}"></span></a>
         <p th:text="${gamesession.gameSessionDescription}" />
         <p th:text="${gamesession.id}" />
     </div>
+<h1 th:if="${gameSessionsList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any game sessions...'" ></h1>
+<h1 th:if="${gameSessionsList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any game sessions that matched with ' + ${query}" ></h1>
 <a href="/gamesessions/create" id="createAPost">Create a Game Session</a><br><br><br>
     <footer th:replace="partials :: footer"></footer>
    <div th:insert="partials :: boot-scripts"></div>

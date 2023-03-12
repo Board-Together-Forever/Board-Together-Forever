@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Show</title>
 </head>
 <body>
+<nav th:replace="partials :: navbar"></nav>
+<h1>testing</h1>
+<h1 th:text="${user.aboutMe}"></h1>
 
+<footer th:replace="partials :: footer"></footer>
+<div th:insert="partials :: boot-scripts"></div>
+<script th:src="@{/js/api_keys.js}"></script>
+<script th:src="@{/js/bga.js}"></script>
 </body>
 </html>

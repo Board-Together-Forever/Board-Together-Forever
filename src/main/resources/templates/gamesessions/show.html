@@ -26,12 +26,12 @@
 </a>
 <a th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}"
    th:href="@{/gamesessions/{id}/editplayers (id = ${gameSessions.id})}">
-    <button id="editButton">Edit Player Roster</button>
+    <button id="editPlayers">Edit Player Roster</button>
 </a>
 <a th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}">
     <button th:value="${gameSessions.getId()}" id="deleteButton">Delete Button Working On</button>
 </a>
-<div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${playerFound} == 0">
+<div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${playerFound} == 0 and ${gameSessions.playerLimit} > ${gameSessions.getUsers().size()}">
     <a th:href="@{'/gamesessions/join/' + ${user.getId()} + '/' + ${gameSessions.getId()}}">
         <button type="submit" id="joinButton">Join Game Session</button>
     </a>

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 @Controller
 public class GameSessionController {
     private final GameSessionRepository gameSessionDao;
@@ -32,8 +34,10 @@ public class GameSessionController {
 //    SHOW ALL ACTIVE GAME SESSIONS IN DATABASE
     @GetMapping("/gamesessions")
     public String index(Model model) {
+        String query = "";
         List<GameSession> gameSessionsList = gameSessionDao.findAll();
         model.addAttribute("gameSessionsList", gameSessionsList);
+        model.addAttribute("query", query);
         return "gamesessions/index";
     }
 
@@ -114,6 +118,7 @@ public class GameSessionController {
     public String editGameSessionPlayers(Model model, @PathVariable long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         GameSession gamesession = gameSessionDao.findGameSessionsById(id);
+        long remainingSpots = parseInt(gamesession.getPlayerLimit()) - gamesession.getUsers().size();
         if (user.getId() != gamesession.getGameSessionHost().getId()){
             List<GameSession> gameSessionsList = gameSessionDao.findAll();
             model.addAttribute("gameSessionsList", gameSessionsList);
@@ -121,6 +126,7 @@ public class GameSessionController {
         }
         model.addAttribute("id", id);
         model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
+        model.addAttribute("remainingSpots", remainingSpots);
         return "gamesessions/editPlayers";
     }
 
@@ -136,6 +142,17 @@ public class GameSessionController {
         return "redirect:/gamesessions";
     }
 
+    @GetMapping("/gamesessions/remove/{userId}/{id}")
+    public String removePlayer(@PathVariable long userId, @PathVariable long id){
+        System.out.println(userId);
+        System.out.println(id);
+        User user = userDao.findUserById(userId);
+        GameSession gameSession = gameSessionDao.findGameSessionsById(id);
+        gameSession.removePlayer(user);
+        gameSessionDao.save(gameSession);
+        return "redirect:/gamesessions";
+    }
+
     @GetMapping("/gamesessions/delete/{id}")
     public String deleteGame(@PathVariable long id){
         System.out.println("id = " + id);
@@ -143,6 +160,15 @@ public class GameSessionController {
         gameSessionDao.deleteById(id);
 //        gameSessionDao.deleteById(7L);
         return "redirect:/gamesessions";
+    }
+
+    @GetMapping("/gamesessions/search")
+    public String showAllProps(@RequestParam(name="q") String query, Model model) {
+        if (query.length() > 0){
+        model.addAttribute("query", query);
+        }
+        model.addAttribute("gameSessionsList", gameSessionDao.searchByTitleLike(query));
+        return "gamesessions/index";
     }
 
 //        FIRST STEP OF CREATING GAMESESSION, USED TO FIND GAME IN API - USED IN TESTING
