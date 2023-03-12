@@ -43,6 +43,9 @@
             <div sec:authorize="isAuthenticated()" class="ms-auto d-flex">
                 <a href="/gamesessions/create" class="nav-link btn btn-success text-white" aria-current="page">Create Game Session</a>
             </div>
+            <div sec:authorize="isAuthenticated()" class="ms-auto d-flex">
+                <a href="/profile" class="nav-link btn btn-success text-white" aria-current="page">Profile</a>
+            </div>
             <form sec:authorize="isAuthenticated()" class="ms-auto d-flex" th:action="@{/logout}" th:method="POST">
                 <button class="nav-link btn btn-success text-white" type="submit" id="logout">Logout</button>
             </form>

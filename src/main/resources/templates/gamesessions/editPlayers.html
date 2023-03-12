@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="partials :: head">
+  <meta charset="UTF-8">
+  <title>post index</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<div th:each="user : ${gamesession.getUsers()}">
+  <!--        <p th:text="${post.title}" />-->
+  <span th:text="${user.getUsername()}"></span>
+  <p th:text="${user.email}" />
+</div>
+
+<footer th:replace="partials :: footer"></footer>
+<div th:insert="partials :: boot-scripts"></div>
+
+<script th:src="@{/js/api_keys.js}"></script>
+<script th:src="@{/js/bga.js}"></script>
+</body>
+
+</html>
