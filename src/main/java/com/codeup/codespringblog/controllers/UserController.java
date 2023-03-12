@@ -68,4 +68,11 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/settings";
     }
+
+    @GetMapping("/aboutuser/{id}")
+    public String viewAboutUser(@PathVariable Long id, Model model) {
+        User user = userDao.findUserById(id);
+        model.addAttribute("user", user);
+        return "users/aboutUser";
+    }
 }

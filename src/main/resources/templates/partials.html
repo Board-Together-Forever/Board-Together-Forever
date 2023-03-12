@@ -25,10 +25,15 @@
         <div class="nav-item">
             <a href="/gamesessions" class="nav-link btn btn-success text-white" aria-current="page">Browse Sessions</a>
         </div>
-        <div class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Game Sessions" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </div>
+<!--        <div class="d-flex">-->
+<!--            <input class="form-control me-2" type="search" placeholder="Game Sessions" aria-label="Search">-->
+<!--            <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--        </div>-->
+        <form class="d-flex" th:action="@{/gamesessions/search}" method="GET">
+            <label for="q"></label>
+            <input type="text" name="q" id="q" placeholder="Search Game Sessions">
+            <button class="btn btn-info my-2 my-sm-0" type="submit">Find</button>
+        </form>
 
         <div class="btn-group">
             <div sec:authorize="!isAuthenticated()" class="nav-item">
