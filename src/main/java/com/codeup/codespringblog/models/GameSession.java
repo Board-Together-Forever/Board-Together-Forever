@@ -55,6 +55,9 @@ public class GameSession {
     public void addUser(User user){
         users.add(user);
     }
+    public void removeUserList(List<User> user){
+        users.removeAll(user);
+    }
 
     public GameSession() {
     }

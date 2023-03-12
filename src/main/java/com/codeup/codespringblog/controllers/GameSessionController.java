@@ -43,8 +43,21 @@ public class GameSessionController {
     public String idpage(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         GameSession gameSessions = gameSessionDao.findGameSessionsById(id);
+        int playerFound = 0;
         model.addAttribute("user", user);
         model.addAttribute("gameSessions", gameSessions);
+        if (gameSessions.getUsers().size() > 0) {
+            System.out.println(gameSessions.getUsers().get(0).getId());
+            for(User indiv : gameSessions.getUsers()){
+                if(indiv.getId() == user.getId()){
+                    playerFound++;
+                }
+            }
+            model.addAttribute("playerFound", playerFound);
+        }
+        else {
+            System.out.println("No users");
+        }
         return "gamesessions/show";
     }
 
@@ -58,6 +71,7 @@ public class GameSessionController {
 
     @GetMapping("/gamesessions/create/{upc}")
     public String createFound(@PathVariable String upc, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("upc", upc);
         model.addAttribute("gamesession", new GameSession());
         return "gamesessions/create2";
@@ -68,13 +82,17 @@ public class GameSessionController {
     public String createGameSession(@ModelAttribute GameSession gamesession) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         gamesession.setGameSessionHost(user);
-//        List<User> userlist = new ArrayList<>();
-//        userlist.add(user);
-//        gamesession.setUsers(userlist);
         gameSessionDao.save(gamesession);
         emailService.prepareAndSend(gamesession);
-        return "redirect:/gamesessions";
+        return "redirect:/gamesessions/join/" + user.getId() +"/" + gamesession.getId();
     }
+
+//    WORKING ON AUTO JOIN
+//    @GetMapping("/gamesessions/hostjoin")
+//    public String hostJoinSession(@ModelAttribute GameSession gamesession){
+//
+//        return "redirect:/gamesessions";
+//    }
 
 
 //    EDITS EXISTING GAME DETAILS, SAVES EXISTING IDS
@@ -92,6 +110,21 @@ public class GameSessionController {
         return "gamesessions/edit";
     }
 
+    @GetMapping("/gamesessions/{id}/editplayers")
+    public String editGameSessionPlayers(Model model, @PathVariable long id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        GameSession gamesession = gameSessionDao.findGameSessionsById(id);
+        if (user.getId() != gamesession.getGameSessionHost().getId()){
+            List<GameSession> gameSessionsList = gameSessionDao.findAll();
+            model.addAttribute("gameSessionsList", gameSessionsList);
+            return "redirect:/gamesessions";
+        }
+        model.addAttribute("id", id);
+        model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
+        return "gamesessions/editPlayers";
+    }
+
+
     @GetMapping("/gamesessions/join/{userId}/{id}")
     public String joinGame(@PathVariable long userId, @PathVariable long id){
         System.out.println(userId);
@@ -106,6 +139,7 @@ public class GameSessionController {
     @GetMapping("/gamesessions/delete/{id}")
     public String deleteGame(@PathVariable long id){
         System.out.println("id = " + id);
+        gameSessionDao.findGameSessionsById(id).removeUserList(gameSessionDao.findGameSessionsById(id).getUsers());
         gameSessionDao.deleteById(id);
 //        gameSessionDao.deleteById(7L);
         return "redirect:/gamesessions";
