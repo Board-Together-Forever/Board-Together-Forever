@@ -26,7 +26,6 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/settings/{id} (id = ${user.id})}">Settings</a>
-<!--					th:href="@{/settings/{id} (id = ${user.getId})}"-->
 				</li>
 			</ul>
 
@@ -35,9 +34,10 @@
 					<h2>Account</h2>
 					<p th:text="|Username: ${#authentication.principal.username}"></p>
 					<p th:text="|Email: ${#authentication.principal.email}"></p>
-					<!--add placeholder for empty stuff-->
 					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>
 					<p th:text="|IRL Name: ${user.getIrl_name()}"></p>
+					<p>Click <a th:href="@{/update-pw}">here</a> to update your password.</p>
+					<p>Click <a th:href="@{/update-email}">here</a> to update your email.</p>
 				</div>
 				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
 					<h2>About Me</h2>
