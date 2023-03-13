@@ -7,6 +7,8 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+
+
 <input id="upc" type="hidden" th:value="*{upc}">
 <form th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
   <div>Game: <span id="nameOfGame"></span></div>
