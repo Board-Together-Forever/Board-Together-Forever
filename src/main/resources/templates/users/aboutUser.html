@@ -6,8 +6,25 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<h1>testing</h1>
+<h1 th:text="${user.username}"></h1>
 <h1 th:text="${user.aboutMe}"></h1>
+<div th:each="gameSessions : ${userJoinedList}">
+    <div class="card">
+        <div class="card-body">
+            Game: <span th:text="${gameSessions.gameSessionName}"></span>
+            <br>
+            Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span>
+            <br>
+            <span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
+            <span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}"> - This Game Session is full.</span>
+            <br>
+            Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
+        </div>
+    </div>
+</div>
+<div th:if="${userJoinedList.size() == 0}">
+    <p>User has not joined any sessions</p>
+</div>
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>

@@ -83,11 +83,22 @@ public class UserController {
     @GetMapping("/aboutuser/{id}")
     public String viewAboutUser(@PathVariable Long id, Model model) {
         User user = userDao.findUserById(id);
+        List<GameSession> gameSessionsList = gameSessionDao.findAll();
+        List<GameSession> userJoinedList = new ArrayList<>();
+        for(GameSession gameSession : gameSessionsList){
+            for(User indiv : gameSession.getUsers()){
+                if(indiv.getId() == user.getId()){
+                    userJoinedList.add(gameSessionDao.findGameSessionsById((long) gameSession.getId()));
+                }
+            }
+        }
+        model.addAttribute("userJoinedList", userJoinedList);
+        model.addAttribute("gameSessionsList", gameSessionsList);
         model.addAttribute("user", user);
         return "users/aboutUser";
     }
     @GetMapping("/users/search")
-    public String searchUsers(@RequestParam(name="q") String query, Model model) {
+    public String searchUsers(@RequestParam(name="qu") String query, Model model) {
         if (query.length() > 0){
             model.addAttribute("query", query);
         }

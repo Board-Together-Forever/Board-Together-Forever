@@ -13,6 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findUserById(long id);
     User findByUsername(String username);
 
-    @Query("from User a where a.username LIKE  %:term% OR a.email LIKE  %:term% OR a.primary_game like %:term%")
+    @Query("from User a where a.username LIKE  %:term% OR a.email LIKE  %:term%")
     List<User> searchUsersBySearch(@Param("term") String term);
 }
