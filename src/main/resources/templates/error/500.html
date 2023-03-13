@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <head th:replace="partials :: head">
+
+<head th:replace="partials :: head">
     <meta charset="UTF-8"/>
     <title>Ooops, something went wrong</title>
 </head>
 <body>
-<h1>Something went wrong</h1>
-<h5>Perhaps try again later or go to a different part of Board Together through the navigation bar above</h5>
-
+<div class="container">
+    <h1>Something went wrong</h1>
+    <h5>Perhaps try again later</h5>
+    <h5>or go to a different part of Board Together through the navigation bar above</h5>
+</div>
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
 </body>
