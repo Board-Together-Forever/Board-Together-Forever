@@ -73,6 +73,13 @@
                         <button class="btn btn-info my-2 my-sm-0" type="submit">Find</button>
                     </form>
                 </li>
+                <li class="nav-item">
+                    <form class="d-flex" th:action="@{/users/search}" method="GET">
+                        <label for="qu"></label>
+                        <input type="text" name="qu" id="qu" placeholder="Search for Players">
+                        <button class="btn btn-info my-2 my-sm-0" type="submit">Find</button>
+                    </form>
+                </li>
             </ul>
             </div>
         </div>

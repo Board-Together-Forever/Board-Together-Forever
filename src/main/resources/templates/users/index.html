@@ -9,18 +9,14 @@
 <nav th:replace="partials :: navbar"></nav>
 <h1 id="indexHeader">Players List</h1>
 <div th:each="user : ${userList}">
-<!--    <a th:href="@{/gamesessions/{id} (id = ${gamesession.id})}">-->
+    <a th:href="@{/aboutuser/{id} (id = ${user.id})}">
         <span th:text="'Username: ' + ${user.username}">
         </span>
-<!--    </a>-->
-    <p th:text="${gamesession.gameSessionDescription}" />
-    <p th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></p>
-<!--    <p th:if="${gamesession.playerLimit} == ${gamesession.getUsers().size()}">Game Session is full.</p>-->
+    </a>
     <hr>
 </div>
 <h1 th:if="${userList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any players...'" ></h1>
 <h1 th:if="${userList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any players that matched with ' + ${query}" ></h1>
-<a href="/gamesessions/create" id="createAPost">Create a Game Session</a><br><br><br>
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
 </body>
