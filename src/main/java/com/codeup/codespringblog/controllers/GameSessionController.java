@@ -51,7 +51,6 @@ public class GameSessionController {
         model.addAttribute("user", user);
         model.addAttribute("gameSessions", gameSessions);
         if (gameSessions.getUsers().size() > 0) {
-            System.out.println(gameSessions.getUsers().get(0).getId());
             for(User indiv : gameSessions.getUsers()){
                 if(indiv.getId() == user.getId()){
                     playerFound++;
