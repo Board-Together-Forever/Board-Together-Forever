@@ -20,30 +20,62 @@
 				<li class="nav-item">
 					<a class="nav-link" data-bs-toggle="tab" href="#my-sessions" id="session-tab">My Sessions</a>
 				</li>
-				<!--this is a wishlist item that may or may not be implemented-->
-				<li class="nav-item">
-					<a class="nav-link" data-bs-toggle="tab" href="#buds" id="buds-tab">Buds</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:href="@{/settings/{id} (id = ${user.id})}">Settings</a>
-				</li>
 			</ul>
 
 			<div class="tab-content">
 				<div aria-labelledby="acc-tab" class="tab-pane" id="account" role="tabpanel">
 					<h2>Account</h2>
-					<p th:text="|Username: ${#authentication.principal.username}"></p>
-					<p th:text="|Email: ${#authentication.principal.email}"></p>
-					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>
-					<p th:text="|IRL Name: ${user.getIrl_name()}"></p>
+					<form th:action="@{/update}" th:method="post" th:object="${user}">
+						<label for="username">Username: </label>
+						<input id="username" name="username" th:field="*{username}">
+						<input name="id" th:field="*{id}" type="hidden">
+						<input name="id" th:field="*{email}" type="hidden">
+						<input name="id" th:field="*{irl_name}" type="hidden">
+						<input name="username" th:field="*{aboutMe}" type="hidden">
+						<input name="password" th:field="*{password}" type="hidden">
+						<input name="password" th:field="*{primary_game}" type="hidden">
+						<button type="submit">Save</button>
+					</form>
+					<form th:action="@{/update}" th:method="post" th:object="${user}">
+						<label for="email">Email: </label>
+						<input id="email" name="email" th:field="*{email}">
+						<input name="id" th:field="*{id}" type="hidden">
+						<input name="id" th:field="*{username}" type="hidden">
+						<input name="id" th:field="*{irl_name}" type="hidden">
+						<input name="username" th:field="*{aboutMe}" type="hidden">
+						<input name="password" th:field="*{password}" type="hidden">
+						<input name="password" th:field="*{primary_game}" type="hidden">
+						<button type="submit">Save</button>
+					</form>
+					<form th:action="@{/update}" th:method="post" th:object="${user}">
+						<label for="primary_game">Primary Game: </label>
+						<input id="primary_game" name="primary_game" th:field="*{primary_game}">
+						<input name="id" th:field="*{id}" type="hidden">
+						<input name="id" th:field="*{email}" type="hidden">
+						<input name="id" th:field="*{irl_name}" type="hidden">
+						<input name="username" th:field="*{aboutMe}" type="hidden">
+						<input name="password" th:field="*{password}" type="hidden">
+						<input name="password" th:field="*{username}" type="hidden">
+						<button type="submit">Save</button>
+					</form>
+					<form th:action="@{/update}" th:method="post" th:object="${user}">
+						<label for="irl_name">IRL Name: </label>
+						<input id="irl_name" name="irl_name" th:field="*{irl_name}">
+						<input name="id" th:field="*{id}" type="hidden">
+						<input name="id" th:field="*{email}" type="hidden">
+						<input name="id" th:field="*{username}" type="hidden">
+						<input name="username" th:field="*{aboutMe}" type="hidden">
+						<input name="password" th:field="*{password}" type="hidden">
+						<input name="password" th:field="*{primary_game}" type="hidden">
+						<button type="submit">Save</button>
+					</form>
 					<p>Click <a th:href="@{/update-pw}">here</a> to update your password.</p>
-					<p>Click <a th:href="@{/update-email}">here</a> to update your email.</p>
 				</div>
 				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
 					<h2>About Me</h2>
 					<form th:action="@{/update}" th:method="post" th:object="${user}">
 						<label for="aboutMe">Tell other players about yourself! </label>
-						<textarea id="aboutMe" name="aboutMe" rows="4" cols="50" th:field="*{aboutMe}"></textarea>
+						<textarea cols="50" id="aboutMe" name="aboutMe" rows="4" th:field="*{aboutMe}"></textarea>
 						<input name="id" th:field="*{id}" type="hidden">
 						<input name="id" th:field="*{email}" type="hidden">
 						<input name="id" th:field="*{irl_name}" type="hidden">
@@ -81,32 +113,26 @@
 					<h2>My Joined Sessions</h2>
 					<!--iterates through sessions in which the user is the host-->
 					<div th:each="gameSessions : ${userJoinedList}">
-<!--						<div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${gameSessions.getUsers()}">-->
-							<div class="card">
-								<div class="card-body">
-									Game: <span th:text="${gameSessions.gameSessionName}"></span>
-									<br>
-									Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span>
-									<br>
-									<!--need to figure out how to do x/y
-									with x = players joined and y = player limit-->
-									<span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
-									<span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}"> - This Game Session is full.</span>
-									<br>
-									Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
-								</div>
+						<!--						<div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${gameSessions.getUsers()}">-->
+						<div class="card">
+							<div class="card-body">
+								Game: <span th:text="${gameSessions.gameSessionName}"></span>
+								<br>
+								Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span>
+								<br>
+								<!--need to figure out how to do x/y
+								with x = players joined and y = player limit-->
+								<span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
+								<span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}"> - This Game Session is full.</span>
+								<br>
+								Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
 							</div>
-<!--						</div>-->
+						</div>
 					</div>
 					<!--if the user has no sessions in which they are the host, this pops up-->
 					<div th:if="${userJoinedList.size() == 0}">
 						<p>You have not joined any sessions!</p>
 					</div>
-				</div>
-				<!--this is a wishlist item that may or may not be completed eventually-->
-				<div aria-labelledby="buds-tab" class="tab-pane" id="buds" role="tabpanel">
-					<h2>Buds</h2>
-					<p>This is the Buds tab.</p>
 				</div>
 			</div>
 		</div>

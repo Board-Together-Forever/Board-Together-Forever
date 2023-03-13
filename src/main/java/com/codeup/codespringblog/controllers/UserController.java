@@ -48,7 +48,9 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute User user) {
+    public String updateUser(@ModelAttribute User user, @RequestParam(name = "irl_name") String irlName, @RequestParam(name = "email") String email) {
+        user.setIrl_name(irlName);
+        user.setEmail(email);
         userDao.save(user);
         return "redirect:/profile";
     }
@@ -59,14 +61,14 @@ public class UserController {
         user = userDao.findUserById(user.getId());
         List<GameSession> gameSessionsList = gameSessionDao.findAll();
         List<GameSession> userJoinedList = new ArrayList<>();
-            for(GameSession gameSession : gameSessionsList){
-                for(User indiv : gameSession.getUsers()){
-                    if(indiv.getId() == user.getId() && gameSession.getGameSessionHost().getId() != user.getId()){
-                        userJoinedList.add(gameSessionDao.findGameSessionsById((long) gameSession.getId()));
-                    }
+        for (GameSession gameSession : gameSessionsList) {
+            for (User indiv : gameSession.getUsers()) {
+                if (indiv.getId() == user.getId() && gameSession.getGameSessionHost().getId() != user.getId()) {
+                    userJoinedList.add(gameSessionDao.findGameSessionsById((long) gameSession.getId()));
                 }
             }
-            model.addAttribute("userJoinedList", userJoinedList);
+        }
+        model.addAttribute("userJoinedList", userJoinedList);
         model.addAttribute("gameSessionsList", gameSessionsList);
         model.addAttribute("user", user);
         return "users/profile";
@@ -74,7 +76,6 @@ public class UserController {
 
     @GetMapping("/settings/{id}")
     public String editProfile(@PathVariable Long id, Model model) {
-        User sec = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findUserById(id);
         model.addAttribute("user", user);
         return "users/settings";
@@ -85,9 +86,9 @@ public class UserController {
         User user = userDao.findUserById(id);
         List<GameSession> gameSessionsList = gameSessionDao.findAll();
         List<GameSession> userJoinedList = new ArrayList<>();
-        for(GameSession gameSession : gameSessionsList){
-            for(User indiv : gameSession.getUsers()){
-                if(indiv.getId() == user.getId()){
+        for (GameSession gameSession : gameSessionsList) {
+            for (User indiv : gameSession.getUsers()) {
+                if (indiv.getId() == user.getId()) {
                     userJoinedList.add(gameSessionDao.findGameSessionsById((long) gameSession.getId()));
                 }
             }
@@ -97,9 +98,10 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/aboutUser";
     }
+
     @GetMapping("/users/search")
-    public String searchUsers(@RequestParam(name="qu") String query, Model model) {
-        if (query.length() > 0){
+    public String searchUsers(@RequestParam(name = "qu") String query, Model model) {
+        if (query.length() > 0) {
             model.addAttribute("query", query);
         }
         model.addAttribute("userList", userDao.searchUsersBySearch(query));
@@ -107,7 +109,7 @@ public class UserController {
     }
 
     @GetMapping("/aboutCreators")
-    public String aboutCreators(){
+    public String aboutCreators() {
         return "aboutUs";
     }
 }
