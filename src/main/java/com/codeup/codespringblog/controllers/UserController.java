@@ -75,4 +75,9 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/aboutUser";
     }
+
+    @GetMapping("/aboutCreators")
+    public String aboutCreators(){
+        return "aboutUs";
+    }
 }
