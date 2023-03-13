@@ -18,9 +18,6 @@ public class EmailService {
     @Value("no-reply@boardtogether.org")
     private String from;
 
-    @Value("${CUSTOM_KEY}")
-    private String customKey;
-
     public void prepareAndSend(Post post) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
