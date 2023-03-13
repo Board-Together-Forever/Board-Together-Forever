@@ -125,8 +125,6 @@ public class GameSessionController {
 
     @GetMapping("/gamesessions/join/{userId}/{id}")
     public String joinGame(@PathVariable long userId, @PathVariable long id){
-        System.out.println(userId);
-        System.out.println(id);
         User user = userDao.findUserById(userId);
         GameSession gameSession = gameSessionDao.findGameSessionsById(id);
         gameSession.addUser(user);
@@ -136,8 +134,6 @@ public class GameSessionController {
 
     @GetMapping("/gamesessions/remove/{userId}/{id}")
     public String removePlayer(@PathVariable long userId, @PathVariable long id){
-        System.out.println(userId);
-        System.out.println(id);
         User user = userDao.findUserById(userId);
         GameSession gameSession = gameSessionDao.findGameSessionsById(id);
         gameSession.removePlayer(user);

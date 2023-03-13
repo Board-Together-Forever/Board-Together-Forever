@@ -13,7 +13,7 @@
         </div>
     <br>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
+            <div th:if="${gameSessionsList.size()} >= 1" class="col">
                 <div class="card h-100 mb-3" style="max-width: 400px;">
                     <div class="row g-0">
                         <div class="col-md-4">
@@ -21,15 +21,17 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="title card-title">Session Title</h5>
-                                <p class="card-text"><small class="text-muted">Game System</small></p>
-                                <p class="card-text">Game session description</p>
+                                <h5 th:text="${gameSessionsList.get(0).gameSessionTitle}" class="title card-title"></h5>
+                                <p th:text="${gameSessionsList.get(0).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
+                                <p th:text="${gameSessionsList.get(0).gameSessionDescription}" class="card-text"></p>
+                                <p th:text="${gameSessionsList.get(0).getUsers().size()} + '/' + ${gameSessionsList.get(0).playerLimit} + ' Players'" class="card-text"></p>
+                                <p th:text="'Game Session Host: ' + ${gameSessionsList.get(0).getGameSessionHost().username}" class="card-text"></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div th:if="${gameSessionsList.size()} >= 2" class="col">
                 <div class="card h-100 mb-3" style="max-width: 400px;">
                     <div class="row g-0">
                         <div class="col-md-4">
@@ -37,15 +39,16 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="title card-title">Session Title</h5>
-                                <p class="card-text"><small class="text-muted">Game System</small></p>
-                                <p class="card-text">Game session description</p>
+                                <h5 th:text="${gameSessionsList.get(1).gameSessionTitle}" class="title card-title"></h5>
+                                <p th:text="${gameSessionsList.get(1).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
+                                <p th:text="${gameSessionsList.get(1).gameSessionDescription}" class="card-text"></p>
+                                <p th:text="${gameSessionsList.get(1).getUsers().size()} + '/' + ${gameSessionsList.get(1).playerLimit} + ' Players'" class="card-text"></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div th:if="${gameSessionsList.size()} >= 3" class="col">
                 <div class="card h-100 mb-3" style="max-width: 400px;">
                     <div class="row g-0">
                         <div class="col-md-4">
@@ -53,9 +56,10 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="title card-title">Session Title</h5>
-                                <p class="card-text"><small class="text-muted">Game System</small></p>
-                                <p class="card-text">Game session description</p>
+                                <h5 th:text="${gameSessionsList.get(2).gameSessionTitle}" class="title card-title"></h5>
+                                <p th:text="${gameSessionsList.get(2).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
+                                <p th:text="${gameSessionsList.get(2).gameSessionDescription}" class="card-text"></p>
+                                <p th:text="${gameSessionsList.get(2).getUsers().size()} + '/' + ${gameSessionsList.get(2).playerLimit} + ' Players'" class="card-text"></p>
                             </div>
                         </div>
                     </div>
