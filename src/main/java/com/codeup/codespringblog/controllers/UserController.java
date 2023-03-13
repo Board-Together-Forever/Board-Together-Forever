@@ -87,12 +87,12 @@ public class UserController {
         return "users/aboutUser";
     }
     @GetMapping("/users/search")
-    public String showAllProps(@RequestParam(name="q") String query, Model model) {
+    public String searchUsers(@RequestParam(name="q") String query, Model model) {
         if (query.length() > 0){
             model.addAttribute("query", query);
         }
-        model.addAttribute("gameSessionsList", gameSessionDao.searchByTitleLike(query));
-        return "gamesessions/index";
+        model.addAttribute("userList", userDao.searchUsersBySearch(query));
+        return "users/index";
     }
 
     @GetMapping("/aboutCreators")
