@@ -41,7 +41,17 @@
 				</div>
 				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
 					<h2>About Me</h2>
-<!--					<p th:text="|Bio: ${user.getBio}|"></p>-->
+					<form th:action="@{/update}" th:method="post" th:object="${user}">
+						<label for="aboutMe">Tell other players about yourself! </label>
+						<textarea id="aboutMe" name="aboutMe" rows="4" cols="50" th:field="*{aboutMe}"></textarea>
+						<input name="id" th:field="*{id}" type="hidden">
+						<input name="id" th:field="*{email}" type="hidden">
+						<input name="id" th:field="*{irl_name}" type="hidden">
+						<input name="username" th:field="*{username}" type="hidden">
+						<input name="password" th:field="*{password}" type="hidden">
+						<input name="password" th:field="*{primary_game}" type="hidden">
+						<button type="submit">Submit</button>
+					</form>
 				</div>
 				<div aria-labelledby="session-tab" class="tab-pane" id="my-sessions" role="tabpanel">
 					<h2>My Hosted Sessions</h2>
@@ -56,7 +66,8 @@
 									<br>
 									<!--need to figure out how to do x/y
 									with x = players joined and y = player limit-->
-									Player Limit: <span th:text="${gameSessions.playerLimit}"></span>
+									<span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
+									<span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">- This Game Session is full.</span>
 									<br>
 									Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
 								</div>
@@ -79,7 +90,8 @@
 									<br>
 									<!--need to figure out how to do x/y
 									with x = players joined and y = player limit-->
-									Player Limit: <span th:text="${gameSessions.playerLimit}"></span>
+									<span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
+									<span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}"> - This Game Session is full.</span>
 									<br>
 									Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
 								</div>
