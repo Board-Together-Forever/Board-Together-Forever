@@ -9,34 +9,34 @@
   <br>
   <div class="container">
       <h1>Login</h1>
-      <div th:if="${param.error}">
-        <h5 class="text-danger">Invalid username and/or password.</h5>
+      <div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
+          <div class="card-body">
+            <div th:if="${param.error}">
+                <h5 class="text-danger">Invalid username and/or password.</h5>
+            </div>
+
+            <div th:if="${param.logout}">
+                <h5 class="text-danger">You have been logged out.</h5>
+            </div>
+
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="username">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                </div>
+                <a href="/register" class="link-warning" aria-current="page">Don't have an account? Register here!</a>
+                <div class="col-auto">
+                    <button type="submit" value="Log In" class="btn btn-warning mb-3">Login</button>
+                </div>
+            </form>
+              </div>
       </div>
-
-      <div th:if="${param.logout}">
-        <h5 class="text-danger">You have been logged out.</h5>
-      </div>
-
-      <form th:action="@{/login}" method="post">
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" name="username" class="form-control" id="username">
-        </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" id="password">
-        </div>
-
-        <div class="col-auto">
-          <button type="submit" value="Log In" class="btn btn-primary mb-3">Login</button>
-        </div>
-      </form>
-      <a href="/register" class="btn btn-success text-white" aria-current="page">Don't have an account? Register here!</a>
   </div>
-
-
-
 </main>
 
 <footer th:replace="partials :: footer"></footer>

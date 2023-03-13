@@ -7,15 +7,24 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+
+<div class="container">
 <h1 id="indexHeader">Find your game!</h1>
-<form>
-  <div class="d-flex justify-content-center">
-    <input type="text" class="form-control" id="addresssearch" placeholder="Enter name of game">
-    <button type="submit" class="btn btn-primary" id="searchbtn">Find it!</button>
+
+  <div class="card bg-opacity-75 text-white bg-dark fw-bold border-danger">
+    <div class="card-body">
+        <div class="d-flex justify-content-center">
+          <input type="text" class="form-control" id="addresssearch" placeholder="Enter name of game">
+          <button type="submit" class="btn btn-danger" id="searchbtn">Find it!</button>
+        </div>
+      <h1 id="game"></h1>
+      <h1 id="found"></h1>
+    </div>
   </div>
-</form>
-<h1 id="game"></h1>
-<h1 id="found"></h1>
+</div>
+
+
+
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
 
