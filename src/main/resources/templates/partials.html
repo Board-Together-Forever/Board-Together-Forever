@@ -15,22 +15,21 @@
 
 
 <body>
-<nav th:fragment="navbar" class="bg-opacity-75 navbar navbar-light bg-success text-white">
+<nav th:fragment="navbar" class="bg-opacity-75 navbar navbar-light fixed-top bg-success text-white">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img th:src="@{/gameIMG/Collage_2023-03-03_16_39_26.jpg}" alt="" width="50" height="50">
         </a>
         <h1>Board Together</h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
-
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h5>Welcome!</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-
+            <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
                     <a href="/gamesessions" class="nav-link" aria-current="page">Browse Sessions</a>
@@ -69,6 +68,7 @@
                     </form>
                 </li>
             </ul>
+            </div>
         </div>
     </div>
 </nav>
