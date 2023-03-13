@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <head th:replace="partials :: head">
+  <meta charset="UTF-8"/>
+  <title th:text="'Error ' + ${error}"></title>
+</head>
+<body>
+<th:block th:switch="${error}">
+  <div th:case="'Not Found'">
+    <h1>Page not found!!</h1>
+    <h5>Please use the navigation bar above to return to Board Together</h5>
+  </div>
+  <div th:case="'Forbidden'">
+    <h1>You don't have permission to view this page.</h1>
+    <h5>Please use the navigation bar above to return to Board Together</h5>
+  </div>
+</th:block>
+
+<footer th:replace="partials :: footer"></footer>
+<div th:insert="partials :: boot-scripts"></div>
+</body>
+</html>
