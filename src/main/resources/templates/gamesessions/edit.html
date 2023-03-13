@@ -10,6 +10,7 @@
 <form th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
   <div>Game: <span th:text="${gamesession.gameSessionName}"></span></div>
   <input type="hidden" name="gameSessionName" th:field="*{gameSessionName}" id="gameSessionName">
+  <div th:if="${gamesession.gameSessionName.isEmpty()}">Couldn't find game</div>
   <div>Max Players: <span th:text="${gamesession.playerLimit}"></span></div>
   <input type="hidden" name="playerLimit" th:field="*{playerLimit}" id="playerLimit">
   <div>Duration: <span th:text="${gamesession.gameDuration}"></span></div>
