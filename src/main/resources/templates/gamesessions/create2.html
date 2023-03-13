@@ -7,28 +7,64 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+<div class="container">
+  <h1>Create your Game Session</h1>
+  <div class="card bg-opacity-75 text-white bg-dark fw-bold border-info">
+    <div class="card-body">
+
+      <input id="upc" type="hidden" th:value="*{upc}">
+      <form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
+        <div class="col-md-6">
+          <label for="gameSessionName" class="form-label">Game Name</label>
+          <input type="text" name="gameSessionName" th:field="*{gameSessionName}" class="form-control" id="gameSessionName" placeholder="Name of the game">
+        </div>
+        <div class="col-md-6">
+          <label for="gameSessionTitle" class="form-label">Session Title</label>
+          <input type="text" name="gameSessionTitle" th:field="*{gameSessionTitle}" class="form-control" id="gameSessionTitle">
+        </div>
+        <div class="col-md-2">
+          <label for="playerLimit" class="form-label">Player Limit</label>
+          <input type="text" name="playerLimit" th:field="*{playerLimit}" class="form-control" id="playerLimit">
+        </div>
+        <div class="col-md-4">
+          <label for="gameDuration" class="form-label">Duration</label>
+          <input type="text" name="gameDuration" th:field="*{gameDuration}" class="form-control" id="gameDuration">
+        </div>
+        <div class="col-12">
+          <label for="gameSessionDescription" class="form-label">Description</label>
+          <textarea class="form-control" name="gameSessionDescription" th:field="*{gameSessionDescription}" id="gameSessionDescription" style="height: 100px"></textarea>
+        </div>
+        <input type="hidden" th:field="*{UPC}" id="upcField">
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Submit Game Session</button>
+        </div>
+        <div id="gameImage"></div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
-<input id="upc" type="hidden" th:value="*{upc}">
-<form th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
-  <div>Game: <span id="nameOfGame"></span></div>
-  <input type="hidden" name="gameSessionName" th:field="*{gameSessionName}" id="gameSessionName">
-  <div>Max Players: <span id="playerLimitOfGame"></span></div>
-  <input type="hidden" name="playerLimit" th:field="*{playerLimit}" id="playerLimit">
-  <div>Duration: <span id="durationOfGame"></span></div>
-  <input type="hidden" name="gameDuration" th:field="*{gameDuration}" id="gameDuration">
-  <label for="gameSessionTitle">Session Title:</label>
-  <input type="text" name="gameSessionTitle" th:field="*{gameSessionTitle}" id="gameSessionTitle">
-  <label for="gameSessionDescription">Description:</label><br>
-  <textarea name="gameSessionDescription" id="gameSessionDescription" th:field="*{gameSessionDescription}" cols="30" rows="10"></textarea>
-  <input type="hidden" th:field="*{UPC}" id="upcField">
-  <!--  <input type="hidden" th:field="*{users}" id="emptyUser">-->
+<!--<input id="upc" type="hidden" th:value="*{upc}">-->
+<!--<form th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">-->
+<!--  <div>Game: <span id="nameOfGame"></span></div>-->
+<!--  <input type="hidden" name="gameSessionName" th:field="*{gameSessionName}" id="gameSessionName">-->
+<!--  <div>Max Players: <span id="playerLimitOfGame"></span></div>-->
+<!--  <input type="hidden" name="playerLimit" th:field="*{playerLimit}" id="playerLimit">-->
+<!--  <div>Duration: <span id="durationOfGame"></span></div>-->
+<!--  <input type="hidden" name="gameDuration" th:field="*{gameDuration}" id="gameDuration">-->
+<!--  <label for="gameSessionTitle">Session Title:</label>-->
+<!--  <input type="text" name="gameSessionTitle" th:field="*{gameSessionTitle}" id="gameSessionTitle">-->
+<!--  <label for="gameSessionDescription">Description:</label><br>-->
+<!--  <textarea name="gameSessionDescription" id="gameSessionDescription" th:field="*{gameSessionDescription}" cols="30" rows="10"></textarea>-->
+<!--  <input type="hidden" th:field="*{UPC}" id="upcField">-->
+<!--  &lt;!&ndash;  <input type="hidden" th:field="*{users}" id="emptyUser">&ndash;&gt;-->
 
-  <button type="submit">Submit Game Session</button>
+<!--  <button type="submit">Submit Game Session</button>-->
 
 
-</form>
-<div id="gameImage"></div>
+<!--</form>-->
+<!--<div id="gameImage"></div>-->
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
 

@@ -7,19 +7,40 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+
+<div class="container">
     <h1 id="indexHeader">Game Sessions</h1>
-    <div th:each="gamesession : ${gameSessionsList}">
-        <a th:href="@{/gamesessions/{id} (id = ${gamesession.id})}"><span th:text="'Game: ' + ${gamesession.gameSessionName} + ' - ' + ${gamesession.gameSessionTitle}"></span></a>
-        <p th:text="${gamesession.gameSessionDescription}" />
-        <p th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></p>
-        <p th:if="${gamesession.playerLimit} == ${gamesession.getUsers().size()}">Game Session is full.</p>
-        <hr>
+    <h5 th:if="${gameSessionsList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any game sessions...'" ></h5>
+    <h5 th:if="${gameSessionsList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any game sessions that matched with ' + ${query}" ></h5>
+    <a class="btn btn-primary d-flex justify-content-center" href="/gamesessions/create" id="createAPost">Create a Game Session</a>
+<br>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div th:each="gamesession : ${gameSessionsList}">
+            <div class="col">
+                <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+                    <div class="card-header bg-primary">
+                        <a class="text-white" th:href="@{/gamesessions/{id} (id = ${gamesession.id})}">
+                            <h5 th:text="${gamesession.gameSessionTitle}"></h5>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="'Game: ' + ${gamesession.gameSessionName}"></h5>
+                        <p class="card-text" th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></p>
+                        <p class="card-text" th:if="${gamesession.playerLimit} == ${gamesession.getUsers().size()}">Game Session is full.</p>
+                        <p class="card-text" th:text="'Description: ' + ${gamesession.gameSessionDescription}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-<h1 th:if="${gameSessionsList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any game sessions...'" ></h1>
-<h1 th:if="${gameSessionsList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any game sessions that matched with ' + ${query}" ></h1>
-<a href="/gamesessions/create" id="createAPost">Create a Game Session</a><br><br><br>
+<br>
+    </div>
+<br>
+<br>
+<br>
+<br>
     <footer th:replace="partials :: footer"></footer>
-   <div th:insert="partials :: boot-scripts"></div>
+    <div th:insert="partials :: boot-scripts"></div>
 </body>
 
 </html>
