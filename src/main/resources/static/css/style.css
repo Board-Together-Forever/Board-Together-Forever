@@ -1,4 +1,4 @@
-.background {
+body {
     background-image: url(../gameIMG/20230308_151944.remini-enhanced.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -12,7 +12,7 @@ h1 {
     text-align: center;
 }
 
-.title {
+h5, .title, .card-title {
     font-family: 'Luckiest Guy', cursive;
 }
 
@@ -20,6 +20,44 @@ body {
     font-family: 'Patrick Hand', cursive;
     font-size: large;
 }
+
+/*
+Style Notes:
+bootstrap for remaining html:
+
+Create Sessions Form:
+
+<input id="upc" type="hidden" th:value="*{upc}">
+<form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
+  <div class="col-md-6">
+    <label for="gameSessionName" class="form-label">Game Name</label>
+    <input type="text" name="gameSessionName" th:field="*{gameSessionName}" class="form-control" id="gameSessionName" placeholder="Name of the game">
+  </div>
+  <div class="col-md-6">
+    <label for="gameSessionTitle" class="form-label">Session Title</label>
+    <input type="text" name="gameSessionTitle" th:field="*{gameSessionTitle}" class="form-control" id="gameSessionTitle">
+  </div>
+  <div class="col-md-2">
+    <label for="playerLimit" class="form-label">Player Limit</label>
+    <input type="text" name="playerLimit" th:field="*{playerLimit}" class="form-control" id="playerLimit">
+  </div>
+  <div class="col-md-4">
+    <label for="gameDuration" class="form-label">Duration</label>
+    <input type="text" name="gameDuration" th:field="*{gameDuration}" class="form-control" id="gameDuration">
+  </div>
+  <div class="col-12">
+    <label for="gameSessionDescription" class="form-label">Address 2</label>
+    <input type="textarea" name="gameSessionDescription" id="gameSessionDescription" th:field="*{gameSessionDescription}" cols="30" rows="10">
+  </div>
+  <input type="hidden" th:field="*{UPC}" id="upcField">
+  <div class="col-12">
+    <button type="submit" class="btn btn-success">Submit Game Session</button>
+  </div>
+  <div id="gameImage"></div></form>
+</form>
+
+
+*/
 
 
 
