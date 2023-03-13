@@ -155,7 +155,7 @@ public class GameSessionController {
     }
 
     @GetMapping("/gamesessions/search")
-    public String showAllProps(@RequestParam(name="q") String query, Model model) {
+    public String searchGameSessions(@RequestParam(name="q") String query, Model model) {
         if (query.length() > 0){
         model.addAttribute("query", query);
         }
