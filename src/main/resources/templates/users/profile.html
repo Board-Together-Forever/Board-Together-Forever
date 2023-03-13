@@ -32,12 +32,14 @@
 			<div class="tab-content">
 				<div aria-labelledby="acc-tab" class="tab-pane" id="account" role="tabpanel">
 					<h2>Account</h2>
-					<p th:text="|Username: ${#authentication.principal.username}"></p>
-					<p th:text="|Email: ${#authentication.principal.email}"></p>
-					<p th:text="|Primary Game: ${#authentication.principal.primary_game}"></p>
+					<p th:text="|Username: ${user.getUsername()}"></p>
+					<p th:text="|Email: ${user.getEmail()}"></p>
+					<p th:text="|Primary Game: ${user.getPrimary_game()}"></p>
 					<p th:text="|IRL Name: ${user.getIrl_name()}"></p>
+					<!--need to add these files-->
 					<p>Click <a th:href="@{/update-pw}">here</a> to update your password.</p>
 					<p>Click <a th:href="@{/update-email}">here</a> to update your email.</p>
+					<!-------------------------->
 				</div>
 				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
 					<h2>About Me</h2>

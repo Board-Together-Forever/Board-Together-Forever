@@ -9,8 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
 
 @Controller
@@ -69,10 +67,36 @@ public class UserController {
         return "users/settings";
     }
 
-    @GetMapping("/aboutuser/{id}")
+    @GetMapping("/about-user/{id}")
     public String viewAboutUser(@PathVariable Long id, Model model) {
         User user = userDao.findUserById(id);
         model.addAttribute("user", user);
         return "users/aboutUser";
     }
+
+    @GetMapping("/forgot/password")
+    public String forgotPasswordShow() {
+
+        return "/emails/forgotPassword";
+    }
+
+    @PostMapping("/forgot/password")
+    public String forgotPasswordSubmit() {
+
+        return "redirect:/login";
+    }
+
+    @GetMapping("/forgot/username")
+    public String forgotEmailShow() {
+
+        return "/emails/forgotEmail";
+    }
+
+    @PostMapping("/forgot/username")
+    public String forgotEmailSubmit() {
+
+        return "redirect:/login";
+    }
+
+
 }

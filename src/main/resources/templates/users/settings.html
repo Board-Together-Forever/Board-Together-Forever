@@ -10,13 +10,25 @@
 
 <h1>Update Account Information</h1>
 <form th:action="@{/update}" th:method="post" th:object="${user}">
+
 	<p>Email: <span th:text="${user.email}" id="email"></span>
 		<button type="button" onclick="editField('email')">Edit</button></p>
 	<input type="email" name="email" id="emailField" style="display: none;"/>
 
-	<p>IRL Name: <span th:text="${user.irl_name}" id="irl_name"></span>
-		<button type="button" onclick="editField('irl_name')">Edit</button></p>
-	<input type="text" name="irl_name" id="irlNameField" style="display: none;"/>
+	<!--supposed to be something like "if there is not this field in the database, update with new value-->
+<!--	<div th:if="${#authentication.principal.irl_name}.isEmpty()">-->
+		<p>IRL Name: <span th:text="${user.irl_name}" id="irl_name"></span>
+			<button type="button" onclick="editField('irl_name')">Edit</button></p>
+		<input type="text" name="irl_name" id="irl_nameField" style="display: none;"/>
+<!--	</div>-->
+
+	<!--supposed to be something like "if there is this field in the database, retain the current value-->
+<!--	<div th:if="!${#authentication.principal.irl_name}.isEmpty()">-->
+<!--		<input name="irlName" th:field="*{irl_name}" type="hidden">-->
+<!--	</div>-->
+
+	<br>
+
 
 	<input name="id" th:field="*{id}" type="hidden">
 	<input name="username" th:field="*{username}" type="hidden">
@@ -27,6 +39,8 @@
 </form>
 
 <script th:src="@{/js/settings.js}"></script>
+<script th:src="@{/js/api_keys.js}"></script>
+<script th:src="@{/js/bga.js}"></script>
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>
