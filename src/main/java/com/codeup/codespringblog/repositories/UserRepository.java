@@ -1,7 +1,5 @@
 package com.codeup.codespringblog.repositories;
 
-import com.codeup.codespringblog.models.GameSession;
-import com.codeup.codespringblog.models.Post;
 import com.codeup.codespringblog.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
