@@ -91,13 +91,6 @@ public class GameSessionController {
         return "redirect:/gamesessions/join/" + user.getId() +"/" + gamesession.getId();
     }
 
-//    WORKING ON AUTO JOIN
-//    @GetMapping("/gamesessions/hostjoin")
-//    public String hostJoinSession(@ModelAttribute GameSession gamesession){
-//
-//        return "redirect:/gamesessions";
-//    }
-
 
 //    EDITS EXISTING GAME DETAILS, SAVES EXISTING IDS
     @GetMapping("/gamesessions/{id}/edit")
