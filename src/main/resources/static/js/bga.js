@@ -65,7 +65,25 @@ $('#deleteButton').click(function (e) {
 
 })
 
+$(document).ready(function() {
+    var Upc = $('.upc').val();
+    $.get("https://api.boardgameatlas.com/api/search?client_id=" + bgaKey, {
+        name: Upc
+    }).done(function (data) {
+        if (Upc !== undefined){
+            console.log(Upc)
+            $('#nameOfGame').html(data.games[0].name);
+            $('#durationOfGame').html(data.games[0].playtime);
+            $('#playerLimitOfGame').html(data.games[0].max_players);
+            $('#gameSessionName').val(data.games[0].name);
+            $('#gameDuration').val(data.games[0].playtime + " minutes");
+            $('#playerLimit').val(data.games[0].max_players);
+            $('#upcField').val(Upc);
+            $(".gameImage").html("<img src='"+ data.games[0].image_url +"' alt='GameImage'>");
 
+            console.log(data)}
+    });
+})
 
 
 // <a th:href="@{/gamesessions/{id} (id = ${gamesession.id})}"><span th:text="${gamesession.gameSessionTitle}"></span></a>

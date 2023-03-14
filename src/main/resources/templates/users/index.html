@@ -12,7 +12,10 @@
     <a th:href="@{/aboutuser/{id} (id = ${user.id})}">
         <span th:text="'Username: ' + ${user.username}">
         </span>
+
     </a>
+    <p th:text="'Total Active Sessions: ' + ${user.getJoinedSessions().size()}"></p>
+
     <hr>
 </div>
 <h1 th:if="${userList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any players...'" ></h1>

@@ -159,6 +159,19 @@ public class GameSessionController {
         return "gamesessions/index";
     }
 
+    @GetMapping("/gamesessions/search/notfull")
+    public String searchGameSessions(Model model) {
+        List<GameSession> gameSessionList = gameSessionDao.findAll();
+        List<GameSession> notfull = new ArrayList<>();
+        for (GameSession gamesession : gameSessionList){
+            if (gamesession.getUsers().size() < parseInt(gamesession.getPlayerLimit())){
+                notfull.add(gamesession);
+            }
+        }
+        model.addAttribute("gameSessionsList", notfull);
+        return "gamesessions/index";
+    }
+
 //        FIRST STEP OF CREATING GAMESESSION, USED TO FIND GAME IN API - USED IN TESTING
 //    @GetMapping("/gamesessions/find")
 //    public String findGame() {
