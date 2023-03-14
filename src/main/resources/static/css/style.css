@@ -42,3 +42,11 @@ body {
 #gameImage>img, #gameImage2>img, #gameImage3>img {
     max-width: 100%;
 }
+
+#navTitle {
+    font-family: 'Rampart One', cursive;
+    font-weight: bold;
+    color: midnightblue;
+    text-align: center;
+    padding-left: 1em;
+}
