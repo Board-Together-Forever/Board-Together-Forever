@@ -172,37 +172,4 @@ public class GameSessionController {
         return "gamesessions/index";
     }
 
-//        FIRST STEP OF CREATING GAMESESSION, USED TO FIND GAME IN API - USED IN TESTING
-//    @GetMapping("/gamesessions/find")
-//    public String findGame() {
-//        return "gamesessions/apiSearch";
-//    }
-
-
-//    USED TO EDIT GAME OF GAME SESSION - TESTING
-//    @GetMapping("/gamesessions/find/{id}")
-//    public String editGameSessionGame(Model model, @PathVariable long id) {
-//        GameSession gamesession = gameSessionDao.findGameSessionsById(id);
-//        model.addAttribute("gamesession", gamesession);
-//        return "gamesessions/editGame";
-//    }
-
-
-//    NOT IN USE - ALLOWS CHANGING OF GAME AND RETAINS ID OF SESSION
-//    @GetMapping("/gamesessions/{id}/{upc}")
-//    public String updatedGame(Model model, @PathVariable long id, @PathVariable String upc) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        GameSession gamesession = gameSessionDao.findGameSessionsById(id);
-//        if (user.getId() != gamesession.getGameSessionHost().getId()){
-//            List<GameSession> gameSessionsList = gameSessionDao.findAll();
-//            model.addAttribute("gameSessionsList", gameSessionsList);
-//            return "redirect:/gamesessions";
-//        }
-//        gamesession.setUPC(upc);
-//        model.addAttribute("id", id);
-//        model.addAttribute("upc",upc);
-//        model.addAttribute("gamesession", gameSessionDao.findGameSessionsById(id));
-//        return "gamesessions/changedGame";
-//    }
-
 }

@@ -63,14 +63,6 @@ public class User {
         aboutMe = copy.aboutMe;
 
     }
-//    public User(User copy) {
-//        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
-//        email = copy.email;
-//        username = copy.username;
-//        password = copy.password;
-//        primary_game = copy.primary_game;
-//        irl_name = copy.irl_name;
-//    }
 
     public User(long id, String username, String email, String password, String aboutMe) {
         this.id = id;

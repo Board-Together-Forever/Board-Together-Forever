@@ -114,25 +114,6 @@ public class GameSession {
         this.gameSessionDescription = gameSessionDescription;
     }
 
-//    public GameSession(int id, String gameSessionName, User gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription) {
-//        this.id = id;
-//        this.gameSessionName = gameSessionName;
-//        this.gameSessionHost = gameSessionHost;
-//        this.playerLimit = playerLimit;
-//        this.gameDuration = gameDuration;
-//        this.gameSessionTitle = gameSessionTitle;
-//        this.gameSessionDescription = gameSessionDescription;
-//    }
-
-//    public GameSession(String gameSessionName, User gameSessionHost, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription) {
-//        this.gameSessionName = gameSessionName;
-//        this.gameSessionHost = gameSessionHost;
-//        this.playerLimit = playerLimit;
-//        this.gameDuration = gameDuration;
-//        this.gameSessionTitle = gameSessionTitle;
-//        this.gameSessionDescription = gameSessionDescription;
-//    }
-
     public GameSession(int id, String gameSessionName, String playerLimit, String gameDuration, String gameSessionTitle, String gameSessionDescription, String UPC, User gameSessionHost, List<User> users) {
         this.id = id;
         this.gameSessionName = gameSessionName;
@@ -212,13 +193,3 @@ public class GameSession {
         this.gameSessionDescription = gameSessionDescription;
     }
 }
-
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-//}
