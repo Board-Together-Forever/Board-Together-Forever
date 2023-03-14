@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials :: head">
-  <meta charset="UTF-8"/>
-  <title>Ooops, forbidden</title>
+<head th:replace="~{partials :: head ('You are forbidden')}">
 </head>
 <body class="error403">
 <nav th:replace="partials :: navbar"></nav>

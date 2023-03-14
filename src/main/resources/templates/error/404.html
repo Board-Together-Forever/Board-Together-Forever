@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials :: head">
-    <meta charset="UTF-8"/>
-    <title>Oops, Not Found</title>
+<head th:replace="~{partials :: head ('Oops, not found!')}">
 </head>
 <body class="error404">
 <nav th:replace="partials :: navbar"></nav>

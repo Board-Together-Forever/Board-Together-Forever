@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="partials :: head">
-    <meta charset="UTF-8"/>
-    <title>Ooops, something went wrong</title>
+<head th:replace="~{partials :: head ('Oops, something went wrong...')}">
 </head>
 <body class="error500">
 <nav th:replace="partials :: navbar"></nav>
