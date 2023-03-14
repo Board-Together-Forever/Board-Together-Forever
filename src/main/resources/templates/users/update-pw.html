@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="partials :: head">
+	<meta charset="UTF-8">
+	<title>Players Index</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<h1 id="indexHeader">Update Password</h1>
+<form th:action="@{/update-pw}" th:method="post" th:object="${user}">
+	<!------------------------------------------------------------->
+	<!--would be nice to have this form in the middle of the page-->
+	<!--------------cough cough danielle cough cough--------------->
+	<!------------------------------------------------------------->
+	<div>
+		<label for="currentPassword">Current Password:</label>
+		<input id="currentPassword" name="currentPassword" required type="password"/>
+	</div>
+
+	<div>
+		<label for="newPassword">New Password:</label>
+		<input id="newPassword" minlength="8" name="newPassword" required type="password"/>
+	</div>
+
+	<div>
+		<input name="id" th:field="*{id}" type="hidden">
+		<input name="id" th:field="*{email}" type="hidden">
+		<input name="id" th:field="*{irl_name}" type="hidden">
+		<input name="username" th:field="*{username}" type="hidden">
+		<input name="password" th:field="*{password}" type="hidden">
+		<input name="password" th:field="*{primary_game}" type="hidden">
+	</div>
+
+	<button type="submit">Update Password</button>
+</form>
+</body>
+</html>

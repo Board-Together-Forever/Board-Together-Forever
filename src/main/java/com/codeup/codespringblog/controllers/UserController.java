@@ -9,9 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.net.BindException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,5 +109,28 @@ public class UserController {
     @GetMapping("/aboutCreators")
     public String aboutCreators() {
         return "aboutUs";
+    }
+
+    @GetMapping("/update-pw")
+    public String showForm(@ModelAttribute User user, Model model) {
+        model.addAttribute("user", user);
+        return "users/update-pw";
+    }
+
+    @PostMapping("/update-pw")
+    public String updatePassword(@RequestParam("currentPassword") String currentPassword,
+                                 @RequestParam("newPassword") String newPassword,
+                                 Principal principal) {
+        String username = principal.getName();
+        User user = userDao.findByUsername(username);
+        if (passwordEncoder.matches(currentPassword, user.getPassword())) {
+            user.setPassword(passwordEncoder.encode(newPassword));
+            userDao.save(user);
+            return "redirect:/profile";
+        } else {
+            // Current password is incorrect, show an error message
+            // Can update this with query for error page or whatever eg redirect:/update?error
+            return "redirect:/update-pw";
+        }
     }
 }
