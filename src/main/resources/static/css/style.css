@@ -24,17 +24,17 @@ body {
 .error500 {
     background-image: url(../gameIMG/Collage_2023-03-13_21_48_33.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 .error403 {
     background-image: url(../gameIMG/Collage_2023-03-13_21_53_10.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 .error404 {
     background-image: url(../gameIMG/Collage_2023-03-13_21_51_49.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
