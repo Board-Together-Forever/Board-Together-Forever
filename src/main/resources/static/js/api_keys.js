@@ -1,0 +1,1 @@
+const bgaKey = 'Bk3OlaSgaa';

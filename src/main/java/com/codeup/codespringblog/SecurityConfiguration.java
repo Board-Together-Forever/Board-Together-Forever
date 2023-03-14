@@ -23,7 +23,7 @@ public class SecurityConfiguration {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(8);
     }
 
     @Bean
@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers( "/profile", "/gamesessions/**", "/posts/**", "/settings/**", "/update")
+                .requestMatchers( "/profile", "/gamesessions/**", "/posts/**", "/settings/**", "/update", "/update-pw")
                 .authenticated();
         return http.build();
     }
