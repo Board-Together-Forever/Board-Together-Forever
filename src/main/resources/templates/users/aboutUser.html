@@ -7,24 +7,34 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <h1 th:text="'About ' + ${user.username}"></h1>
-<h2 th:text="${user.getEmail()}"></h2>
-<h4 th:text="${user.aboutMe}"></h4>
+<div class="w-50 m-auto">
+    <h4 class="text-center bg-opacity-75 text-white bg-dark fw-bold border-warning" th:text="${user.aboutMe}"></h4>
+</div>
+<div class="w-25 m-auto">
+    <h2 class="text-center bg-opacity-75 text-white bg-dark fw-bold border-warning" th:text="${user.getEmail()}"></h2>
+</div>
 <h1 th:text="${user.username} + ' has ' + ${user.getJoinedSessions().size()} + ' active Sessions'"></h1>
-
-<div th:each="gameSessions : ${userJoinedList}">
-    <div class="card">
-        <div class="card-body">
-            <a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gameSessions.getId()})}">
-                <h5 class="title card-title" th:text="${gameSessions.getGameSessionTitle()}"></h5>
-            </a>
-            <p class="card-text" th:text="'Game: ' + ${gameSessions.getGameSessionName()}"><small class="text-muted"></small></p>
-            <p class="card-text" th:text="${gameSessions.getGameSessionDescription()}"></p>
-            <p class="card-text" th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.getPlayerLimit()} + ' Players'"></p>
-            <p class="card-text" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}"> - This Game Session is full.</p>
-            <a class="title card-title" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
-                <p class="card-text" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().getUsername()}"></p>
-            </a>
-            <br>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div th:each="gameSessions : ${userJoinedList}">
+        <div class="col">
+            <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+                <div class="card-header bg-success">
+                    <a class="text-white" th:href="@{/gamesessions/{id} (id = ${gameSessions.getId()})}">
+                        <h5 th:text="${gameSessions.getGameSessionTitle()}" class="title card-title"></h5></a>
+                </div>
+                <div class="card-body">
+                    <h5 th:text="'Game: ' + ${gameSessions.getGameSessionName()}" class="card-title"></h5>
+                    <p th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.getPlayerLimit()} + ' Players'"
+                       class="card-text"></p>
+                    <p th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}" class="card-text">Game
+                        Session is full.</p>
+                    <p th:text="${gameSessions.getGameSessionDescription()}" class="card-text"></p>
+                    <a class="card-text"
+                       th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}"><p
+                            th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().getUsername()}"
+                            class="card-text"></p></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
