@@ -39,6 +39,7 @@ public class HomeController {
         List<GameSession> gameSessionsList = gameSessionDao.findAll();
         Collections.sort(gameSessionsList, Comparator.comparingInt(GameSession::getId).reversed());
         model.addAttribute("gameSessionsList", gameSessionsList);
+        System.out.println(gameSessionsList.get(2).getUPC());
         return "index";
     }
 

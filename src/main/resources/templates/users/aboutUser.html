@@ -2,29 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="partials :: head">
     <meta charset="UTF-8">
-    <title>Show</title>
+    <title>About User</title>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<h1 th:text="${user.username}"></h1>
-<h1 th:text="${user.aboutMe}"></h1>
+<h1 th:text="'About ' + ${user.username}"></h1>
+<h2 th:text="${user.getEmail()}"></h2>
+<h4 th:text="${user.aboutMe}"></h4>
+<h1 th:text="${user.username} + ' has ' + ${user.getJoinedSessions().size()} + ' active Sessions'"></h1>
 <div th:each="gameSessions : ${userJoinedList}">
     <div class="card">
         <div class="card-body">
-            Game: <span th:text="${gameSessions.gameSessionName}"></span>
+            <a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gameSessions.getId()})}">
+                <h5 th:text="${gameSessions.getGameSessionTitle()}" class="title card-title"></h5></a>
+            <p th:text="'Game: ' + ${gameSessions.getGameSessionName()}" class="card-text"><small class="text-muted"></small></p>
+            <p th:text="${gameSessions.getGameSessionDescription()}" class="card-text"></p>
+            <p th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.getPlayerLimit()} + ' Players'" class="card-text"></p>
+            <p th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}" class="card-text"> - This Game Session is full.</p>
+            <a class="title card-title" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}"><p th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().getUsername()}" class="card-text"></p></a>
             <br>
-            Session Title: <span th:text="${gameSessions.gameSessionTitle}"></span>
-            <br>
-            <span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
-            <span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}"> - This Game Session is full.</span>
-            <br>
-            Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
         </div>
     </div>
 </div>
-<div th:if="${userJoinedList.size() == 0}">
-    <p>User has not joined any sessions</p>
-</div>
+<!--<div th:if="${userJoinedList.size() == 0}">-->
+<!--    <p>User has not joined any sessions</p>-->
+<!--</div>-->
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>

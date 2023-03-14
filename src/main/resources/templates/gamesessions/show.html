@@ -8,10 +8,11 @@
 <nav th:replace="partials :: navbar"></nav>
 
 <h1>Game: <span th:text="${gameSessions.gameSessionName}"></span>
+    <input id="upc" type="hidden" th:value="*{gameSessions.getUPC()}">
+    <div id="gameImage"></div>
     <hr>
     <span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
     <span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">. This Game Session is full.</span>
-
     <hr>
     Game Duration: <span th:text="${gameSessions.gameDuration}"></span>
     <hr>
@@ -19,7 +20,8 @@
     <hr>
     Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
     <hr>
-    Game Session Host: <span th:text="${gameSessions.getGameSessionHost().getUsername()}"></span></h1>
+    Game Session Host:
+    <a class="title card-title" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}"><span th:text="${gameSessions.getGameSessionHost().getUsername()}" class="card-text"></span></a></h1>
 
 
 <a th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}"
@@ -42,6 +44,10 @@
 <div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${playerFound} == 1">You are part of this session!
     <a th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()}, id = ${gameSessions.getId()})}"><button>Leave Game Session</button></a>
 </div>
+<br>
+<br>
+<br>
+<br>
 
 <footer th:replace="partials :: footer"></footer>
 <div th:insert="partials :: boot-scripts"></div>

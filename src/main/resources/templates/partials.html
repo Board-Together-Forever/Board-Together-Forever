@@ -50,7 +50,7 @@
                 </li>
 
                 <li class="nav-item">
-                        <div sec:authorize="isAuthenticated()" class="ms-auto d-flex">
+                        <div class="ms-auto d-flex">
                             <a href="/gamesessions/create" class="nav-link text-white title" aria-current="page">Create Game Session</a>
                         </div>
                 </li>
@@ -79,6 +79,9 @@
                         <input type="text" name="qu" id="qu" placeholder="Search for Players">
                         <button class="btn btn-info my-2 my-sm-0" type="submit">Find</button>
                     </form>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-info my-2 my-sm-0" href="/gamesessions/search/notfull" id="notFull">Games with vacancies</a>
                 </li>
             </ul>
             </div>
