@@ -38,36 +38,6 @@
         </div>
     </div>
 </div>
-<!---->
-
-<!--<div class="row row-cols-1 row-cols-md-2 g-4">-->
-<!--    <div th:each="gamesession : ${gameSessionsList}">-->
-<!--        <div class="col">-->
-<!--            <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">-->
-<!--                <div class="card-header bg-primary">-->
-<!--                    <a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gamesession.id})}">-->
-<!--                        <h5 th:text="${gamesession.gameSessionTitle}"></h5></a>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title" th:text="'Game: ' + ${gamesession.gameSessionName}"></h5>-->
-<!--                    <p class="card-text"-->
-<!--                       th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></p>-->
-<!--                    <p class="card-text" th:if="${gamesession.playerLimit} == ${gamesession.getUsers().size()}">Game-->
-<!--                        Session is full.</p>-->
-<!--                    <p class="card-text" th:text="'Description: ' + ${gamesession.gameSessionDescription}"/>-->
-<!--                    <a class="card-text"-->
-<!--                       th:href="@{/aboutuser/{id} (id = ${gamesession.getGameSessionHost().getId()})}"><p-->
-<!--                            th:text="'Game Session Host: ' + ${gamesession.getGameSessionHost().username}"-->
-<!--                            class="card-text"></p></a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<div th:if="${userJoinedList.size() == 0}">-->
-<!--    <p>User has not joined any sessions</p>-->
-<!--</div>-->
 
 <div th:insert="partials :: boot-scripts"></div>
 <script th:src="@{/js/api_keys.js}"></script>
