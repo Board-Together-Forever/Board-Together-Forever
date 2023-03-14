@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:replace="partials :: head">
   <meta charset="UTF-8"/>
   <title>Ooops, forbidden</title>
 </head>
-<body>
-<h1>You don't have permission to view this page.</h1>
+<body class="error403">
+<nav th:replace="partials :: navbar"></nav>
+<div th:insert="partials :: boot-scripts"></div>
 </body>
 </html>
