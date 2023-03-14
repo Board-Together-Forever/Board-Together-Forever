@@ -17,6 +17,9 @@ public class EmailService {
     @Value("no-reply@boardtogether.org")
     private String from;
 
+//    @Value("${bgaKey}")
+//    private String bgaKey;
+
     public void prepareAndSend(GameSession gameSession) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);

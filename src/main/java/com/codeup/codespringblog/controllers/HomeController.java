@@ -32,15 +32,12 @@ public class HomeController {
         this.emailService = emailService;
     }
 
-
     //    SHOW ALL ACTIVE GAME SESSIONS IN DATABASE
     @GetMapping("/")
     public String index(Model model) {
         List<GameSession> gameSessionsList = gameSessionDao.findAll();
         Collections.sort(gameSessionsList, Comparator.comparingInt(GameSession::getId).reversed());
         model.addAttribute("gameSessionsList", gameSessionsList);
-        System.out.println(gameSessionsList.get(2).getUPC());
         return "index";
     }
-
 }
