@@ -5,11 +5,11 @@
 <body class="main-container main-bg">
 <nav th:replace="partials :: navbar"></nav>
 <main class="container">
-	<h1 th:text="|Howdy, ${#authentication.principal.username}!|"></h1>
+	<h1 th:text="|Howdy, ${user.getUsername()}!|"></h1>
 
 	<div class="tabs">
 		<div class="container mt-5">
-
+			<!-------nav tabs------->
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
 					<a class="nav-link" data-bs-toggle="tab" href="#account" id="acc-tab">Account</a>
@@ -21,10 +21,11 @@
 					<a class="nav-link" data-bs-toggle="tab" href="#my-sessions" id="session-tab">My Sessions</a>
 				</li>
 			</ul>
-
 			<div class="tab-content">
+				<!-----------------------------account details------------------------------>
 				<div aria-labelledby="acc-tab" class="tab-pane" id="account" role="tabpanel">
 					<h2>Account</h2>
+					<!-----------------------username form--------------------------->
 					<form th:action="@{/update}" th:method="post" th:object="${user}">
 						<label for="username">Username: </label>
 						<input id="username" name="username" th:field="*{username}">
@@ -36,6 +37,7 @@
 						<input name="password" th:field="*{primary_game}" type="hidden">
 						<button type="submit">Save</button>
 					</form>
+					<!-------------------------email form---------------------------->
 					<form th:action="@{/update}" th:method="post" th:object="${user}">
 						<label for="email">Email: </label>
 						<input id="email" name="email" th:field="*{email}">
@@ -47,6 +49,7 @@
 						<input name="password" th:field="*{primary_game}" type="hidden">
 						<button type="submit">Save</button>
 					</form>
+					<!----------------------primary game form------------------------>
 					<form th:action="@{/update}" th:method="post" th:object="${user}">
 						<label for="primary_game">Primary Game: </label>
 						<input id="primary_game" name="primary_game" th:field="*{primary_game}">
@@ -58,6 +61,7 @@
 						<input name="password" th:field="*{username}" type="hidden">
 						<button type="submit">Save</button>
 					</form>
+					<!---------------------irl name form----------------------------->
 					<form th:action="@{/update}" th:method="post" th:object="${user}">
 						<label for="irl_name">IRL Name: </label>
 						<input id="irl_name" name="irl_name" th:field="*{irl_name}">
@@ -71,6 +75,7 @@
 					</form>
 					<p>Click <a th:href="@{/update-pw}">here</a> to update your password.</p>
 				</div>
+				<!---------------------------------about me------------------------------------>
 				<div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
 					<h2>About Me</h2>
 					<form th:action="@{/update}" th:method="post" th:object="${user}">
@@ -85,6 +90,7 @@
 						<button type="submit">Submit</button>
 					</form>
 				</div>
+				<!-----------------------------------my hosted sessions------------------------------------>
 				<div aria-labelledby="session-tab" class="tab-pane active" id="my-sessions" role="tabpanel">
 					<h2>My Hosted Sessions</h2>
 					<!--iterates through sessions in which the user is the host-->
@@ -94,11 +100,11 @@
 								<div class="card-body">
 									Game: <span th:text="${gameSessions.gameSessionName}"></span>
 									<br>
-									<a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gameSessions.getId()})}">
-										<h5 th:text="${gameSessions.getGameSessionTitle()}" class="title card-title"></h5></a>
+									<a class="title card-title"
+									   th:href="@{/gamesessions/{id} (id = ${gameSessions.getId()})}">
+										<h5 class="title card-title"
+											th:text="${gameSessions.getGameSessionTitle()}"></h5></a>
 									<br>
-									<!--need to figure out how to do x/y
-									with x = players joined and y = player limit-->
 									<span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
 									<span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">- This Game Session is full.</span>
 									<br>
@@ -114,21 +120,22 @@
 					<h2>My Joined Sessions</h2>
 					<!--iterates through sessions in which the user is the host-->
 					<div th:each="gameSessions : ${userJoinedList}">
-						<!--						<div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${gameSessions.getUsers()}">-->
 						<div class="card">
 							<div class="card-body">
 								Game: <span th:text="${gameSessions.gameSessionName}"></span>
 								<br>
-								<a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gameSessions.getId()})}">
-									<h5 th:text="${gameSessions.getGameSessionTitle()}" class="title card-title"></h5></a>
+								<a class="title card-title"
+								   th:href="@{/gamesessions/{id} (id = ${gameSessions.getId()})}">
+									<h5 class="title card-title" th:text="${gameSessions.getGameSessionTitle()}"></h5>
+								</a>
 								<br>
-								<!--need to figure out how to do x/y
-								with x = players joined and y = player limit-->
 								<span th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></span>
 								<span th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}"> - This Game Session is full.</span>
 								<br>
 								Description: <span th:text="${gameSessions.gameSessionDescription}"></span>
-								<a class="title card-title" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}"><p th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().getUsername()}" class="card-text"></p></a>
+								<a class="title card-title"
+								   th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}"><p class="card-text"
+								   th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().getUsername()}"></p></a>
 							</div>
 						</div>
 					</div>
