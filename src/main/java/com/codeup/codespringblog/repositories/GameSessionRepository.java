@@ -13,7 +13,4 @@ public interface GameSessionRepository extends JpaRepository<GameSession, Long> 
     @Query("from GameSession a where a.gameSessionTitle LIKE  %:term% OR a.gameSessionDescription LIKE  %:term% OR a.gameSessionName like %:term%")
     List<GameSession> searchByTitleLike(@Param("term") String term);
 
-
-//    @Query("from Note a where a.title LIKE  %:term% OR a.body LIKE  %:term% OR a.category like %:term%")
-//    List<Note> searchByTitleLike(@Param("term") String term);
 }
