@@ -1,50 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="partials :: head">
-  <meta charset="UTF-8">
-  <title>Create a Session</title>
+	<meta charset="UTF-8">
+	<title>Create a Session</title>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
+
 <div class="container">
-  <h1>Create your Game Session</h1>
-  <div class="card bg-opacity-75 text-white bg-dark fw-bold border-info">
-    <div class="card-body">
+	<h1>Create your Game Session</h1>
+	<div class="card bg-opacity-75 text-white bg-dark fw-bold border-info">
+		<div class="card-body">
 
-      <input id="upc" type="hidden" th:value="*{upc}">
-      <form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
-        <div class="col-md-6">
-          <label for="gameSessionName" class="form-label">Game Name</label>
-          <input type="text" name="gameSessionName" th:field="*{gameSessionName}" class="form-control" id="gameSessionName" placeholder="Name of the game">
-        </div>
-        <div class="col-md-6">
-          <label for="gameSessionTitle" class="form-label">Session Title</label>
-          <input type="text" name="gameSessionTitle" th:field="*{gameSessionTitle}" class="form-control" id="gameSessionTitle">
-        </div>
-        <div class="col-md-2">
-          <label for="playerLimit" class="form-label">Player Limit</label>
-          <input type="text" name="playerLimit" th:field="*{playerLimit}" class="form-control" id="playerLimit">
-        </div>
-        <div class="col-md-4">
-          <label for="gameDuration" class="form-label">Duration</label>
-          <input type="text" name="gameDuration" th:field="*{gameDuration}" class="form-control" id="gameDuration">
-        </div>
-        <div class="col-12">
-          <label for="gameSessionDescription" class="form-label">Description</label>
-          <textarea class="form-control" name="gameSessionDescription" th:field="*{gameSessionDescription}" id="gameSessionDescription" style="height: 100px"></textarea>
-        </div>
-        <input type="hidden" th:field="*{UPC}" id="upcField">
-        <div class="col-12">
-          <button type="submit" class="btn btn-success">Submit Game Session</button>
-        </div>
-        <div id="gameImage"></div>
-      </form>
-    </div>
-  </div>
+			<input id="upc" th:value="*{upc}" type="hidden">
+			<form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
+				<div class="col-md-6">
+					<label class="form-label" for="gameSessionName">Game Name</label>
+					<input class="form-control" id="gameSessionName" name="gameSessionName" placeholder="Name of the game"
+						   th:field="*{gameSessionName}" type="text">
+				</div>
+				<div class="col-md-6">
+					<label class="form-label" for="gameSessionTitle">Session Title</label>
+					<input class="form-control" id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
+				</div>
+				<div class="col-md-2">
+					<label class="form-label" for="playerLimit">Player Limit</label>
+					<input class="form-control" id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="text">
+				</div>
+				<div class="col-md-4">
+					<label class="form-label" for="gameDuration">Duration</label>
+					<input class="form-control" id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="text">
+				</div>
+				<div class="col-12">
+					<label class="form-label" for="gameSessionDescription">Description</label>
+					<textarea class="form-control" id="gameSessionDescription" name="gameSessionDescription"
+							  style="height: 100px" th:field="*{gameSessionDescription}"></textarea>
+				</div>
+				<input id="upcField" th:field="*{UPC}" type="hidden">
+				<div class="col-12">
+					<button class="btn btn-success" type="submit">Submit Game Session</button>
+				</div>
+				<div id="gameImage"></div>
+			</form>
+		</div>
+	</div>
 </div>
-<div th:insert="partials :: boot-scripts"></div>
 
+<div th:insert="partials :: boot-scripts"></div>
 <script th:src="@{/js/api_keys.js}"></script>
 <script th:src="@{/js/bga.js}"></script>
 </body>

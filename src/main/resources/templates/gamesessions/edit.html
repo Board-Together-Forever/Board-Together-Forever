@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="partials :: head">
-  <meta charset="UTF-8">
-  <title>Edit Game Session</title>
+	<meta charset="UTF-8">
+	<title>Edit Game Session</title>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <form th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
-  <div>Game: <span th:text="${gamesession.gameSessionName}"></span></div>
-  <input type="hidden" name="gameSessionName" th:field="*{gameSessionName}" id="gameSessionName">
-  <div th:if="${gamesession.gameSessionName.isEmpty()}">Couldn't find game</div>
-  <div>Max Players: <span th:text="${gamesession.playerLimit}"></span></div>
-  <input type="hidden" name="playerLimit" th:field="*{playerLimit}" id="playerLimit">
-  <div>Duration: <span th:text="${gamesession.gameDuration}"></span></div>
-  <input type="hidden" name="gameDuration" th:field="*{gameDuration}" id="gameDuration">
-  <label for="gameSessionTitle">Session Title:</label>
-  <input type="text" name="gameSessionTitle" th:field="*{gameSessionTitle}" id="gameSessionTitle">
-  <label for="gameSessionDescription">Description:</label><br>
-  <textarea name="gameSessionDescription" id="gameSessionDescription" th:field="*{gameSessionDescription}" cols="30" rows="10"></textarea>
-  <input type="hidden" th:field="*{id}">
-  <input type="hidden" th:field="*{UPC}" id="upcField">
-<!--  -->
+	<div>Game: <span th:text="${gamesession.gameSessionName}"></span></div>
+	<input id="gameSessionName" name="gameSessionName" th:field="*{gameSessionName}" type="hidden">
+	<div th:if="${gamesession.gameSessionName.isEmpty()}">Couldn't find game</div>
+	<div>Max Players: <span th:text="${gamesession.playerLimit}"></span></div>
+	<input id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="hidden">
+	<div>Duration: <span th:text="${gamesession.gameDuration}"></span></div>
+	<input id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="hidden">
+	<label for="gameSessionTitle">Session Title:</label>
+	<input id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
+	<label for="gameSessionDescription">Description:</label><br>
+	<textarea cols="30" id="gameSessionDescription" name="gameSessionDescription" rows="10" th:field="*{gameSessionDescription}"></textarea>
+	<input th:field="*{id}" type="hidden">
+	<input id="upcField" th:field="*{UPC}" type="hidden">
 
-  <button type="submit">Submit Game Session</button>
-<!--  HAVING ID HIDDEN ALLOWS THE ID TO BE RETAINED. IF PUT INTO CREATE, ALLOWS CREATE TO FUNCTION AS BOTH-->
-<!--  HAVING ID HIDDEN IN CREATE IS OK BC ID IS NOT YET ASSIGNED, THEREFOR IT IS 0 AND WILL AUTO INCREMENT A NEW ONE-->
+	<button type="submit">Submit Game Session</button>
 </form>
 
-<!-- BUTTON BELOW USED TO ALLOW CHANGING OF GAME TYPE, NOT CURRENTLY IN USE. ACTIVATE CONTROLLERS TO USE-->
-<!--<a th:href="@{/gamesessions/find/{id} (id = ${id})}"><button id="editButton">Edit Game</button></a>-->
 <div id="gameImage"></div>
-<div th:insert="partials :: boot-scripts"></div>
 
+<div th:insert="partials :: boot-scripts"></div>
 <script th:src="@{/js/api_keys.js}"></script>
 <script th:src="@{/js/bga.js}"></script>
 </body>

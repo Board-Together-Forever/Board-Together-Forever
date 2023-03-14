@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="partials :: head">
-  <meta charset="UTF-8">
-  <title>Current Players</title>
+	<meta charset="UTF-8">
+	<title>Current Players</title>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <h1 th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></h1>
 <h3 th:if="${gamesession.getUsers().size()} == ${gamesession.playerLimit}">Game Session Full</h3>
-<h3 th:if="${gamesession.getUsers().size()} != ${gamesession.playerLimit} and ${remainingSpots} > 1" th:text="'You still have room for ' + ${remainingSpots} + ' players'"></h3>
-<h3 th:if="${gamesession.getUsers().size()} != ${gamesession.playerLimit} and ${remainingSpots} == 1" th:text="'You still have room for ' + ${remainingSpots} + ' player'"></h3>
+<h3 th:if="${gamesession.getUsers().size()} != ${gamesession.playerLimit} and ${remainingSpots} > 1"
+	th:text="'You still have room for ' + ${remainingSpots} + ' players'"></h3>
+<h3 th:if="${gamesession.getUsers().size()} != ${gamesession.playerLimit} and ${remainingSpots} == 1"
+	th:text="'You still have room for ' + ${remainingSpots} + ' player'"></h3>
 
 <h1>Player List:</h1>
 <div th:each="user : ${gamesession.getUsers()}">
-  <!--        <p th:text="${post.title}" />-->
-  <div th:if="${user.getId()} != ${gamesession.getGameSessionHost().getId()}">
-  <span th:text="${user.getUsername()}"></span>
-  <p th:text="${user.email}" />
-  <a th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()} , id = ${gamesession.getId()})}"><span th:text="'Remove ' + ${user.getUsername()} + ' from game'"></span></a>
-  </div>
+	<div th:if="${user.getId()} != ${gamesession.getGameSessionHost().getId()}">
+		<span th:text="${user.getUsername()}"></span>
+		<p th:text="${user.email}"/>
+		<a th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()} , id = ${gamesession.getId()})}">
+			<span th:text="'Remove ' + ${user.getUsername()} + ' from game'"></span>
+		</a>
+	</div>
 </div>
 
 <div th:insert="partials :: boot-scripts"></div>
-
 <script th:src="@{/js/api_keys.js}"></script>
 <script th:src="@{/js/bga.js}"></script>
 </body>
