@@ -4,86 +4,88 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body class="background">
 <nav th:replace="partials :: navbar"></nav>
 <div class="container">
+<!--    Opening Welcome and Logo-->
         <div id="indexpage" class="container d-flex align-items-center flex-column">
             <h1 class="d-flex">Welcome to</h1>
             <img th:src="@{/gameIMG/Collage_2023-03-03_16_39_26.jpg}" width="400" class="d-flex border border-dark img-fluid" alt="logo">
         </div>
     <br>
-    <div sec:authorize="!isAuthenticated()" class="text-center">
-        <a href="/login" class="nav-link text-white title" aria-current="page">Click here to login</a>
-        <a href="/register" class="link-warning" aria-current="page">Don't have an account? Register here!</a>
+<!--    Login or Register-->
+    <div class="card w-100 bg-opacity-75 text-white bg-dark fw-bold border-danger">
+        <div class="card-body">
+            <div sec:authorize="!isAuthenticated()" class="text-center">
+                <a href="/login" class="nav-link text-white title" aria-current="page">Click here to login</a>
+                <a href="/register" class="link-warning" aria-current="page">Don't have an account? Register here!</a>
+            </div>
+        </div>
     </div>
-    <div class="container d-flex align-items-center flex-column">
-        <h1 class="d-flex">Newest additions to BoardTogether!</h1>
-    </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div th:if="${gameSessionsList.size()} >= 1" class="col">
-                <div class="card h-100 mb-3" style="max-width: 400px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-<!--                            <img src="" class="img-fluid rounded-start" alt="...">-->
+<!--    Most recently added Game Sessions-->
+    <div class="container">
+        <div class="container d-flex align-items-center flex-column">
+            <h1 class="d-flex">Newest additions to BoardTogether!</h1>
+        </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div th:if="${gameSessionsList.size()} >= 1" class="col">
+                    <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+                        <input id="upc" type="hidden" th:value="*{gameSessionsList.get(0).getUPC()}">
+                        <div class="bg-white" id="gameImage"></div>
+                        <div class="card-body">
+                            <a class="title text-white card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(0).getId()})}">
+                                <h5 th:text="${gameSessionsList.get(0).gameSessionTitle}" class="title card-title"></h5></a>
+                            <p th:text="${gameSessionsList.get(0).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
+                            <p th:text="${gameSessionsList.get(0).gameSessionDescription}" class="card-text"></p>
+                            <p th:text="${gameSessionsList.get(0).getUsers().size()} + '/' + ${gameSessionsList.get(0).playerLimit} + ' Players'" class="card-text"></p>
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(0).getId()})}">
-                                    <h5 th:text="${gameSessionsList.get(0).gameSessionTitle}" class="title card-title"></h5></a>
-                                <p th:text="${gameSessionsList.get(0).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
-                                <p th:text="${gameSessionsList.get(0).gameSessionDescription}" class="card-text"></p>
-                                <p th:text="${gameSessionsList.get(0).getUsers().size()} + '/' + ${gameSessionsList.get(0).playerLimit} + ' Players'" class="card-text"></p>
-                                <a class="title card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(0).getGameSessionHost().getId()})}"><p th:text="'Game Session Host: ' + ${gameSessionsList.get(0).getGameSessionHost().username}" class="card-text"></p></a>
-                                <input id="upc" type="hidden" th:value="*{gameSessionsList.get(0).getUPC()}">
-                                <div id="gameImage"></div>
-                            </div>
+                        <div class="card-footer bg-success">
+                            <a class="title text-white card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(0).getGameSessionHost().getId()})}">
+                                <small th:text="'Game Session Host: ' + ${gameSessionsList.get(0).getGameSessionHost().username}" class="card-text"></small></a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div th:if="${gameSessionsList.size()} >= 2" class="col">
-                <div class="card h-100 mb-3" style="max-width: 400px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-<!--                            <img src="" class="img-fluid rounded-start" alt="...">-->
+
+                <div th:if="${gameSessionsList.size()} >= 2" class="col">
+                    <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-warning">
+                        <input id="upc2" type="hidden" th:value="*{gameSessionsList.get(1).getUPC()}">
+                        <div class="bg-white" id="gameImage2"></div>
+                        <div class="card-body">
+                            <a class="title text-white card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(1).getId()})}">
+                                <h5 th:text="${gameSessionsList.get(1).gameSessionTitle}" class="title card-title"></h5></a>
+                            <p th:text="${gameSessionsList.get(1).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
+                            <p th:text="${gameSessionsList.get(1).gameSessionDescription}" class="card-text"></p>
+                            <p th:text="${gameSessionsList.get(1).getUsers().size()} + '/' + ${gameSessionsList.get(1).playerLimit} + ' Players'" class="card-text"></p>
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(1).getId()})}">
-                                    <h5 th:text="${gameSessionsList.get(1).gameSessionTitle}" class="title card-title"></h5></a>
-                                <p th:text="${gameSessionsList.get(1).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
-                                <p th:text="${gameSessionsList.get(1).gameSessionDescription}" class="card-text"></p>
-                                <p th:text="${gameSessionsList.get(1).getUsers().size()} + '/' + ${gameSessionsList.get(1).playerLimit} + ' Players'" class="card-text"></p>
-                                <a class="title card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(1).getGameSessionHost().getId()})}"><p th:text="'Game Session Host: ' + ${gameSessionsList.get(1).getGameSessionHost().username}" class="card-text"></p></a>
-                                <input id="upc2" type="hidden" th:value="*{gameSessionsList.get(1).getUPC()}">
-                                <div id="gameImage2"></div>
-                            </div>
+                        <div class="card-footer bg-warning">
+                            <a class="title text-white card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(1).getGameSessionHost().getId()})}">
+                                <small th:text="'Game Session Host: ' + ${gameSessionsList.get(1).getGameSessionHost().username}" class="card-text"></small></a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div th:if="${gameSessionsList.size()} >= 3" class="col">
-                <div class="card h-100 mb-3" style="max-width: 400px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-<!--                            <img src="" class="img-fluid rounded-start" alt="...">-->
+
+                <div th:if="${gameSessionsList.size()} >= 3" class="col">
+                    <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-info">
+                        <input id="upc3" type="hidden" th:value="*{gameSessionsList.get(2).getUPC()}">
+                        <div class="bg-white" id="gameImage3"></div>
+                        <div class="card-body">
+                            <a class="title text-white card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(2).getId()})}">
+                                <h5 th:text="${gameSessionsList.get(2).gameSessionTitle}" class="title card-title"></h5></a>
+                            <p th:text="${gameSessionsList.get(2).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
+                            <p th:text="${gameSessionsList.get(2).gameSessionDescription}" class="card-text"></p>
+                            <p th:text="${gameSessionsList.get(2).getUsers().size()} + '/' + ${gameSessionsList.get(2).playerLimit} + ' Players'" class="card-text"></p>
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <a class="title card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(2).getId()})}">
-                                    <h5 th:text="${gameSessionsList.get(2).gameSessionTitle}" class="title card-title"></h5></a>
-                                <p th:text="${gameSessionsList.get(2).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
-                                <p th:text="${gameSessionsList.get(2).gameSessionDescription}" class="card-text"></p>
-                                <p th:text="${gameSessionsList.get(2).getUsers().size()} + '/' + ${gameSessionsList.get(2).playerLimit} + ' Players'" class="card-text"></p>
-                                <a class="title card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(2).getGameSessionHost().getId()})}"><p th:text="'Game Session Host: ' + ${gameSessionsList.get(2).getGameSessionHost().username}" class="card-text"></p></a>
-                                <input id="upc3" type="hidden" th:value="*{gameSessionsList.get(2).getUPC()}">
-                                <div id="gameImage3"></div>
-                            </div>
+                        <div class="card-footer bg-info">
+                            <a class="title text-white card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(2).getGameSessionHost().getId()})}">
+                                <small th:text="'Game Session Host: ' + ${gameSessionsList.get(2).getGameSessionHost().username}" class="card-text"></small></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <br>
     <br>
     <br>
