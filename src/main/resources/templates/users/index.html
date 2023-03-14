@@ -7,19 +7,28 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
-<h1 id="indexHeader">Players List</h1>
-<div th:each="user : ${userList}">
-    <a th:href="@{/aboutuser/{id} (id = ${user.id})}">
-        <span th:text="'Username: ' + ${user.username}">
-        </span>
-
-    </a>
-    <p th:text="'Total Active Sessions: ' + ${user.getJoinedSessions().size()}"></p>
-
-    <br>
+<h1 class="pb-3" id="indexHeader">Players List</h1>
+<div class="container ms-5 me-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div th:each="user : ${userList}">
+            <div class="col">
+                <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+                    <div class="card-header bg-success">
+                        <a class="text-white text-center" th:href="@{/aboutuser/{id} (id = ${user.id})}"><h5
+                                th:text="'Username: ' + ${user.username}"></h5></a>
+                    </div>
+                    <p class="card-text text-center"
+                       th:text="'Total Active Sessions: ' + ${user.getJoinedSessions().size()}"></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <h1 th:if="${userList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any players...'"></h1>
-<h1 th:if="${userList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any players that matched with ' + ${query}"></h1>
+<h1 th:if="${userList.size()} == 0 and ${query.length()} > 0"
+    th:text="'Sorry, we could not find any players that matched with ' + ${query}"></h1>
 <div th:insert="partials :: boot-scripts"></div>
 </body>
 
