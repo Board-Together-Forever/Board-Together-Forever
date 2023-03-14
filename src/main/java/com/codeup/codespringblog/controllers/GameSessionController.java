@@ -77,7 +77,7 @@ public class GameSessionController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("upc", upc);
         model.addAttribute("gamesession", new GameSession());
-        return "gamesessions/create2";
+        return "gamesessions/create";
     }
 
 // POST MAPPING CREATES NEW GAME OR SAVES EDITED GAME WITH EXISTING ID
