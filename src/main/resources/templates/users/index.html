@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="partials :: head">
     <meta charset="UTF-8">
@@ -16,10 +16,10 @@
     </a>
     <p th:text="'Total Active Sessions: ' + ${user.getJoinedSessions().size()}"></p>
 
-    <hr>
+    <br>
 </div>
-<h1 th:if="${userList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any players...'" ></h1>
-<h1 th:if="${userList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any players that matched with ' + ${query}" ></h1>
+<h1 th:if="${userList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any players...'"></h1>
+<h1 th:if="${userList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any players that matched with ' + ${query}"></h1>
 <div th:insert="partials :: boot-scripts"></div>
 </body>
 
