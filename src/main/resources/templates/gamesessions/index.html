@@ -3,52 +3,46 @@
 <head th:replace="~{partials :: head ('Game Sessions')}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
-
-<div class="container w-75">
-	<h1 id="indexHeader">Game Sessions</h1>
-	<h5 th:if="${gameSessionsList.size() == 0} and ${query.length()} == 0"
-		th:text="'Sorry, we could not find any game sessions...'"></h5>
-	<h5 th:if="${gameSessionsList.size()} == 0 and ${query.length()} > 0"
-		th:text="'Sorry, we could not find any game sessions that matched with ' + ${query}"></h5>
-<div class="row">
-	<a class="btn btn-success offset-1 col-4 mainButton mt-2" href="/gamesessions" id="showAllGames">Show All Games</a>
-	<a class="btn btn-success offset-2 col-4 mainButton mt-2" href="/gamesessions/search/notfull" id="notFull">Games with
-		Vacancies</a>
-	<a class="btn btn-success offset-3 col-6 mainButton createButton mt-3" href="/gamesessions/create" id="createAPost">Create a Game Session</a>
-</div>
-
+	<nav th:replace="partials :: navbar"></nav>
 	<br>
-	<div class="row row-cols-1 row-cols-md-2 g-4">
-		<div th:each="gamesession : ${gameSessionsList}">
-			<div class="col">
-				<div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
-					<div class="card-header bg-success text-center">
-						<a class="text-white" th:href="@{/gamesessions/{id} (id = ${gamesession.id})}">
-							<h5 th:text="${gamesession.gameSessionTitle}"></h5>
-						</a>
-					</div>
-					<div class="card-body text-center">
-						<h5 class="card-title" th:text="'Game: ' + ${gamesession.gameSessionName}"></h5>
-						<p class="card-text"
-						   th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></p>
-						<p class="card-text" th:if="${gamesession.playerLimit} == ${gamesession.getUsers().size()}">Game
-							Session is full.</p>
-						<p class="card-text" th:text="'Description: ' + ${gamesession.gameSessionDescription}"/>
-						<a class="card-text" th:href="@{/aboutuser/{id} (id = ${gamesession.getGameSessionHost().getId()})}">
-							<p class="card-text" th:text="'Game Session Host: ' + ${gamesession.getGameSessionHost().username}"></p>
-						</a>
+	<div class="container">
+		<h1 id="indexHeader">Game Sessions</h1>
+		<div class="container w-75">
+			<h5 th:if="${gameSessionsList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any game sessions...'"></h5>
+			<h5 th:if="${gameSessionsList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any game sessions that matched with ' + ${query}"></h5>
+			<div class="row">
+				<a class="btn btn-success offset-1 col-4 mainButton mt-2" href="/gamesessions" id="showAllGames">Show All Games</a>
+				<a class="btn btn-success offset-2 col-4 mainButton mt-2" href="/gamesessions/search/notfull" id="notFull">Games with Vacancies</a>
+				<a class="btn btn-success offset-3 col-6 mainButton createButton mt-3" href="/gamesessions/create" id="createAPost">Create a Game Session</a>
+			</div>
+		</div>
+		<br>
+		<div class="row row-cols-1 row-cols-md-2 g-4">
+			<div th:each="gamesession : ${gameSessionsList}">
+				<div class="col">
+					<div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+						<div class="card-header bg-success text-center">
+							<a class="text-white text-decoration-none" th:href="@{/gamesessions/{id} (id = ${gamesession.id})}">
+								<h5 th:text="${gamesession.gameSessionTitle}"></h5>
+							</a>
+						</div>
+						<div class="card-body text-center">
+							<h5 class="card-title" th:text="'Game: ' + ${gamesession.gameSessionName}"></h5>
+							<p class="card-text" th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></p>
+							<p class="card-text" th:if="${gamesession.playerLimit} == ${gamesession.getUsers().size()}">Game Session is full.</p>
+							<p class="card-text" th:text="'Description: ' + ${gamesession.gameSessionDescription}"/>
+							<a class="card-text" th:href="@{/aboutuser/{id} (id = ${gamesession.getGameSessionHost().getId()})}">
+								<h5 class="card-text text-white text-decoration-none" th:text="'Game Session Host: ' + ${gamesession.getGameSessionHost().username}"></h5>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<br>
 	</div>
 	<br>
-</div>
-<!--<br>-->
-<!--<br>-->
-<!--<br>-->
-<!--<br>-->
+
 <div th:insert="partials :: boot-scripts"></div>
 </body>
 

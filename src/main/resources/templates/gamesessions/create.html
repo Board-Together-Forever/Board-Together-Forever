@@ -4,46 +4,45 @@
 <head th:replace="~{partials :: head ('Create Game Session')}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
-
-<div class="container w-75">
-	<h1>Create your Game Session</h1>
-	<div class="card bg-opacity-75 text-white bg-dark fw-bold border-info">
-		<div class="card-body ">
-
-			<input id="upc" th:value="*{upc}" type="hidden">
-			<form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
-				<div class="col-md-6">
-					<label class="form-label text-warning" for="gameSessionName">Game Name</label>
-					<input class="form-control" id="gameSessionName" name="gameSessionName" placeholder="Name of the game"
-						   th:field="*{gameSessionName}" type="text">
-				</div>
-				<div class="col-md-6">
-					<label class="form-label text-warning" for="gameSessionTitle">Session Title</label>
-					<input class="form-control" id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
-				</div>
-				<div class="col-md-2">
-					<label class="form-label text-warning" for="playerLimit">Player Limit</label>
-					<input class="form-control" id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="text">
-				</div>
-				<div class="col-md-4">
-					<label class="form-label text-warning" for="gameDuration">Duration</label>
-					<input class="form-control" id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="text">
-				</div>
-				<div class="col-12">
-					<label class="form-label text-warning" for="gameSessionDescription">Description</label>
-					<textarea class="form-control" id="gameSessionDescription" name="gameSessionDescription"
-							  style="height: 100px" th:field="*{gameSessionDescription}"></textarea>
-				</div>
-				<input id="upcField" th:field="*{UPC}" type="hidden">
-				<div class="col-12">
-					<button class="btn btn-warning" type="submit">Submit Game Session</button>
-				</div>
-				<div id="gameImage"></div>
-			</form>
+	<nav th:replace="partials :: navbar"></nav>
+	<br>
+	<div class="container w-75">
+		<h1>Create your Game Session</h1>
+		<br>
+		<div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
+			<div class="card-body">
+				<input id="upc" th:value="*{upc}" type="hidden">
+				<form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
+					<div class="col-md-6">
+						<label class="form-label text-warning" for="gameSessionName">Game Name</label>
+						<input class="form-control" id="gameSessionName" name="gameSessionName" placeholder="Name of the game" th:field="*{gameSessionName}" type="text">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label text-warning" for="gameSessionTitle">Session Title</label>
+						<input class="form-control" id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
+					</div>
+					<div class="col-md-2">
+						<label class="form-label text-warning" for="playerLimit">Player Limit</label>
+						<input class="form-control" id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="text">
+					</div>
+					<div class="col-md-4">
+						<label class="form-label text-warning" for="gameDuration">Duration</label>
+						<input class="form-control" id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="text">
+					</div>
+					<div class="col-12">
+						<label class="form-label text-warning" for="gameSessionDescription">Description</label>
+						<textarea class="form-control" id="gameSessionDescription" name="gameSessionDescription" style="height: 100px" th:field="*{gameSessionDescription}"></textarea>
+					</div>
+					<input id="upcField" th:field="*{UPC}" type="hidden">
+					<div class="col-12">
+						<button class="btn btn-warning" type="submit">Submit Game Session</button>
+					</div>
+					<div id="gameImage"></div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
+	<br>
 
 <div th:insert="partials :: boot-scripts"></div>
 <script th:src="@{/js/api_keys.js}"></script>

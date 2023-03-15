@@ -4,9 +4,10 @@
 </head>
 <body class="main-container main-bg">
 <nav th:replace="partials :: navbar"></nav>
+<br>
 <main class="container">
     <h1 th:text="|Welcome, ${user.getUsername()}!|"></h1>
-
+<br>
     <div class="tabs">
         <div class="container mt-3 w-75">
             <!-------nav tabs------->
@@ -27,145 +28,149 @@
                     <h1 class="text-center">Account</h1>
                     <div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
                         <div class="card-body">
-                        <!-----------------------username form--------------------------->
-                    <form th:action="@{/update}" th:method="post" th:object="${user}">
-                        <div class="mb-3">
-                        <label class="form-label" for="username">Username: </label>
-                        <input class="form-control" id="username" name="username" th:field="*{username}">
-                        <input name="id" th:field="*{id}" type="hidden">
-                        <input name="id" th:field="*{email}" type="hidden">
-                        <input name="id" th:field="*{irl_name}" type="hidden">
-                        <input name="username" th:field="*{aboutMe}" type="hidden">
-                        <input name="password" th:field="*{password}" type="hidden">
-                        <input name="password" th:field="*{primary_game}" type="hidden">
-                        <button class="btn btn-warning mt-2" type="submit">Update Username</button>
-                        </div>
-                    </form>
-                    <!-------------------------email form---------------------------->
-                    <form th:action="@{/update}" th:method="post" th:object="${user}">
-                        <label class="form-label" for="email">Email: </label>
-                        <input class="form-control" id="email" name="email" th:field="*{email}">
-                        <input name="id" th:field="*{id}" type="hidden">
-                        <input name="id" th:field="*{username}" type="hidden">
-                        <input name="id" th:field="*{irl_name}" type="hidden">
-                        <input name="username" th:field="*{aboutMe}" type="hidden">
-                        <input name="password" th:field="*{password}" type="hidden">
-                        <input name="password" th:field="*{primary_game}" type="hidden">
-                        <button class="btn btn-warning mt-2" type="submit">Update Email</button>
-                    </form>
-                    <!----------------------primary game form------------------------>
-                    <form th:action="@{/update}" th:method="post" th:object="${user}">
-                        <label class="form-label" for="primary_game">Primary Game: </label>
-                        <input class="form-control" id="primary_game" name="primary_game" th:field="*{primary_game}">
-                        <input name="id" th:field="*{id}" type="hidden">
-                        <input name="id" th:field="*{email}" type="hidden">
-                        <input name="id" th:field="*{irl_name}" type="hidden">
-                        <input name="username" th:field="*{aboutMe}" type="hidden">
-                        <input name="password" th:field="*{password}" type="hidden">
-                        <input name="password" th:field="*{username}" type="hidden">
-                        <button class="btn btn-warning mt-2" type="submit">Update Primary Game</button>
-                    </form>
-                    <!---------------------irl name form----------------------------->
-                    <form th:action="@{/update}" th:method="post" th:object="${user}">
-                        <label class="form-label" for="irl_name">IRL Name: </label>
-                        <input class="form-control" id="irl_name" name="irl_name" th:field="*{irl_name}">
-                        <input name="id" th:field="*{id}" type="hidden">
-                        <input name="id" th:field="*{email}" type="hidden">
-                        <input name="id" th:field="*{username}" type="hidden">
-                        <input name="username" th:field="*{aboutMe}" type="hidden">
-                        <input name="password" th:field="*{password}" type="hidden">
-                        <input name="password" th:field="*{primary_game}" type="hidden">
-                        <button class="btn btn-warning mt-2 mb-2" type="submit">Update IRL Name</button>
-                    </form>
-                    <a class="link-warning" th:href="@{/update-pw}">Click here to update your password.</a>
-                </div></div>
+                            <!-----------------------username form--------------------------->
+                            <form th:action="@{/update}" th:method="post" th:object="${user}">
+                                <div class="mb-3">
+                                    <label class="form-label" for="username">Username: </label>
+                                    <input class="form-control" id="username" name="username" th:field="*{username}">
+                                    <input name="id" th:field="*{id}" type="hidden">
+                                    <input name="id" th:field="*{email}" type="hidden">
+                                    <input name="id" th:field="*{irl_name}" type="hidden">
+                                    <input name="username" th:field="*{aboutMe}" type="hidden">
+                                    <input name="password" th:field="*{password}" type="hidden">
+                                    <input name="password" th:field="*{primary_game}" type="hidden">
+                                    <button class="btn btn-warning mt-2" type="submit">Update Username</button>
+                                </div>
+                            </form>
+                            <!-------------------------email form---------------------------->
+                            <form th:action="@{/update}" th:method="post" th:object="${user}">
+                                <label class="form-label" for="email">Email: </label>
+                                <input class="form-control" id="email" name="email" th:field="*{email}">
+                                <input name="id" th:field="*{id}" type="hidden">
+                                <input name="id" th:field="*{username}" type="hidden">
+                                <input name="id" th:field="*{irl_name}" type="hidden">
+                                <input name="username" th:field="*{aboutMe}" type="hidden">
+                                <input name="password" th:field="*{password}" type="hidden">
+                                <input name="password" th:field="*{primary_game}" type="hidden">
+                                <button class="btn btn-warning mt-2" type="submit">Update Email</button>
+                            </form>
+                            <!----------------------primary game form------------------------>
+                            <form th:action="@{/update}" th:method="post" th:object="${user}">
+                                <label class="form-label" for="primary_game">Primary Game: </label>
+                                <input class="form-control" id="primary_game" name="primary_game" th:field="*{primary_game}">
+                                <input name="id" th:field="*{id}" type="hidden">
+                                <input name="id" th:field="*{email}" type="hidden">
+                                <input name="id" th:field="*{irl_name}" type="hidden">
+                                <input name="username" th:field="*{aboutMe}" type="hidden">
+                                <input name="password" th:field="*{password}" type="hidden">
+                                <input name="password" th:field="*{username}" type="hidden">
+                                <button class="btn btn-warning mt-2" type="submit">Update Primary Game</button>
+                            </form>
+                            <!---------------------irl name form----------------------------->
+                            <form th:action="@{/update}" th:method="post" th:object="${user}">
+                                <label class="form-label" for="irl_name">IRL Name: </label>
+                                <input class="form-control" id="irl_name" name="irl_name" th:field="*{irl_name}">
+                                <input name="id" th:field="*{id}" type="hidden">
+                                <input name="id" th:field="*{email}" type="hidden">
+                                <input name="id" th:field="*{username}" type="hidden">
+                                <input name="username" th:field="*{aboutMe}" type="hidden">
+                                <input name="password" th:field="*{password}" type="hidden">
+                                <input name="password" th:field="*{primary_game}" type="hidden">
+                                <button class="btn btn-warning mt-2 mb-2" type="submit">Update IRL Name</button>
+                            </form>
+                            <a class="link-warning" th:href="@{/update-pw}">Click here to update your password.</a>
+                        </div></div>
                 </div>
                 <!---------------------------------about me------------------------------------>
                 <div aria-labelledby="about-tab" class="tab-pane" id="about-me" role="tabpanel">
                     <h1 class="text-center">About Me</h1>
                     <div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
                         <div class="card-body">
-                    <form th:action="@{/update}" th:method="post" th:object="${user}">
-                        <label class="form-label text-warning text-center" for="aboutMe">EVERY player is unique. Tell other players about yourself! What kind of player are you? Are you a Monopoly Mogul? Or are you a master of none and just for fun?</label>
-                        <textarea class="form-control text-center" cols="50" id="aboutMe" name="aboutMe" rows="4" th:field="*{aboutMe}"></textarea>
-                        <input name="id" th:field="*{id}" type="hidden">
-                        <input name="id" th:field="*{email}" type="hidden">
-                        <input name="id" th:field="*{irl_name}" type="hidden">
-                        <input name="username" th:field="*{username}" type="hidden">
-                        <input name="password" th:field="*{password}" type="hidden">
-                        <input name="password" th:field="*{primary_game}" type="hidden">
-                        <button class="btn btn-warning mt-2" type="submit">Update About Me</button>
-                    </form>
+                            <form th:action="@{/update}" th:method="post" th:object="${user}">
+                                <label class="form-label text-warning text-center" for="aboutMe">EVERY player is unique. Tell other players about yourself! What kind of player are you? Are you a Monopoly Mogul? Or are you a master of none and just for fun?</label>
+                                <textarea class="form-control text-center" cols="50" id="aboutMe" name="aboutMe" rows="4" th:field="*{aboutMe}"></textarea>
+                                <input name="id" th:field="*{id}" type="hidden">
+                                <input name="id" th:field="*{email}" type="hidden">
+                                <input name="id" th:field="*{irl_name}" type="hidden">
+                                <input name="username" th:field="*{username}" type="hidden">
+                                <input name="password" th:field="*{password}" type="hidden">
+                                <input name="password" th:field="*{primary_game}" type="hidden">
+                                <button class="btn btn-warning mt-2" type="submit">Update About Me</button>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <!-----------------------------------my hosted sessions------------------------------------>
                 <div aria-labelledby="session-tab" class="tab-pane active" id="my-sessions" role="tabpanel">
                     <h1 th:if="${user.getGameSessions().size() > 0}" class="text-center">My Hosted Sessions</h1>
+                    <br>
                     <!--iterates through sessions in which the user is the host-->
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                         <div th:each="gameSessions : ${gameSessionsList}">
                             <div class="col text-center">
                                 <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
-									<div class="card-header bg-success">
-										<a class="text-white" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
-											<h5 th:text="${gameSessions.gameSessionTitle}"></h5>
-										</a>
-									</div>
-									<div class="card-body">
-										<h5 class="card-title" th:text="'Game: ' + ${gameSessions.gameSessionName}"></h5>
-										<p class="card-text"
-										   th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></p>
-										<p class="card-text" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">Game
-											Session is full.</p>
-										<p class="card-text" th:text="'Description: ' + ${gameSessions.gameSessionDescription}"/>
-										<a class="card-text" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
-											<p class="card-text" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-                                <!--if the user has no sessions in which they are the host, this pops up-->
-                                <div th:if="${user.getGameSessions().size() == 0}">
-                                    <h1 class="mt-3">You are not<br>hosting any sessions!</h1>
-                                </div>
-                                <h1 th:if="${userJoinedList.size() > 0}" class="text-center">My Joined Sessions</h1>
-                                <!--iterates through sessions in which the user is the host-->
-					<div class="row row-cols-1 row-cols-md-2 g-4">
-					<div th:each="gameSessions : ${userJoinedList}">
-						<div class="col text-center">
-							<div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
-								<div class="card-header bg-success">
-									<a class="text-white" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
-										<h5 th:text="${gameSessions.gameSessionTitle}"></h5>
-									</a>
-								</div>
-								<div class="card-body">
-									<h5 class="card-title" th:text="'Game: ' + ${gameSessions.gameSessionName}"></h5>
-									<p class="card-text"
-									   th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></p>
-									<p class="card-text" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">Game
-										Session is full.</p>
-									<p class="card-text" th:text="'Description: ' + ${gameSessions.gameSessionDescription}"/>
-									<a class="card-text" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
-										<p class="card-text" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					</div>
-                                <!--if the user has no sessions in which they are the host, this pops up-->
-                                <div th:if="${userJoinedList.size() == 0}">
-                                    <h1 class="mt-5">You have not<br>joined any sessions!</h1>
+                                    <div class="card-header bg-success">
+                                        <a class="text-white" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
+                                            <h5 th:text="${gameSessions.gameSessionTitle}"></h5>
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="'Game: ' + ${gameSessions.gameSessionName}"></h5>
+                                        <p class="card-text"
+                                           th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></p>
+                                        <p class="card-text" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">Game
+                                            Session is full.</p>
+                                        <p class="card-text" th:text="'Description: ' + ${gameSessions.gameSessionDescription}"/>
+                                        <a class="card-text" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
+                                            <p class="card-text text-white text-decoration-none" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--if the user has no sessions in which they are the host, this pops up-->
+                    <div th:if="${user.getGameSessions().size() == 0}">
+                        <h1 class="mt-3">You are not<br>hosting any sessions!</h1>
+                    </div>
+                    <hr>
+                    <h1 th:if="${userJoinedList.size() > 0}" class="text-center">My Joined Sessions</h1>
+                    <br>
+                    <!--iterates through sessions in which the user is the host-->
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div th:each="gameSessions : ${userJoinedList}">
+                            <div class="col text-center">
+                                <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+                                    <div class="card-header bg-success">
+                                        <a class="text-white" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
+                                            <h5 th:text="${gameSessions.gameSessionTitle}"></h5>
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="'Game: ' + ${gameSessions.gameSessionName}"></h5>
+                                        <p class="card-text"
+                                           th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></p>
+                                        <p class="card-text" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">Game
+                                            Session is full.</p>
+                                        <p class="card-text" th:text="'Description: ' + ${gameSessions.gameSessionDescription}"/>
+                                        <a class="card-text" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
+                                            <p class="card-text text-white text-decoration-none" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--if the user has no sessions in which they are the host, this pops up-->
+                    <div th:if="${userJoinedList.size() == 0}">
+                        <h1 class="mt-5">You have not<br>joined any sessions!</h1>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
 </main>
+<br>
 <div th:replace="partials :: boot-scripts"></div>
 </body>
 </html>
