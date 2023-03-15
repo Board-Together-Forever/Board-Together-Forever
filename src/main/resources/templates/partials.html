@@ -25,16 +25,20 @@
 <!--        Search bars for L, XL, and XXL Screens-->
 
         <form class="d-flex d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block" th:action="@{/gamesessions/search}" method="GET">
-            <label for="q"></label>
-            <input type="text" name="q" id="q" placeholder="Search Game Sessions">
-            <button class="btn btn-warning my-2 my-sm-0" type="submit">Find</button>
+            <div class="input-group">
+                <label for="q"></label>
+                <input type="text" class="form-control" name="q" id="q" placeholder="Search Game Sessions">
+                <button class="btn btn-warning" type="submit">Find</button>
+            </div>
         </form>
 
 
         <form class="d-flex d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block" th:action="@{/users/search}" method="GET">
-            <label for="qu"></label>
-            <input type="text" name="qu" id="qu" placeholder="Search for Players">
-            <button class="btn btn-warning my-2 my-sm-0" type="submit">Find</button>
+            <div class="input-group">
+                <label for="qu"></label>
+                <input type="text" class="form-control" name="qu" id="qu" placeholder="Search for Players">
+                <button class="btn btn-warning" type="submit">Find</button>
+            </div>
         </form>
 
 
@@ -53,55 +57,70 @@
             <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 <!--                Navigation links-->
-                <li class="nav-item">
-                    <a href="/gamesessions" class="nav-link text-white title" aria-current="page">Browse Sessions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white title" href="/gamesessions/search/notfull" id="notFull">Games with vacancies</a>
-                </li>
-                <li class="nav-item">
-                        <a href="/gamesessions/create" class="nav-link text-white title" aria-current="page">Create Game Session</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/aboutCreators" class="nav-link text-white title" aria-current="page">About the Creators</a>
-                </li>
+
 <!--                Login and register links-->
                 <li class="nav-item">
-                        <div sec:authorize="!isAuthenticated()" class="nav-item">
-                            <a href="/login" class="nav-link text-white title" aria-current="page">Login</a>
-                        </div>
-                </li>
-                <li class="nav-item">
-                    <div sec:authorize="!isAuthenticated()" class="nav-item">
-                        <a href="/register" class="nav-link text-white title" aria-current="page">Register</a>
+                    <div sec:authorize="!isAuthenticated()" class="my-2 d-flex">
+                        <a href="/login" class="link-warning fs-5 title text-decoration-none" aria-current="page">Login</a>
                     </div>
                 </li>
-<!--                Logout and profile links-->
                 <li class="nav-item">
-                        <div sec:authorize="isAuthenticated()" class="ms-auto d-flex">
-                            <a href="/profile" class="nav-link text-white title" aria-current="page">Profile</a>
+                    <div sec:authorize="!isAuthenticated()" class="my-2 d-flex">
+                        <a href="/register" class="link-warning fs-5 text-decoration-none title" aria-current="page">Register</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                <form sec:authorize="isAuthenticated()" class="my-2 d-flex" th:action="@{/logout}" th:method="POST">
+                    <button class="btn border-0 bg-transparent p-0 fs-5 text-decoration-none border-none link-warning title" type="submit" id="logout">Logout</button>
+                </form>
+                </li>
+                <hr>
+                <li class="nav-item">
+                    <div class="my-2 d-flex">
+                    <a href="/gamesessions" class="link-warning fs-5 text-decoration-none title" aria-current="page">Browse Sessions</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="my-2 d-flex">
+                    <a class="link-warning fs-5 text-decoration-none title" href="/gamesessions/search/notfull" id="notFull">Games with vacancies</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="my-2 d-flex">
+                        <a href="/gamesessions/create" class="link-warning fs-5 text-decoration-none title" aria-current="page">Create Game Session</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="my-2 d-flex">
+                        <a href="/aboutCreators" class="link-warning fs-5 text-decoration-none title" aria-current="page">About the Creators</a>
+                    </div>
+                </li>
+<!--      Logout and profile links-->
+                <li class="nav-item">
+                        <div sec:authorize="isAuthenticated()" class="my-2 d-flex">
+                            <a href="/profile" class="link-warning fs-5 text-decoration-none title" aria-current="page">Profile</a>
                         </div>
                 </li>
-                <li class="nav-item">
-                        <form sec:authorize="isAuthenticated()" class="ms-auto d-flex" th:action="@{/logout}" th:method="POST">
-                            <button class="mx-3 btn btn-warning nav-link title" type="submit" id="logout">Logout</button>
-                        </form>
-                </li>
+
                 <br>
 <!--                Search bars for MD, SM, and XS-->
                 <li class="nav-item d-lg-none d-xl-block d-xl-none d-xxl-block d-xxl-none">
                     <form class="d-flex" th:action="@{/users/search}" method="GET">
-                        <label for="qu"></label>
-                        <input type="text" name="qu" id="qu" placeholder="Search for Players">
-                        <button class="btn btn-warning my-2 my-sm-0" type="submit">Find</button>
+                        <div class="input-group">
+                            <label for="qu2"></label>
+                            <input type="text" class="form-control" name="qu2" id="qu2" placeholder="Search for Players">
+                            <button class="btn btn-warning" type="submit">Find</button>
+                        </div>
                     </form>
                 </li>
                 <br>
                 <li class="nav-item d-lg-none d-xl-block d-xl-none d-xxl-block d-xxl-none">
                     <form class="d-flex" th:action="@{/gamesessions/search}" method="GET">
-                        <label for="q"></label>
-                        <input type="text" name="q" id="q" placeholder="Search Game Sessions">
-                        <button class="btn btn-warning my-2 my-sm-0" type="submit">Find</button>
+                        <div class="input-group">
+                            <label for="q2"></label>
+                            <input type="text" class="form-control" name="q2" id="q2" placeholder="Search Game Sessions">
+                            <button class="btn btn-warning" type="submit">Find</button>
+                        </div>
                     </form>
                 </li>
             </ul>
