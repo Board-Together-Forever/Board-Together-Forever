@@ -4,26 +4,47 @@
 <head th:replace="~{partials :: head ('Edit ' + ${gamesession.gameSessionTitle})}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
-<form th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
-	<div>Game: <span th:text="${gamesession.gameSessionName}"></span></div>
-	<input id="gameSessionName" name="gameSessionName" th:field="*{gameSessionName}" type="hidden">
-	<div th:if="${gamesession.gameSessionName.isEmpty()}">Couldn't find game</div>
-	<div>Max Players: <span th:text="${gamesession.playerLimit}"></span></div>
-	<input id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="hidden">
-	<div>Duration: <span th:text="${gamesession.gameDuration}"></span></div>
-	<input id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="hidden">
-	<label for="gameSessionTitle">Session Title:</label>
-	<input id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
-	<label for="gameSessionDescription">Description:</label><br>
-	<textarea cols="30" id="gameSessionDescription" name="gameSessionDescription" rows="10" th:field="*{gameSessionDescription}"></textarea>
-	<input th:field="*{id}" type="hidden">
-	<input id="upcField" th:field="*{UPC}" type="hidden">
-
-	<button type="submit">Submit Game Session</button>
-</form>
-
-<div id="gameImage"></div>
+	<nav th:replace="partials :: navbar"></nav>
+	<br>
+	<div class="container w-75">
+		<h1>Edit your Game Session</h1>
+		<br>
+		<div class="card bg-opacity-75 text-white bg-dark fw-bold border-danger">
+			<div class="card-body ">
+				<form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
+					<div class="col-md-6">
+						<label class="form-label text-warning" for="gameSessionName">Game Name</label>
+						<input class="form-control" id="gameSessionName" name="gameSessionName" placeholder="Name of the game" th:field="*{gameSessionName}" type="text">
+						<div th:if="${gamesession.gameSessionName.isEmpty()}">Couldn't find game</div>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label text-warning" for="gameSessionTitle">Session Title</label>
+						<input class="form-control" id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
+					</div>
+					<div class="col-md-2">
+						<div>Max Players: <span th:text="${gamesession.playerLimit}"></span></div>
+						<label class="form-label text-warning" for="playerLimit">Player Limit</label>
+						<input class="form-control" id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="text">
+					</div>
+					<div class="col-md-4">
+						<div>Duration: <span th:text="${gamesession.gameDuration}"></span></div>
+						<label class="form-label text-warning" for="gameDuration">Duration</label>
+						<input class="form-control" id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="text">
+					</div>
+					<div class="col-12">
+						<label class="form-label text-warning" for="gameSessionDescription">Description</label>
+						<textarea class="form-control" id="gameSessionDescription" name="gameSessionDescription" style="height: 100px" th:field="*{gameSessionDescription}"></textarea>
+					</div>
+					<input id="upcField" th:field="*{UPC}" type="hidden">
+					<div class="col-12">
+						<button class="btn btn-danger" type="submit">Submit Game Session</button>
+					</div>
+					<div id="gameImage"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<br>
 
 <div th:insert="partials :: boot-scripts"></div>
 <script th:src="@{/js/api_keys.js}"></script>

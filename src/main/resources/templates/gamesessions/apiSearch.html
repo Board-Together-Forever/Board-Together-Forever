@@ -4,22 +4,23 @@
 <head th:replace="~{partials :: head ('Game Search')}">
 </head>
 <body>
-<nav th:replace="partials :: navbar"></nav>
-
-<div class="container">
-<h1 id="indexHeader">Find your game!</h1>
-
-  <div class="card bg-opacity-75 text-white bg-dark fw-bold border-danger">
-    <div class="card-body">
-        <div class="d-flex justify-content-center">
-          <input type="text" class="form-control" id="addresssearch" placeholder="Enter name of game">
-          <button type="submit" class="btn btn-danger" id="searchbtn">Find it!</button>
+    <nav th:replace="partials :: navbar"></nav>
+    <br>
+    <div class="container">
+        <h1 id="indexHeader">Find your game!</h1>
+        <br>
+        <div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <input type="text" class="form-control" id="addresssearch" placeholder="Enter name of game">
+                    <button type="submit" class="btn btn-warning" id="searchbtn">Find it!</button>
+                </div>
+                <h5 id="game"></h5>
+                <h5 id="found"></h5>
+            </div>
         </div>
-      <h5 id="game"></h5>
-      <h5 id="found"></h5>
     </div>
-  </div>
-</div>
+    <br>
 
 <div th:insert="partials :: boot-scripts"></div>
 <script th:src="@{/js/api_keys.js}"></script>
