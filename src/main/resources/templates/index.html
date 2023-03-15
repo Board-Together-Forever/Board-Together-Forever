@@ -13,7 +13,7 @@
         </div>
         <br>
 <!--    Login or Register-->
-        <div class="card w-100 bg-opacity-75 text-white bg-dark fw-bold border-danger">
+        <div sec:authorize="!isAuthenticated()" class="card w-100 bg-opacity-75 text-white bg-dark fw-bold border-warning">
             <div class="card-body">
                 <div sec:authorize="!isAuthenticated()" class="text-center">
                     <a href="/login" class="nav-link text-white title" aria-current="page">Click here to login</a>

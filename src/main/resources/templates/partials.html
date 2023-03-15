@@ -23,17 +23,21 @@
             <span id="navTitle">Board Together</span>
         </a>
 <!--        Search bars for L, XL, and XXL Screens-->
-        <form class="d-flex d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block" th:action="@{/users/search}" method="GET">
-            <label for="qu"></label>
-            <input type="text" name="qu" id="qu" placeholder="Search for Players">
-            <button class="btn btn-warning my-2 my-sm-0" type="submit">Find</button>
-        </form>
 
         <form class="d-flex d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block" th:action="@{/gamesessions/search}" method="GET">
             <label for="q"></label>
             <input type="text" name="q" id="q" placeholder="Search Game Sessions">
             <button class="btn btn-warning my-2 my-sm-0" type="submit">Find</button>
         </form>
+
+
+        <form class="d-flex d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block" th:action="@{/users/search}" method="GET">
+            <label for="qu"></label>
+            <input type="text" name="qu" id="qu" placeholder="Search for Players">
+            <button class="btn btn-warning my-2 my-sm-0" type="submit">Find</button>
+        </form>
+
+
 
 <!--        Toggle Button to Off-Canvas-->
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
