@@ -5,20 +5,20 @@
 <body class="main-container main-bg">
 <nav th:replace="partials :: navbar"></nav>
 <main class="container">
-    <h1 th:text="|Howdy, ${user.getUsername()}!|"></h1>
+    <h1 th:text="|Welcome, ${user.getUsername()}!|"></h1>
 
     <div class="tabs">
         <div class="container mt-3 w-75">
             <!-------nav tabs------->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link card-title link-light h3" data-bs-toggle="tab" href="#account" id="acc-tab">Account</a>
+                    <a class="nav-link card-title link-light h3 active" data-bs-toggle="tab" href="#my-sessions" id="session-tab">My Sessions</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link card-title link-light h3" data-bs-toggle="tab" href="#about-me" id="about-tab">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link card-title link-light h3" data-bs-toggle="tab" href="#my-sessions" id="session-tab">My Sessions</a>
+                    <a class="nav-link card-title link-light h3" data-bs-toggle="tab" href="#account" id="acc-tab">Account</a>
                 </li>
             </ul>
             <div class="tab-content">
