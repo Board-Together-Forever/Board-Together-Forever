@@ -5,7 +5,7 @@
 <body class="main-container main-bg">
 <nav th:replace="partials :: navbar"></nav>
 
-<main class="container">
+<main class="container w-75">
     <br>
     <div class="container">
         <h1>Login</h1>
@@ -21,12 +21,12 @@
 
                 <form method="post" th:action="@{/login}">
                     <div class="mb-3">
-                        <label class="form-label" for="username">Username</label>
+                        <label class="form-label text-warning" for="username">Username</label>
                         <input class="form-control" id="username" name="username" type="text">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="password">Password</label>
+                        <label class="form-label text-warning" for="password">Password</label>
                         <input class="form-control" id="password" name="password" type="password">
                     </div>
                     <a aria-current="page" class="link-warning" href="/register">Don't have an account? Register here!</a>

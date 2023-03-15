@@ -4,7 +4,7 @@
 </head>
 <body class="background">
 <nav th:replace="partials :: navbar"></nav>
-<div class="container">
+<div class="container w-75">
 <!--    Opening Welcome and Logo-->
         <div id="indexpage" class="container d-flex align-items-center flex-column">
             <h1 class="d-flex">Welcome to</h1>
@@ -22,8 +22,8 @@
     </div>
 <!--    Most recently added Game Sessions-->
     <div class="container">
-        <div class="container d-flex align-items-center flex-column">
-            <h1 class="d-flex">Newest additions to BoardTogether!</h1>
+        <div class="container w-75 d-flex align-items-center flex-column">
+            <h1 class="d-flex">Newest additions to<br>Board Together!</h1>
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -31,14 +31,14 @@
                     <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
                         <input id="upc" type="hidden" th:value="*{gameSessionsList.get(0).getUPC()}">
                         <div class="bg-white" id="gameImage"></div>
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <a class="title text-white card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(0).getId()})}">
                                 <h5 th:text="${gameSessionsList.get(0).gameSessionTitle}" class="title card-title"></h5></a>
                             <p th:text="${gameSessionsList.get(0).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
                             <p th:text="${gameSessionsList.get(0).gameSessionDescription}" class="card-text"></p>
                             <p th:text="${gameSessionsList.get(0).getUsers().size()} + '/' + ${gameSessionsList.get(0).playerLimit} + ' Players'" class="card-text"></p>
                         </div>
-                        <div class="card-footer bg-success">
+                        <div class="card-footer bg-success text-center">
                             <a class="title text-white card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(0).getGameSessionHost().getId()})}">
                                 <small th:text="'Game Session Host: ' + ${gameSessionsList.get(0).getGameSessionHost().username}" class="card-text"></small></a>
                         </div>
@@ -49,14 +49,14 @@
                     <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-warning">
                         <input id="upc2" type="hidden" th:value="*{gameSessionsList.get(1).getUPC()}">
                         <div class="bg-white" id="gameImage2"></div>
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <a class="title text-white card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(1).getId()})}">
                                 <h5 th:text="${gameSessionsList.get(1).gameSessionTitle}" class="title card-title"></h5></a>
                             <p th:text="${gameSessionsList.get(1).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
                             <p th:text="${gameSessionsList.get(1).gameSessionDescription}" class="card-text"></p>
                             <p th:text="${gameSessionsList.get(1).getUsers().size()} + '/' + ${gameSessionsList.get(1).playerLimit} + ' Players'" class="card-text"></p>
                         </div>
-                        <div class="card-footer bg-warning">
+                        <div class="card-footer bg-warning text-center">
                             <a class="title text-white card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(1).getGameSessionHost().getId()})}">
                                 <small th:text="'Game Session Host: ' + ${gameSessionsList.get(1).getGameSessionHost().username}" class="card-text"></small></a>
                         </div>
@@ -67,14 +67,14 @@
                     <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-info">
                         <input id="upc3" type="hidden" th:value="*{gameSessionsList.get(2).getUPC()}">
                         <div class="bg-white" id="gameImage3"></div>
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <a class="title text-white card-title" th:href="@{/gamesessions/{id} (id = ${gameSessionsList.get(2).getId()})}">
                                 <h5 th:text="${gameSessionsList.get(2).gameSessionTitle}" class="title card-title"></h5></a>
                             <p th:text="${gameSessionsList.get(2).gameSessionName}" class="card-text"><small class="text-muted"></small></p>
                             <p th:text="${gameSessionsList.get(2).gameSessionDescription}" class="card-text"></p>
                             <p th:text="${gameSessionsList.get(2).getUsers().size()} + '/' + ${gameSessionsList.get(2).playerLimit} + ' Players'" class="card-text"></p>
                         </div>
-                        <div class="card-footer bg-info">
+                        <div class="card-footer bg-info text-center">
                             <a class="title text-white card-title" th:href="@{/aboutuser/{id} (id = ${gameSessionsList.get(2).getGameSessionHost().getId()})}">
                                 <small th:text="'Game Session Host: ' + ${gameSessionsList.get(2).getGameSessionHost().username}" class="card-text"></small></a>
                         </div>

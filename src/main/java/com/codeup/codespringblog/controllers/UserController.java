@@ -59,6 +59,7 @@ public class UserController {
         user = userDao.findUserById(user.getId());
         List<GameSession> gameSessionsList = gameSessionDao.findAll();
         List<GameSession> userJoinedList = new ArrayList<>();
+        List<GameSession> userHostedList = new ArrayList<>();
         for (GameSession gameSession : gameSessionsList) {
             for (User indiv : gameSession.getUsers()) {
                 if (indiv.getId() == user.getId() && gameSession.getGameSessionHost().getId() != user.getId()) {
@@ -66,8 +67,15 @@ public class UserController {
                 }
             }
         }
+        for (GameSession gameSession : gameSessionsList) {
+            for (User indiv : gameSession.getUsers()) {
+                if (indiv.getId() == user.getId() && gameSession.getGameSessionHost().getId() == user.getId()) {
+                    userHostedList.add(gameSessionDao.findGameSessionsById((long) gameSession.getId()));
+                }
+            }
+        }
         model.addAttribute("userJoinedList", userJoinedList);
-        model.addAttribute("gameSessionsList", gameSessionsList);
+        model.addAttribute("gameSessionsList", userHostedList);
         model.addAttribute("user", user);
         return "users/profile";
     }

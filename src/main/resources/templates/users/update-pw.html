@@ -6,19 +6,22 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <h1 id="indexHeader">Update Password</h1>
-<form th:action="@{/update-pw}" th:method="post" th:object="${user}">
+<div class="container w-75">
+<div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
+	<div class="card-body">
+	<form th:action="@{/update-pw}" th:method="post" th:object="${user}">
 	<!------------------------------------------------------------->
 	<!--would be nice to have this form in the middle of the page-->
 	<!--------------cough cough danielle cough cough--------------->
 	<!------------------------------------------------------------->
 	<div>
-		<label for="currentPassword">Current Password:</label>
-		<input id="currentPassword" name="currentPassword" required type="password"/>
+		<label class="form-label text-warning" for="currentPassword">Current Password:</label>
+		<input class="form-control" id="currentPassword" name="currentPassword" required type="password"/>
 	</div>
 
 	<div>
-		<label for="newPassword">New Password:</label>
-		<input id="newPassword" minlength="8" name="newPassword" required type="password"/>
+		<label class="form-label text-warning" for="newPassword">New Password:</label>
+		<input class="form-control" id="newPassword" minlength="8" name="newPassword" required type="password"/>
 	</div>
 
 	<div>
@@ -30,9 +33,10 @@
 		<input name="password" th:field="*{primary_game}" type="hidden">
 	</div>
 
-	<button type="submit">Update Password</button>
+	<button class="btn btn-warning mt-2" type="submit">Update Password</button>
 
 	<div th:replace="partials :: boot-scripts"></div>
 </form>
+	</div>
 </body>
 </html>
