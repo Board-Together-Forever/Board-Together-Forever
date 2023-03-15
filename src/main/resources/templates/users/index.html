@@ -6,7 +6,7 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 <h1 class="pb-3" id="indexHeader">Players List</h1>
-<div class="container ms-5 me-5">
+<div class="container w-75">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div th:each="user : ${userList}">
             <div class="col">

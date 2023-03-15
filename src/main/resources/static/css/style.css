@@ -50,3 +50,19 @@ body {
     text-align: center;
     padding-left: 1em;
 }
+
+.mainButton {
+    font-family: 'Rampart One', cursive;
+    font-weight: bolder;
+    color: midnightblue;
+    text-align: center;
+}
+.createButton {
+    font-size: 1.5em;
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}

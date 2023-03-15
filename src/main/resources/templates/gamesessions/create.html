@@ -6,38 +6,38 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 
-<div class="container">
+<div class="container w-75">
 	<h1>Create your Game Session</h1>
 	<div class="card bg-opacity-75 text-white bg-dark fw-bold border-info">
-		<div class="card-body">
+		<div class="card-body ">
 
 			<input id="upc" th:value="*{upc}" type="hidden">
 			<form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
 				<div class="col-md-6">
-					<label class="form-label" for="gameSessionName">Game Name</label>
+					<label class="form-label text-warning" for="gameSessionName">Game Name</label>
 					<input class="form-control" id="gameSessionName" name="gameSessionName" placeholder="Name of the game"
 						   th:field="*{gameSessionName}" type="text">
 				</div>
 				<div class="col-md-6">
-					<label class="form-label" for="gameSessionTitle">Session Title</label>
+					<label class="form-label text-warning" for="gameSessionTitle">Session Title</label>
 					<input class="form-control" id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
 				</div>
 				<div class="col-md-2">
-					<label class="form-label" for="playerLimit">Player Limit</label>
+					<label class="form-label text-warning" for="playerLimit">Player Limit</label>
 					<input class="form-control" id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="text">
 				</div>
 				<div class="col-md-4">
-					<label class="form-label" for="gameDuration">Duration</label>
+					<label class="form-label text-warning" for="gameDuration">Duration</label>
 					<input class="form-control" id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="text">
 				</div>
 				<div class="col-12">
-					<label class="form-label" for="gameSessionDescription">Description</label>
+					<label class="form-label text-warning" for="gameSessionDescription">Description</label>
 					<textarea class="form-control" id="gameSessionDescription" name="gameSessionDescription"
 							  style="height: 100px" th:field="*{gameSessionDescription}"></textarea>
 				</div>
 				<input id="upcField" th:field="*{UPC}" type="hidden">
 				<div class="col-12">
-					<button class="btn btn-success" type="submit">Submit Game Session</button>
+					<button class="btn btn-warning" type="submit">Submit Game Session</button>
 				</div>
 				<div id="gameImage"></div>
 			</form>
