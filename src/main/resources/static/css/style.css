@@ -39,30 +39,11 @@ body {
     background-repeat: repeat;
 }
 
+.img-card {
+    height: 462px;
+    width: 348px;
+}
+
 #gameImage>img, #gameImage2>img, #gameImage3>img {
     max-width: 100%;
-}
-
-#navTitle {
-    font-family: 'Rampart One', cursive;
-    font-weight: bold;
-    color: midnightblue;
-    text-align: center;
-    padding-left: 1em;
-}
-
-.mainButton {
-    font-family: 'Rampart One', cursive;
-    font-weight: bolder;
-    color: midnightblue;
-    text-align: center;
-}
-.createButton {
-    font-size: 1.5em;
-}
-
-.nav-tabs {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
 }
