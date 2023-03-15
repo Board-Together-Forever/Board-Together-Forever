@@ -3,48 +3,50 @@
 <head th:replace="~{partials :: head ('Register')}">
 </head>
 <body class="main-container main-bg">
-<nav th:replace="partials :: navbar"></nav>
-<br>
-<div class="container w-75">
-	<h1>Register</h1>
-	<div class="card bg-opacity-75 text-white bg-dark fw-bold border-info">
-		<div class="card-body">
-			<form class="row g-3" th:action="@{/register}" th:method="POST" th:object="${user}">
-				<div class="col-md-12">
-					<label class="form-label text-warning" for="username">Username</label>
-					<div class="input-group has-validation">
-						<input class="form-control" id="username" required="required" th:field="*{username}" type="text">
+	<nav th:replace="partials :: navbar"></nav>
+	<br>
+	<div class="container w-75">
+		<h1>Register</h1>
+		<br>
+		<div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
+			<div class="card-body">
+				<form class="row g-3" th:action="@{/register}" th:method="POST" th:object="${user}">
+					<div class="col-md-12">
+						<label class="form-label text-warning" for="username">Username</label>
+						<div class="input-group has-validation">
+							<input class="form-control" id="username" required="required" th:field="*{username}" type="text">
+						</div>
 					</div>
-				</div>
 
-				<div class="col-md-12">
-					<label class="form-label text-warning" for="email">Email</label>
-					<div class="input-group has-validation">
-						<input class="form-control" id="email" required="required" th:field="*{email}" type="text">
+					<div class="col-md-12">
+						<label class="form-label text-warning" for="email">Email</label>
+						<div class="input-group has-validation">
+							<input class="form-control" id="email" required="required" th:field="*{email}" type="text">
+						</div>
 					</div>
-				</div>
 
-				<div class="col-md-12">
-					<label class="form-label text-warning" for="password">Password</label>
-					<input class="form-control" id="password" minlength="8" required="required" th:field="*{password}" type="password">
-				</div>
+					<div class="col-md-12">
+						<label class="form-label text-warning" for="password">Password</label>
+						<input class="form-control" id="password" minlength="8" required="required" th:field="*{password}" type="password">
+					</div>
 
-				<div class="col-md-12">
-					<label class="form-label text-warning" for="primary-game">Primary Played Game</label>
-					<input class="form-control" id="primary-game" required="required" th:field="*{primary_game}" type="text">
-				</div>
+					<div class="col-md-12">
+						<label class="form-label text-warning" for="primary-game">Primary Played Game</label>
+						<input class="form-control" id="primary-game" required="required" th:field="*{primary_game}" type="text">
+					</div>
 
-				<div class="col-md-12">
-					<input th:name="irl_name" type="hidden" value=" ">
-				</div>
+					<div class="col-md-12">
+						<input th:name="irl_name" type="hidden" value=" ">
+					</div>
 
-				<div class="col-12">
-					<button class="btn btn-warning" type="submit">Register</button>
-				</div>
-			</form>
+					<div class="col-12">
+						<button class="btn btn-warning" type="submit">Register</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
+	<br>
 
 <div th:replace="partials :: boot-scripts"></div>
 </body>

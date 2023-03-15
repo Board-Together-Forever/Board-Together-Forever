@@ -3,41 +3,42 @@
 <head th:replace="~{partials :: head ('Login')}">
 </head>
 <body class="main-container main-bg">
-<nav th:replace="partials :: navbar"></nav>
-
-<main class="container w-75">
+    <nav th:replace="partials :: navbar"></nav>
     <br>
-    <div class="container">
-        <h1>Login</h1>
-        <div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
-            <div class="card-body">
-                <div th:if="${param.error}">
-                    <h5 class="text-danger">Invalid username and/or password.</h5>
+    <main class="container w-75">
+        <div class="container">
+            <h1>Login</h1>
+            <br>
+            <div class="card bg-opacity-75 text-white bg-dark fw-bold border-warning">
+                <div class="card-body">
+                    <div th:if="${param.error}">
+                        <h5 class="text-danger">Invalid username and/or password.</h5>
+                    </div>
+
+                    <div th:if="${param.logout}">
+                        <h5 class="text-danger">You have been logged out.</h5>
+                    </div>
+
+                    <form method="post" th:action="@{/login}">
+                        <div class="mb-3">
+                            <label class="form-label text-warning" for="username">Username</label>
+                            <input class="form-control" id="username" name="username" type="text">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-warning" for="password">Password</label>
+                            <input class="form-control" id="password" name="password" type="password">
+                        </div>
+                        <a aria-current="page" class="link-warning" href="/register">Don't have an account? Register here!</a>
+                        <div class="col-auto">
+                            <button class="btn btn-warning mb-3" type="submit" value="Log In">Login</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div th:if="${param.logout}">
-                    <h5 class="text-danger">You have been logged out.</h5>
-                </div>
-
-                <form method="post" th:action="@{/login}">
-                    <div class="mb-3">
-                        <label class="form-label text-warning" for="username">Username</label>
-                        <input class="form-control" id="username" name="username" type="text">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label text-warning" for="password">Password</label>
-                        <input class="form-control" id="password" name="password" type="password">
-                    </div>
-                    <a aria-current="page" class="link-warning" href="/register">Don't have an account? Register here!</a>
-                    <div class="col-auto">
-                        <button class="btn btn-warning mb-3" type="submit" value="Log In">Login</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+    <br>
 
 <div th:replace="partials :: boot-scripts"></div>
 </body>
