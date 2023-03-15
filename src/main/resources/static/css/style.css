@@ -71,3 +71,13 @@ body {
     justify-content: center;
     flex-direction: row;
 }
+
+.card-img-top {
+    height: 510px;
+    width: 389px;
+}
+
+.img-card {
+    height: 37.8em;
+    width: 21.75em;
+}
