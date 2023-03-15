@@ -10,8 +10,8 @@
             <div class="col">
                 <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
                     <div class="card-header card-title bg-success text-center h3">
-                        <a class="text-white text-decoration-none" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
-                            <h3 th:text="${gameSessions.gameSessionTitle}"></h3>
+                        <a class="text-white text-decoration-none h3" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
+                            <p class="mb-0" th:text="${gameSessions.gameSessionTitle}"></p>
                         </a>
                     </div>
                     <div class="card-body">

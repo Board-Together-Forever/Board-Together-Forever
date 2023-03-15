@@ -17,13 +17,14 @@
 			</div>
 		</div>
 		<br>
+		<div class="container w-75">
 		<div class="row row-cols-1 row-cols-md-2 g-4">
 			<div th:each="gamesession : ${gameSessionsList}">
 				<div class="col">
 					<div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
 						<div class="card-header bg-success text-center">
-							<a class="text-white text-decoration-none" th:href="@{/gamesessions/{id} (id = ${gamesession.id})}">
-								<h5 th:text="${gamesession.gameSessionTitle}"></h5>
+							<a class="text-white card-title text-decoration-none" th:href="@{/gamesessions/{id} (id = ${gamesession.id})}">
+								<h3 class="mb-0" th:text="${gamesession.gameSessionTitle}"></h3>
 							</a>
 						</div>
 						<div class="card-body text-center">
@@ -38,6 +39,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 		<br>
 	</div>
