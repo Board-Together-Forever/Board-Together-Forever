@@ -6,11 +6,11 @@
 <body>
 	<nav th:replace="partials :: navbar"></nav>
 	<br>
-	<div class="container">
-		<div class="container w-75">
+	<div class="container w-100">
+		<div class="container">
 			<h1 th:text="${gamesession.getUsers().size()} + '/' + ${gamesession.playerLimit} + ' Players'"></h1>
 			<br>
-			<div class="card w-75 bg-opacity-75 text-white bg-dark fw-bold border-danger">
+			<div class="card bg-opacity-75 text-white bg-dark fw-bold border-danger">
 				<div class="card-body">
 					<p class="card-text text-center" th:if="${gamesession.getUsers().size()} == ${gamesession.playerLimit}">Game Session Full</p>
 					<p class="card-text text-center" th:if="${gamesession.getUsers().size()} != ${gamesession.playerLimit} and ${remainingSpots} > 1" th:text="'You still have room for ' + ${remainingSpots} + ' players'"></p>
@@ -21,6 +21,7 @@
 		<hr>
 		<div class="container">
 			<h1>Player List:</h1>
+			<br>
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				<div th:each="user : ${gamesession.getUsers()}" class="col">
 					<div th:if="${user.getId()} != ${gamesession.getGameSessionHost().getId()}" class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
@@ -28,7 +29,7 @@
 							<h5 th:text="${user.getUsername()}"></h5>
 						</div>
 						<p class="card-text text-center" th:text="${user.email}"/>
-						<a th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()} , id = ${gamesession.getId()})}">
+						<a class="d-grid gap-2 col-6 mx-auto text-decoration-none" th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()} , id = ${gamesession.getId()})}">
 							<button type="button" class="btn btn-danger text-decoration-none" th:text="'Remove ' + ${user.getUsername()} + ' from game'"></button>
 						</a>
 					</div>
