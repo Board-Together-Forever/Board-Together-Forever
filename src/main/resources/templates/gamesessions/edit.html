@@ -12,24 +12,22 @@
 		<div class="card bg-opacity-75 text-white bg-dark fw-bold border-danger">
 			<div class="card-body ">
 				<form class="row g-3" th:action="@{/gamesessions/create}" th:method="post" th:object="${gamesession}">
-					<div class="col-md-6">
-						<label class="form-label text-warning" for="gameSessionName">Game Name</label>
-						<input class="form-control" id="gameSessionName" name="gameSessionName" placeholder="Name of the game" th:field="*{gameSessionName}" type="text">
+					<div class="col-md-5">
+						<label th:text="'Game: ' + ${gamesession.gameSessionName}" class="form-label text-warning h2" for="gameSessionName"></label>
+						<input class="form-control" id="gameSessionName" name="gameSessionName" placeholder="Name of the game" th:field="*{gameSessionName}" type="hidden">
 						<div th:if="${gamesession.gameSessionName.isEmpty()}">Couldn't find game</div>
+					</div>
+					<div class="col-md-2 offset-1">
+						<label th:text="'Player Limit: ' + ${gamesession.getPlayerLimit()}" class="form-label text-warning h3" for="playerLimit"></label>
+						<input class="form-control" id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="hidden">
+					</div>
+					<div class="col-md-4">
+						<label th:text="'Game Durtion: ' + ${gamesession.getGameDuration()}" class="form-label text-warning h3" for="gameDuration"></label>
+						<input class="form-control" id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="hidden">
 					</div>
 					<div class="col-md-6">
 						<label class="form-label text-warning" for="gameSessionTitle">Session Title</label>
 						<input class="form-control" id="gameSessionTitle" name="gameSessionTitle" th:field="*{gameSessionTitle}" type="text">
-					</div>
-					<div class="col-md-2">
-						<div>Max Players: <span th:text="${gamesession.playerLimit}"></span></div>
-						<label class="form-label text-warning" for="playerLimit">Player Limit</label>
-						<input class="form-control" id="playerLimit" name="playerLimit" th:field="*{playerLimit}" type="text">
-					</div>
-					<div class="col-md-4">
-						<div>Duration: <span th:text="${gamesession.gameDuration}"></span></div>
-						<label class="form-label text-warning" for="gameDuration">Duration</label>
-						<input class="form-control" id="gameDuration" name="gameDuration" th:field="*{gameDuration}" type="text">
 					</div>
 					<div class="col-12">
 						<label class="form-label text-warning" for="gameSessionDescription">Description</label>
@@ -37,9 +35,10 @@
 					</div>
 					<input id="upcField" th:field="*{UPC}" type="hidden">
 					<div class="col-12">
-						<button class="btn btn-danger" type="submit">Submit Game Session</button>
+						<button class="btn btn-warning" type="submit">Submit Game Session</button>
 					</div>
 					<div id="gameImage"></div>
+					<input th:field="*{id}" type="hidden">
 				</form>
 			</div>
 		</div>
