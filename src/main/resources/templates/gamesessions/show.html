@@ -9,8 +9,8 @@
             <div class="col">
                 <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
                     <div class="card-header card-title bg-success text-center h3">
-                        <a class="text-white text-decoration-none h3" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
-                            <p class="mb-0" th:text="${gameSessions.gameSessionTitle}"></p>
+                        <a class="linkcolor text-decoration-none" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
+                            <h3 class="mb-0" th:text="${gameSessions.gameSessionTitle}"></h3>
                         </a>
                     </div>
                     <div class="card-body">
@@ -18,29 +18,29 @@
                         <h3 class="card-text text-center" th:text="${gameSessions.getUsers().size()} + '/' + ${gameSessions.playerLimit} + ' Players'"></h3>
                         <h3 class="card-text text-center" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">Game Session is full.</h3>
                         <h3 class="card-text text-center" th:text="'Description: ' + ${gameSessions.gameSessionDescription}"/>
-                        <a class="card-text text-center" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
-                            <h3 class="card-text text-center text-decoration-none text-white" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></h3>
+                        <a class="card-text text-center text-decoration-none linkcolor" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
+                            <h3 class="card-text" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></h3>
                         </a>
-                        <a th:href="@{/gamesessions/{id}/edit (id = ${gameSessions.id})}" th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}">
+                        <a class="text-decoration-none" th:href="@{/gamesessions/{id}/edit (id = ${gameSessions.id})}" th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}">
                             <button class="btn btn-info col-2 offset-2 mt-2" id="editButton">Edit Game Session</button>
                         </a>
 
-                        <a th:href="@{/gamesessions/{id}/editplayers (id = ${gameSessions.id})}" th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}">
+                        <a class="text-decoration-none" th:href="@{/gamesessions/{id}/editplayers (id = ${gameSessions.id})}" th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}">
                             <button class="btn btn-warning col-2 offset-1 mt-2" id="editPlayers">Edit Player Roster</button>
                         </a>
 
-                        <a th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}">
+                        <a class="text-decoration-none" th:if="${gameSessions.getGameSessionHost().getId()} == ${user.getId()}">
                             <button class="btn btn-danger col-2 offset-1 mt-2" id="deleteButton" th:value="${gameSessions.getId()}">Delete<br>Session</button>
                         </a>
 
                         <div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${playerFound} == 0 and ${gameSessions.playerLimit} > ${gameSessions.getUsers().size()}">
-                            <a th:href="@{'/gamesessions/join/' + ${user.getId()} + '/' + ${gameSessions.getId()}}">
+                            <a class="text-decoration-none" th:href="@{'/gamesessions/join/' + ${user.getId()} + '/' + ${gameSessions.getId()}}">
                                 <button class="btn btn-success col-12 mt-2" id="joinButton" type="submit">Join Game Session</button>
                             </a>
                         </div>
 
                         <div th:if="${gameSessions.getGameSessionHost().getId()} != ${user.getId()} and ${playerFound} == 1">You are part of this session!
-                            <a th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()}, id = ${gameSessions.getId()})}">
+                            <a class="text-decoration-none" th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()}, id = ${gameSessions.getId()})}">
                                 <button class="btn btn-danger col-12 mt-2">Leave Game Session</button>
                             </a>
                         </div>
