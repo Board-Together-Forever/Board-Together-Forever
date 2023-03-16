@@ -90,8 +90,29 @@ h5, h3 {
     padding-top: 8px;
 }
 
+#found>a {
+    color: gold;
+    text-decoration: none;
+}
+
+#found>a:hover {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+.text-color {
+    color: midnightblue;
+}
+
+.text-link-color {
+    color: midnightblue;
+}
+
+.text-link-color:hover {
+    color: blue;
+}
+
 @media screen and (min-width:430px) {
     .img-card {
         width: 90%;
     }
-}
