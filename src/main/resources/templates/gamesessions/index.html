@@ -7,7 +7,7 @@
 	<br>
 	<div class="container">
 		<h1 id="indexHeader">Game Sessions</h1>
-		<div class="container w-75">
+		<div class="container w-100">
 			<h5 th:if="${gameSessionsList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any game sessions...'"></h5>
 			<h5 th:if="${gameSessionsList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any game sessions that matched with ' + ${query}"></h5>
 			<div class="row">
