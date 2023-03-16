@@ -1,7 +1,8 @@
 body {
     background-image: url(../gameIMG/20230308_151944.remini-enhanced.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
+    background-position: center;
 }
 
 h1 {
