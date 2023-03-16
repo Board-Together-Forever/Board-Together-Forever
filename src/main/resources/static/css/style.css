@@ -40,11 +40,6 @@ body {
     background-repeat: repeat;
 }
 
-.img-card {
-    height: 462px;
-    width: 348px;
-}
-
 #gameImage>img, #gameImage2>img, #gameImage3>img {
     max-width: 100%;
 }
@@ -75,12 +70,12 @@ body {
 
 .card-img-top {
     height: 510px;
-    width: 389px;
+    width: 100%;
 }
 
 .img-card {
     height: 37.8em;
-    width: 21.75em;
+    width: 100%;
 }
 
 .linkcolor {
@@ -116,3 +111,8 @@ h5, h3 {
 .text-link-color:hover {
     color: blue;
 }
+
+@media screen and (min-width:430px) {
+    .img-card {
+        width: 90%;
+    }
