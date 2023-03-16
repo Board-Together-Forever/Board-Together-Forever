@@ -11,9 +11,9 @@
 			<h5 th:if="${gameSessionsList.size() == 0} and ${query.length()} == 0" th:text="'Sorry, we could not find any game sessions...'"></h5>
 			<h5 th:if="${gameSessionsList.size()} == 0 and ${query.length()} > 0" th:text="'Sorry, we could not find any game sessions that matched with ' + ${query}"></h5>
 			<div class="row">
-				<a class="btn btn-success offset-1 col-4 mainButton mt-2" href="/gamesessions" id="showAllGames">Show All Games</a>
-				<a class="btn btn-success offset-2 col-4 mainButton mt-2" href="/gamesessions/search/notfull" id="notFull">Games with Vacancies</a>
-				<a class="btn btn-success offset-3 col-6 mainButton createButton mt-3" href="/gamesessions/create" id="createAPost">Create a Game Session</a>
+				<a class="btn btn-success text-wrap offset-1 col-4 mainButton mt-2" href="/gamesessions" id="showAllGames">Show All Games</a>
+				<a class="btn btn-success text-wrap offset-2 col-4 mainButton mt-2" href="/gamesessions/search/notfull" id="notFull">Games with Vacancies</a>
+				<a class="btn btn-success text-wrap offset-3 col-6 mainButton createButton mt-3" href="/gamesessions/create" id="createAPost">Create a Game Session</a>
 			</div>
 		</div>
 		<br>
