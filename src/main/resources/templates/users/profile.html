@@ -30,17 +30,15 @@
                         <div class="card-body">
                             <!-----------------------username form--------------------------->
                             <form th:action="@{/update}" th:method="post" th:object="${user}">
-                                <div class="mb-3">
-                                    <label class="form-label" for="username">Username: </label>
-                                    <input class="form-control" id="username" name="username" th:field="*{username}">
-                                    <input name="id" th:field="*{id}" type="hidden">
-                                    <input name="id" th:field="*{email}" type="hidden">
-                                    <input name="id" th:field="*{irl_name}" type="hidden">
-                                    <input name="username" th:field="*{aboutMe}" type="hidden">
-                                    <input name="password" th:field="*{password}" type="hidden">
-                                    <input name="password" th:field="*{primary_game}" type="hidden">
-                                    <button class="btn btn-warning mt-2" type="submit">Update Username</button>
-                                </div>
+                                <label class="form-label" for="username">Username: </label>
+                                <input class="form-control" id="username" name="username" th:field="*{username}">
+                                <input name="id" th:field="*{id}" type="hidden">
+                                <input name="id" th:field="*{email}" type="hidden">
+                                <input name="id" th:field="*{irl_name}" type="hidden">
+                                <input name="username" th:field="*{aboutMe}" type="hidden">
+                                <input name="password" th:field="*{password}" type="hidden">
+                                <input name="password" th:field="*{primary_game}" type="hidden">
+                                <button class="btn btn-warning mt-2" type="submit">Update Username</button>
                             </form>
                             <!-------------------------email form---------------------------->
                             <form th:action="@{/update}" th:method="post" th:object="${user}">
@@ -110,8 +108,8 @@
                             <div class="col text-center">
                                 <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
                                     <div class="card-header bg-success">
-                                        <a class="text-white" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
-                                            <h5 th:text="${gameSessions.gameSessionTitle}"></h5>
+                                        <a class="title linkcolor text-decoration-none" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
+                                            <h3 th:text="${gameSessions.gameSessionTitle}"></h3>
                                         </a>
                                     </div>
                                     <div class="card-body">
@@ -121,8 +119,8 @@
                                         <p class="card-text" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">Game
                                             Session is full.</p>
                                         <p class="card-text" th:text="'Description: ' + ${gameSessions.gameSessionDescription}"/>
-                                        <a class="card-text" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
-                                            <p class="card-text text-white text-decoration-none" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
+                                        <a class="card-text linkcolor text-decoration-none" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
+                                            <p class="card-text" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
                                         </a>
                                     </div>
                                 </div>
@@ -142,8 +140,8 @@
                             <div class="col text-center">
                                 <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
                                     <div class="card-header bg-success">
-                                        <a class="text-white" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
-                                            <h5 th:text="${gameSessions.gameSessionTitle}"></h5>
+                                        <a class="title linkcolor text-decoration-none" th:href="@{/gamesessions/{id} (id = ${gameSessions.id})}">
+                                            <h3 th:text="${gameSessions.gameSessionTitle}"></h3>
                                         </a>
                                     </div>
                                     <div class="card-body">
@@ -153,8 +151,8 @@
                                         <p class="card-text" th:if="${gameSessions.playerLimit} == ${gameSessions.getUsers().size()}">Game
                                             Session is full.</p>
                                         <p class="card-text" th:text="'Description: ' + ${gameSessions.gameSessionDescription}"/>
-                                        <a class="card-text" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
-                                            <p class="card-text text-white text-decoration-none" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
+                                        <a class="linkcolor text-decoration-none" th:href="@{/aboutuser/{id} (id = ${gameSessions.getGameSessionHost().getId()})}">
+                                            <p class="card-text" th:text="'Game Session Host: ' + ${gameSessions.getGameSessionHost().username}"></p>
                                         </a>
                                     </div>
                                 </div>

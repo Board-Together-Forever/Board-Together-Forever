@@ -11,14 +11,12 @@
         <br>
         <div class="container w-75">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div th:each="user : ${userList}">
-                    <div class="col">
-                        <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
-                            <div class="card-header bg-success">
-                                <a class="text-white text-center text-decoration-none" th:href="@{/aboutuser/{id} (id = ${user.id})}"><h5 th:text="'Username: ' + ${user.username}"></h5></a>
-                            </div>
-                            <p class="card-text text-center" th:text="'Total Active Sessions: ' + ${user.getJoinedSessions().size()}"></p>
+                <div th:each="user : ${userList}" class="col">
+                    <div class="card h-100 bg-opacity-75 text-white bg-dark fw-bold border-success">
+                        <div class="card-header bg-success">
+                            <a class="linkcolor text-center text-decoration-none" th:href="@{/aboutuser/{id} (id = ${user.id})}"><h5 th:text="'Username: ' + ${user.username}"></h5></a>
                         </div>
+                        <p class="card-text mb-0 text-center" th:text="'Total Active Sessions: ' + ${user.getJoinedSessions().size()}"></p>
                     </div>
                 </div>
             </div>

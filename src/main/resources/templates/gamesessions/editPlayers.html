@@ -36,10 +36,8 @@
                         <h5 th:text="${user.getUsername()}"></h5>
                     </div>
                     <p class="card-text text-center" th:text="${user.email}"/>
-                    <a class="d-grid gap-2 col-12 mx-auto text-decoration-none"
-                       th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()} , id = ${gamesession.getId()})}">
-                        <button type="button" class="btn btn-danger text-decoration-none"
-                                th:text="'Remove player from Game Session'"></button>
+                    <a class="d-grid gap-2 col-12 mx-auto text-decoration-none" th:href="@{/gamesessions/remove/{userId}/{id} (userId = ${user.getId()} , id = ${gamesession.getId()})}">
+                        <button type="button" class="btn btn-danger text-decoration-none" th:text="'Remove player from Game Session'"></button>
                     </a>
                     </div>
                 </div>
